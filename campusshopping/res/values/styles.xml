@@ -9,5 +9,163 @@
         <item name="android:windowNoTitle">true</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    
+    
+    <style name="text_white_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_white_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_white_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_white_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    
+    <style name="text_43_black_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_43_black</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_43_black_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_43_black</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_43_black_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_43_black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_43_black_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_43_black</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    
+    <style name="text_99_grey_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_99_grey</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_99_grey_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_99_grey</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_99_grey_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_99_grey</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_99_grey_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_99_grey</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    
+    <style name="text_cc_grey_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_cc_grey</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_cc_grey_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_cc_grey</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_cc_grey_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_cc_grey</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_cc_grey_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_cc_grey</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    
+    <style name="text_ff4_red_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_ff4_red_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_ff4_red_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_ff4_red_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    <style name="line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1.5px</item>
+        <item name="android:background">@color/line_color</item>
+    </style>
+
+    <style name="line_vertical">
+        <item name="android:layout_width">1.5px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/line_color</item>
+    </style>
 
 </resources>

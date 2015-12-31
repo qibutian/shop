@@ -1,4 +1,7 @@
-package com.means.shopping;
+package com.means.shopping.activity.main;
+
+import com.means.shopping.R;
+import com.means.shopping.R.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
