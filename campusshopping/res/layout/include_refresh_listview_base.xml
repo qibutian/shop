@@ -46,7 +46,6 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone" >
-                
             </LinearLayout>
         </RelativeLayout>
     </in.srain.cube.views.ptr.PtrFrameLayout>
