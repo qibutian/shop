@@ -14,7 +14,6 @@ import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.DhUtil;
 
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
