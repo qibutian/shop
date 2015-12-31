@@ -13,6 +13,8 @@
     <color name="text_ffd_yellow">#ffd28c</color>
     <color name="text_ff4_red">#ff4f64</color>
     
+    
+    <color name="tab_index_bg">#36b9af</color>
     <color name="line_color">#dddddd</color>
 
 </resources>
