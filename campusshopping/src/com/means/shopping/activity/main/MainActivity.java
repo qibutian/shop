@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
+import com.means.shopping.activity.my.MyFragment;
+import com.means.shopping.activity.order.OrderFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -69,14 +71,14 @@ public class MainActivity extends FragmentActivity {
 					break;
 
 				case 1:
-					switchContent(HomePageFragment.getInstance());
+					switchContent(OrderFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_order_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
 					break;
 
 				case 2:
-					switchContent(HomePageFragment.getInstance());
+					switchContent(MyFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_my_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));

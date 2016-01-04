@@ -38,23 +38,7 @@ public class HomePageFragment extends Fragment{
 
 	View mainV;
 
-	PtrFrameLayout mPtrFrame;
-
-	RefreshListViewAndMore listV;
-
-	LoadMoreListViewContainer loadMoreListV;
-
-	View headV;
-
 	LayoutInflater mLayoutInflater;
-
-	View bottomSearchV;
-
-	ListView contentListV;
-
-	ImageView collectI;
-
-	NetJSONAdapter adapter;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
