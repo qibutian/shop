@@ -30,15 +30,24 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.means.shopping.R;
+import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.views.RefreshListViewAndMore;
 
-public class HomePageFragment extends Fragment{
+public class HomePageFragment extends Fragment {
 	static HomePageFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
+
+	RefreshListViewAndMore listV;
+
+	View headV;
+
+	HomePageAdapter adapter;
+
+	ListView contentListV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -60,6 +69,21 @@ public class HomePageFragment extends Fragment{
 	}
 
 	private void initView() {
+		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
+		headV = mLayoutInflater.inflate(R.layout.head_home_page, null);
+		listV.addHeadView(headV);
+		contentListV = listV.getListView();
+		adapter = new HomePageAdapter(API.test, getActivity(),
+				R.layout.item_home_list);
+		adapter.fromWhat("data");
+		listV.setAdapter(adapter);
+		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+
+			}
+		});
 	}
 }

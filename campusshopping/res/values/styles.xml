@@ -2,16 +2,14 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
-    
-    
+
     <style name="text_white_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -39,8 +37,7 @@
         <item name="android:textColor">@color/text_white</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-    
-    
+
     <style name="text_43_black_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -68,8 +65,14 @@
         <item name="android:textColor">@color/text_43_black</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-    
-    
+
+    <style name="text_43_black_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_43_black</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
     <style name="text_99_grey_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -97,8 +100,14 @@
         <item name="android:textColor">@color/text_99_grey</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-    
-    
+
+    <style name="text_99_grey_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_99_grey</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
     <style name="text_cc_grey_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -126,8 +135,7 @@
         <item name="android:textColor">@color/text_cc_grey</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-    
-    
+
     <style name="text_ff4_red_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -155,7 +163,14 @@
         <item name="android:textColor">@color/text_ff4_red</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-    
+
+    <style name="text_ff4_red_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
     <style name="line_horizontal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1.5px</item>

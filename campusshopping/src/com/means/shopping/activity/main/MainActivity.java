@@ -44,6 +44,7 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		tabV = (LinearLayout) findViewById(R.id.tab);
 
 		titileLayout = (LinearLayout) findViewById(R.id.titlebar);
+		
 		backI = (ImageView) findViewById(R.id.back);
 
 	}

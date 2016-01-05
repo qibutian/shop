@@ -12,10 +12,11 @@
     <color name="text_06_green">#06c1ae</color>
     <color name="text_ffd_yellow">#ffd28c</color>
     <color name="text_ff4_red">#ff4f64</color>
-    
-    <!--  titlebarColor  -->
+
+    <!-- titlebarColor -->
     <color name="titlebar_color">#06c1ae</color>
     <color name="tab_index_bg">#36b9af</color>
     <color name="line_color">#dddddd</color>
+    <color name="tab_grey">#ECEEF0</color>
 
 </resources>

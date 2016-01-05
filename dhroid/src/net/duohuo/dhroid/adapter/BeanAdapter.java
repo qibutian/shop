@@ -45,7 +45,7 @@ public abstract class BeanAdapter<T> extends BaseAdapter
     
     protected boolean mNotifyOnChange = true;
     
-    private LayoutInflater mInflater;
+    public LayoutInflater mInflater;
     
     public Map<Integer, InViewClickListener> canClickItem;
     

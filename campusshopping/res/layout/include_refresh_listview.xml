@@ -5,10 +5,9 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical" >
 
-    <com.means.foods.view.RefreshListViewAndMore
+    <com.means.shopping.views.RefreshListViewAndMore
         android:id="@+id/my_listview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </com.means.foods.view.RefreshListViewAndMore>
+        android:layout_height="fill_parent" />
 
 </RelativeLayout>
