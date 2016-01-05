@@ -2,7 +2,6 @@ package com.means.shopping.activity.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -16,14 +15,18 @@ import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
 import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
+import com.means.shopping.base.ShopBaseFragmentActivity;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ShopBaseFragmentActivity {
 
 	private FragmentManager fm;
 	private Fragment currentFragment;
 
 	private LinearLayout tabV;
 	private TextView titleT;
+
+	private LinearLayout titileLayout;
+	private ImageView backI;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,10 @@ public class MainActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
+
+		titileLayout = (LinearLayout) findViewById(R.id.titlebar);
+		backI = (ImageView) findViewById(R.id.back);
+
 	}
 
 	private void initTab() {
@@ -68,6 +75,25 @@ public class MainActivity extends FragmentActivity {
 					imgI.setImageResource(R.drawable.icon_home_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
+					setTitle("南京邮电大学");
+					setLeftAction(R.drawable.icon_home_s, "",
+							new View.OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+								}
+							});
+					setRightAction("", R.drawable.search_icon,
+							new View.OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+								}
+							});
+					setTitleVisibility(View.VISIBLE);
+					setTitleLeftImg(R.drawable.location_icon);
 					break;
 
 				case 1:
@@ -75,6 +101,7 @@ public class MainActivity extends FragmentActivity {
 					imgI.setImageResource(R.drawable.icon_order_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
+					setTitleVisibility(View.GONE);
 					break;
 
 				case 2:
@@ -82,6 +109,7 @@ public class MainActivity extends FragmentActivity {
 					imgI.setImageResource(R.drawable.icon_my_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
+					setTitleVisibility(View.GONE);
 					break;
 
 				default:

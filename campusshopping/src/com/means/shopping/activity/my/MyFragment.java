@@ -27,7 +27,7 @@ public class MyFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mainV = inflater.inflate(R.layout.fragment_home_page, null);
+		mainV = inflater.inflate(R.layout.fragment_my, null);
 		mLayoutInflater = inflater;
 		initView();
 		// TODO Auto-generated method stub
