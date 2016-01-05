@@ -13,9 +13,17 @@
     <color name="text_ffd_yellow">#ffd28c</color>
     <color name="text_ff4_red">#ff4f64</color>
     
+    <!--  页面背景灰  -->
+    <color name="app_bg_color">#eceef0</color>
+    
     <!--  titlebarColor  -->
     <color name="titlebar_color">#06c1ae</color>
+    <!--  我的页面headview背景Color  -->
+    <color name="my_bg_color">#05c2b3</color>
+    <color name="my_headbg_color">#81e2e5</color>
+    <color name="my_redmsg_bg">#fd4d62</color>
+    
     <color name="tab_index_bg">#36b9af</color>
-    <color name="line_color">#dddddd</color>
+    <color name="line_color">#eceef0</color>
 
 </resources>
