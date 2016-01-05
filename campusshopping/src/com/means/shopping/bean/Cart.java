@@ -64,10 +64,12 @@ public class Cart {
 	}
 
 	public Good getGood(Long id) {
-		for (Iterator iterator = goodList.iterator(); iterator.hasNext();) {
-			Good Good = (Good) iterator.next();
-			if (Good.getId().equals(id)) {
-				return Good;
+		if (goodList != null) {
+			for (Iterator iterator = goodList.iterator(); iterator.hasNext();) {
+				Good Good = (Good) iterator.next();
+				if (Good.getId().equals(id)) {
+					return Good;
+				}
 			}
 		}
 		return null;
