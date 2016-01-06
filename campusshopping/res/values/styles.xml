@@ -65,7 +65,7 @@
         <item name="android:textColor">@color/text_43_black</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
-
+    
     <style name="text_43_black_smaller">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -73,6 +73,8 @@
         <item name="android:textSize">@dimen/text_smaller</item>
     </style>
 
+    
+    
     <style name="text_99_grey_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

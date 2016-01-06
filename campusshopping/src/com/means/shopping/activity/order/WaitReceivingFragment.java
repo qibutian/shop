@@ -1,4 +1,4 @@
-package com.means.shopping.activity.my;
+package com.means.shopping.activity.order;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,21 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.means.shopping.R;
+
 /**
- * 我的
+ * 订单 -> 待收货
  * @author Administrator
  *
  */
-public class MyFragment extends Fragment{
-	static MyFragment instance;
+public class WaitReceivingFragment extends Fragment{
+	static WaitReceivingFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
 
-	public static MyFragment getInstance() {
+	public static WaitReceivingFragment getInstance() {
 		if (instance == null) {
-			instance = new MyFragment();
+			instance = new WaitReceivingFragment();
 		}
 
 		return instance;
@@ -31,7 +32,7 @@ public class MyFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mainV = inflater.inflate(R.layout.fragment_my, null);
+		mainV = inflater.inflate(R.layout.fragment_wait_receiving, null);
 		mLayoutInflater = inflater;
 		initView();
 		// TODO Auto-generated method stub
