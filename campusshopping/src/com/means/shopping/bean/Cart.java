@@ -38,9 +38,9 @@ public class Cart {
 		}
 	}
 
-	
 	/**
 	 * 获取或新增商品
+	 * 
 	 * @param goodid
 	 * @return
 	 */
@@ -72,9 +72,9 @@ public class Cart {
 		return good;
 	}
 
-	
 	/**
 	 * 获取商品
+	 * 
 	 * @param goodid
 	 * @return
 	 */
@@ -88,9 +88,9 @@ public class Cart {
 		return null;
 	}
 
-	
 	/**
 	 * 删除商品
+	 * 
 	 * @param goodid
 	 * @return
 	 */
@@ -111,6 +111,7 @@ public class Cart {
 
 	/**
 	 * 删减商品
+	 * 
 	 * @param goodid
 	 * @return
 	 */
@@ -141,6 +142,7 @@ public class Cart {
 
 	/**
 	 * 清空所有商品
+	 * 
 	 * @param goodid
 	 * @return
 	 */
@@ -148,9 +150,9 @@ public class Cart {
 		goodList.clear();
 	}
 
-	
 	/**
 	 * 获取商品总额
+	 * 
 	 * @param goodid
 	 * @return
 	 */
