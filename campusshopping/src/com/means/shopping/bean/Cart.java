@@ -31,7 +31,7 @@ public class Cart {
 			goodDao = daoHelper.getDao(Good.class);
 			goodList = goodDao.queryForAll();
 			if (goodList == null) {
-				goodList = new ArrayList<>();
+				goodList = new ArrayList<Good>();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
