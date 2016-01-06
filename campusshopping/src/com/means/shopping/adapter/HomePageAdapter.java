@@ -32,21 +32,19 @@ public class HomePageAdapter extends NetJSONAdapter {
 
 		JSONObject jo = getTItem(position);
 		Long goodId = JSONUtil.getLong(jo, "area_id");
-		Good good = cart.getGood(goodId);
 
-		if (good != null) {
-			CartView cartView = (CartView) convertView
-					.findViewById(R.id.cartView);
-			cartView.setGood(good);
-			cartView.setCartNumTextView();
-			cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
+		Good good = new Good();
+		good.setGoodId(goodId);
+		CartView cartView = (CartView) convertView.findViewById(R.id.cartView);
+		cartView.setGood(good);
+		cartView.setCartNumTextView();
+		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
-				@Override
-				public void onClick() {
-					notifyDataSetChanged();
-				}
-			});
-		}
+			@Override
+			public void onClick() {
+				notifyDataSetChanged();
+			}
+		});
 
 		// TODO Auto-generated method stub
 		return convertView;

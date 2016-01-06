@@ -6,11 +6,11 @@ import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.Instance.InstanceScope;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.GlobalCodeHandler;
-import net.duohuo.dhroid.net.cache.DaoHelper;
 import android.app.Application;
 import android.content.Context;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.means.shopping.db.DaoHelper;
 import com.means.shopping.views.NomalDialog;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -51,12 +51,12 @@ public class ShopApplication extends Application implements
 		Const.response_total = "totalRows";
 		Const.response_data = "data";
 		Const.netadapter_step_default = 10;
-		Const.DATABASE_VERSION = 19;
+		Const.DATABASE_VERSION = 23;
 		Const.response_success = "status";
 		Const.response_msg = "info";
 		Const.response_result_status = "1";
 		Const.netadapter_no_more = "";
-//		Const.postType = 2;
+		// Const.postType = 2;
 		IocContainer.getShare().initApplication(this);
 		IocContainer.getShare().bind(ShopValueFix.class).to(ValueFix.class)
 				.scope(InstanceScope.SCOPE_SINGLETON);
@@ -100,7 +100,6 @@ public class ShopApplication extends Application implements
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
 				.build();
 		ImageLoader.getInstance().init(imageconfig);
-
 	}
 
 	@Override

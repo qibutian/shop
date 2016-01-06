@@ -3,14 +3,20 @@ package com.means.shopping.bean;
 import com.j256.ormlite.field.DatabaseField;
 
 public class Good {
-	@DatabaseField
-	public Long id;
+	@DatabaseField(generatedId = true)
+	public Integer id;
 	@DatabaseField
 	public String name;
 	@DatabaseField
-	public Integer count;
+	public Integer count = 0;
 	@DatabaseField
 	public Float price;
+	@DatabaseField
+	public Long goodId;
+
+	public Good() {
+
+	}
 
 	public String getName() {
 		return name;
@@ -28,16 +34,29 @@ public class Good {
 		this.count = count;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	public float getPrice() {
 		return price;
+	}
+	
+
+	public Long getGoodId() {
+		return goodId;
+	}
+
+	public void setGoodId(Long goodId) {
+		this.goodId = goodId;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
 	}
 
 	public void setPrice(float price) {
@@ -46,7 +65,7 @@ public class Good {
 
 	public boolean equals(Object obj) {
 		if ((obj instanceof Good)) {
-			return ((Good) obj).getId().equals(getId());
+			return ((Good) obj).getGoodId().equals(getGoodId());
 		}
 		return false;
 	}

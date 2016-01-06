@@ -21,11 +21,11 @@ public class CartView extends LinearLayout {
 
 	Cart cart;
 
-	Good good;
-
 	ImageView minusI;
 
 	ImageView addI;
+
+	Good mGood;
 
 	public CartView(Context context) {
 		super(context);
@@ -47,8 +47,8 @@ public class CartView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 
-				if (good != null) {
-					cart.reduceGood(good.getId());
+				if (mGood != null) {
+					cart.reduceGood(mGood.getGoodId());
 				}
 
 				if (onCartViewClickListener != null) {
@@ -63,8 +63,8 @@ public class CartView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 
-				if (good != null) {
-					cart.getOrCreateGood(good);
+				if (mGood != null) {
+					cart.getOrCreateGood(mGood.getGoodId());
 				}
 
 				if (onCartViewClickListener != null) {
@@ -79,13 +79,21 @@ public class CartView extends LinearLayout {
 	}
 
 	public void setCartNumTextView() {
-		cartNumT.setVisibility(good.getCount() >= 1 ? View.VISIBLE : View.GONE);
-		minusI.setVisibility(good.getCount() >= 1 ? View.VISIBLE : View.GONE);
-		cartNumT.setText(good.getCount() + "");
+		Good good = cart.getGood(mGood.getGoodId());
+		if (good != null) {
+			cartNumT.setVisibility(good.getCount() >= 1 ? View.VISIBLE
+					: View.GONE);
+			minusI.setVisibility(good.getCount() >= 1 ? View.VISIBLE
+					: View.INVISIBLE);
+			cartNumT.setText(good.getCount() + "");
+		} else {
+			cartNumT.setVisibility(View.INVISIBLE);
+			minusI.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	public void setGood(Good good) {
-		this.good = good;
+		this.mGood = good;
 	}
 
 	public OnCartViewClickListener getOnCartViewClickListener() {

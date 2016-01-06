@@ -30,14 +30,17 @@ public class Cart {
 		try {
 			goodDao = daoHelper.getDao(Good.class);
 			goodList = goodDao.queryForAll();
+			if (goodList == null) {
+				goodList = new ArrayList<>();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Good getOrCreateGood(Good good) {
-		// Good good = new Good();
-		// good.setId(id);
+	public Good getOrCreateGood(Long goodid) {
+		Good good = new Good();
+		good.setGoodId(goodid);
 		// good.setName(name);
 
 		int i = goodList.indexOf(good);
@@ -64,43 +67,39 @@ public class Cart {
 	}
 
 	public Good getGood(Long id) {
-		if (goodList != null) {
-			for (Iterator iterator = goodList.iterator(); iterator.hasNext();) {
-				Good Good = (Good) iterator.next();
-				if (Good.getId().equals(id)) {
-					return Good;
-				}
+		for (Iterator iterator = goodList.iterator(); iterator.hasNext();) {
+			Good Good = (Good) iterator.next();
+			if (Good.getGoodId().equals(id)) {
+				return Good;
 			}
 		}
 		return null;
 	}
 
 	public void removeGood(Long goodId) {
-		if (this.goodList != null) {
-			Good good = new Good();
-			good.setId(goodId);
-			int i = this.goodList.indexOf(good);
-			if (i != -1) {
-				this.goodList.remove(i);
-				try {
-					goodDao.delete(good);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Good good = new Good();
+		good.setGoodId(goodId);
+		int i = this.goodList.indexOf(good);
+		if (i != -1) {
+			this.goodList.remove(i);
+			try {
+				goodDao.delete(good);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
 
 	public void reduceGood(Long goodId) {
 		Good good = new Good();
-		good.setId(goodId);
+		good.setGoodId(goodId);
 		int i = this.goodList.indexOf(good);
 		if (i != -1) {
 			Good oldgood = this.goodList.get(i);
 			oldgood.setCount(oldgood.getCount() - 1);
 			if (oldgood.getCount() == 0) {
-				removeGood(good.getId());
+				removeGood(good.getGoodId());
 			} else {
 				try {
 					goodDao.update(oldgood);
