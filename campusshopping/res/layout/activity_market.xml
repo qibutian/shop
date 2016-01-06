@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
     android:orientation="vertical" >
 
     <include layout="@layout/include_title_bar" />
@@ -11,14 +12,12 @@
         android:layout_height="fill_parent" >
 
         <include
-            android:id="@+id/catlist"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             layout="@layout/include_listview" />
 
         <include
-            android:id="@+id/goodlist"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="2.5"

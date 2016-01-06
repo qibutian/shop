@@ -1,41 +1,23 @@
 package com.means.shopping.activity.home;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.loadmore.LoadMoreListViewContainer;
-import net.duohuo.dhroid.adapter.FieldMap;
-import net.duohuo.dhroid.adapter.NetJSONAdapter;
-import net.duohuo.dhroid.eventbus.EventBus;
-import net.duohuo.dhroid.net.JSONUtil;
-import net.duohuo.dhroid.net.Response;
-import net.duohuo.dhroid.util.ViewUtil;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.views.RefreshListViewAndMore;
 
-public class HomePageFragment extends Fragment {
+public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
 
 	View mainV;
@@ -49,6 +31,9 @@ public class HomePageFragment extends Fragment {
 	HomePageAdapter adapter;
 
 	ListView contentListV;
+
+	// 超市点击按钮
+	View marketV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -86,5 +71,23 @@ public class HomePageFragment extends Fragment {
 
 			}
 		});
+
+		marketV = headV.findViewById(R.id.market);
+		marketV.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent it;
+		switch (v.getId()) {
+		// 超市
+		case R.id.market:
+			it = new Intent(getActivity(), MarketActivity.class);
+			startActivity(it);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

@@ -34,14 +34,15 @@ public class MarketActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		catListV = (ListView) findViewById(R.id.catlist);
+		setTitle("超市");
+		catListV = (ListView) findViewById(R.id.listview_normal);
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
 
-		goodListV = (RefreshListViewAndMore) findViewById(R.id.goodlist);
+		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
 		goodAdater = new HomePageAdapter(API.test, self,
-				R.layout.item_home_list);
+				R.layout.item_home_list, 1);
 		goodAdater.fromWhat("data");
 		goodListV.setAdapter(goodAdater);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {

@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/pic"
-            android:layout_width="44dp"
-            android:layout_height="fill_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="1dp"
             android:scaleType="centerCrop"
             android:src="@drawable/model_pic" />
@@ -57,8 +57,10 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    
 
     <View
+        android:id="@+id/line"
         style="@style/line_horizontal"
         android:layout_marginTop="10dp" />
 
