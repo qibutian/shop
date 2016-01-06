@@ -44,7 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.means.shopping.activity.my.LoginActivity" />
+        <activity android:name=".activity.my.LoginActivity" />
         <activity android:name=".activity.market.MarketActivity" >
         </activity>
     </application>

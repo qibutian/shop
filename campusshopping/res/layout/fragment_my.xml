@@ -30,6 +30,7 @@
                     android:padding="5dp" >
 
                     <ImageView
+                        android:id="@+id/head"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/trends_like" />

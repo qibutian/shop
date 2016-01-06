@@ -1,10 +1,13 @@
 package com.means.shopping.activity.my;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.means.shopping.R;
 /**
@@ -12,12 +15,14 @@ import com.means.shopping.R;
  * @author Administrator
  *
  */
-public class MyFragment extends Fragment{
+public class MyFragment extends Fragment implements OnClickListener{
 	static MyFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
+	
+	private ImageView headI;
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -39,6 +44,22 @@ public class MyFragment extends Fragment{
 	}
 
 	private void initView() {
+		headI = (ImageView) mainV.findViewById(R.id.head);
+		
+		headI.setOnClickListener(this);
+	}
 
+	@Override
+	public void onClick(View v) {
+		Intent it;
+		switch (v.getId()) {
+		case R.id.head:
+			it = new Intent(getActivity(),LoginActivity.class);
+			getActivity().startActivity(it);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

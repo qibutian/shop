@@ -1,18 +1,26 @@
 package com.means.shopping.activity.my;
 
-import com.means.shopping.R;
-import com.means.shopping.R.layout;
-
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-public class LoginActivity extends Activity {
+import com.means.shopping.R;
+import com.means.shopping.base.ShopBaseFragmentActivity;
+/**
+ * 登录页面
+ * @author Administrator
+ *
+ */
+public class LoginActivity extends ShopBaseFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		initView();
 	}
+
+	private void initView() {
+		
+	}
+	
 }
