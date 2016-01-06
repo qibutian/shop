@@ -15,6 +15,9 @@ import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
 import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
+import com.means.shopping.activity.order.RecentFragment;
+import com.means.shopping.activity.order.WaitPaymentFragment;
+import com.means.shopping.activity.order.WaitReceivingFragment;
 import com.means.shopping.base.ShopBaseFragmentActivity;
 
 public class MainActivity extends ShopBaseFragmentActivity {
@@ -23,11 +26,6 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	private Fragment currentFragment;
 
 	private LinearLayout tabV;
-	private TextView titleT;
-
-	private LinearLayout titileLayout;
-	private ImageView backI;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,11 +40,6 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
-
-		titileLayout = (LinearLayout) findViewById(R.id.titlebar);
-		
-		backI = (ImageView) findViewById(R.id.back);
-
 	}
 
 	private void initTab() {
@@ -71,46 +64,44 @@ public class MainActivity extends ShopBaseFragmentActivity {
 			TextView textT = (TextView) childV.getChildAt(1);
 			if (i == index) {
 				switch (i) {
-				case 0:
+				case 0:		//首页
 					switchContent(HomePageFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_home_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
-					setTitle("南京邮电大学");
-					setLeftAction(R.drawable.icon_home_s, "",
-							new View.OnClickListener() {
-
-								@Override
-								public void onClick(View v) {
-
-								}
-							});
-					setRightAction("", R.drawable.search_icon,
-							new View.OnClickListener() {
-
-								@Override
-								public void onClick(View v) {
-
-								}
-							});
-					setTitleVisibility(View.VISIBLE);
-					setTitleLeftImg(R.drawable.location_icon);
+//					setTitle("南京邮电大学");
+//					setLeftAction(R.drawable.icon_home_s, "",
+//							new View.OnClickListener() {
+//
+//								@Override
+//								public void onClick(View v) {
+//
+//								}
+//							});
+//					setRightAction("", R.drawable.search_icon,
+//							new View.OnClickListener() {
+//
+//								@Override
+//								public void onClick(View v) {
+//
+//								}
+//							});
+//					setTitleLeftImg(R.drawable.location_icon);
 					break;
 
-				case 1:
+				case 1:		//订单
+//					setOrderTab(0);
 					switchContent(OrderFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_order_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
-					setTitleVisibility(View.GONE);
 					break;
 
-				case 2:
+				case 2:		//我的
 					switchContent(MyFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_my_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
-					setTitleVisibility(View.GONE);
 					break;
 
 				default:

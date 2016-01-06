@@ -8,5 +8,6 @@
     <string name="home_title">首页</string>
     <string name="order_title">订单</string>
     <string name="my_title">我的</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>

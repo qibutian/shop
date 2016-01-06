@@ -5,7 +5,7 @@
     tools:context="com.means.shopping.activity.main.MainActivity" >
 
         
-   <include layout="@layout/include_title_bar"/>
+   <!-- <include layout="@layout/include_title_bar"/> -->
 
     <FrameLayout
         android:id="@+id/main_content"

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
@@ -81,9 +82,9 @@ public class ShopBaseFragmentActivity extends FragmentActivity{
 	 * @param visibility
 	 */
 	public void setTitleVisibility(int visibility){
-		LinearLayout titleLayout  =  (LinearLayout) findViewById(R.id.titlebar);
+		RelativeLayout titleLayout  =  (RelativeLayout) findViewById(R.id.labt);
 		if (titleLayout != null) {
-			titleLayout.setVisibility(visibility);
+				titleLayout.setVisibility(visibility);
 		}
 	}
 	
