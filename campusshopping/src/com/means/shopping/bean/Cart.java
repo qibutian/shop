@@ -38,6 +38,12 @@ public class Cart {
 		}
 	}
 
+	
+	/**
+	 * 获取或新增商品
+	 * @param goodid
+	 * @return
+	 */
 	public Good getOrCreateGood(Long goodid) {
 		Good good = new Good();
 		good.setGoodId(goodid);
@@ -66,6 +72,12 @@ public class Cart {
 		return good;
 	}
 
+	
+	/**
+	 * 获取商品
+	 * @param goodid
+	 * @return
+	 */
 	public Good getGood(Long id) {
 		for (Iterator iterator = goodList.iterator(); iterator.hasNext();) {
 			Good Good = (Good) iterator.next();
@@ -76,6 +88,12 @@ public class Cart {
 		return null;
 	}
 
+	
+	/**
+	 * 删除商品
+	 * @param goodid
+	 * @return
+	 */
 	public void removeGood(Long goodId) {
 		Good good = new Good();
 		good.setGoodId(goodId);
@@ -91,6 +109,11 @@ public class Cart {
 		}
 	}
 
+	/**
+	 * 删减商品
+	 * @param goodid
+	 * @return
+	 */
 	public void reduceGood(Long goodId) {
 		Good good = new Good();
 		good.setGoodId(goodId);
@@ -116,10 +139,21 @@ public class Cart {
 		return goodList;
 	}
 
+	/**
+	 * 清空所有商品
+	 * @param goodid
+	 * @return
+	 */
 	public void clear() {
 		goodList.clear();
 	}
 
+	
+	/**
+	 * 获取商品总额
+	 * @param goodid
+	 * @return
+	 */
 	public float getMoney() {
 		float price = 0;
 		for (Iterator<Good> iterator = goodList.iterator(); iterator.hasNext();) {
