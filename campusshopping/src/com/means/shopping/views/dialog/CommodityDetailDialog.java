@@ -3,7 +3,6 @@ package com.means.shopping.views.dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.means.shopping.R;
 import com.means.shopping.bean.Good;
@@ -55,7 +54,10 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 			@Override
 			public void onAddClick() {
 				cartView.setCartNumTextView();
+				// TODO Auto-generated method stub
+				
 			}
+
 		});
 
 		findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
