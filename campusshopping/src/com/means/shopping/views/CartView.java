@@ -52,7 +52,7 @@ public class CartView extends LinearLayout {
 				}
 
 				if (onCartViewClickListener != null) {
-					onCartViewClickListener.onClick();
+					onCartViewClickListener.onMinusClick();
 				}
 			}
 		});
@@ -68,7 +68,7 @@ public class CartView extends LinearLayout {
 				}
 
 				if (onCartViewClickListener != null) {
-					onCartViewClickListener.onClick();
+					onCartViewClickListener.onAddClick();
 				}
 			}
 		});
@@ -107,6 +107,8 @@ public class CartView extends LinearLayout {
 
 	public interface OnCartViewClickListener {
 
-		void onClick();
+		void onAddClick();
+
+		void onMinusClick();
 	}
 }

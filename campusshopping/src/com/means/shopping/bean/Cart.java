@@ -99,13 +99,13 @@ public class Cart {
 		good.setGoodId(goodId);
 		int i = this.goodList.indexOf(good);
 		if (i != -1) {
-			this.goodList.remove(i);
 			try {
-				goodDao.delete(good);
+				goodDao.delete(goodList.get(i));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			this.goodList.remove(i);
 		}
 	}
 
@@ -165,15 +165,14 @@ public class Cart {
 		return price;
 	}
 
-	// public int getCount() {
-	// int count = 0;
-	// for (Iterator<Good> iterator = goodList.iterator(); iterator.hasNext();)
-	// {
-	// Good Good = (Good) iterator.next();
-	// Integer goods = Good.getAllGoodCount();
-	// count += goods != null ? goods : 0;
-	// }
-	// return count;
-	// }
+	public int getCount() {
+		int count = 0;
+		for (Iterator<Good> iterator = goodList.iterator(); iterator.hasNext();) {
+			Good good = (Good) iterator.next();
+			Integer goods = good.getCount();
+			count += goods != null ? goods : 0;
+		}
+		return count;
+	}
 
 }

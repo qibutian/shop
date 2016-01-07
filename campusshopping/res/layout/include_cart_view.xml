@@ -7,23 +7,23 @@
 
     <ImageView
         android:id="@+id/minus"
-        android:layout_width="wrap_content"
+        android:layout_width="36dp"
         android:layout_height="wrap_content"
+        android:scaleType="center"
         android:src="@drawable/icon_minus"
         android:visibility="invisible" />
 
     <TextView
         android:id="@+id/cart_num"
         style="@style/text_43_black_medium"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:text="1"
         android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/add"
-        android:layout_width="wrap_content"
+        android:layout_width="36dp"
         android:layout_height="wrap_content"
+        android:scaleType="center"
         android:src="@drawable/icon_add" />
 
 </LinearLayout>
