@@ -22,6 +22,7 @@ import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.PriceEB;
 import com.means.shopping.views.RefreshListViewAndMore;
+import com.means.shopping.views.dialog.CommodityDetailDialog;
 
 import de.greenrobot.event.EventBus;
 

@@ -1,21 +1,24 @@
 package com.means.shopping.activity.order;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
-import com.means.shopping.activity.home.HomePageFragment;
-import com.means.shopping.activity.my.MyFragment;
+import com.means.shopping.adapter.OrderFragmentPageAdapter;
 /**
  * 订单
  * @author Administrator
@@ -31,6 +34,8 @@ public class OrderFragment extends Fragment{
 	private LayoutInflater mLayoutInflater;
 	
 	private LinearLayout tabV;
+	
+	private ViewPager viewPager;
 
 	public static OrderFragment getInstance() {
 		if (instance == null) {
@@ -57,6 +62,35 @@ public class OrderFragment extends Fragment{
 		fm = getActivity().getSupportFragmentManager();
 		tabV = (LinearLayout) mainV.findViewById(R.id.tab);
 		
+		viewPager = (ViewPager) mainV.findViewById(R.id.viewpager);
+		List<Fragment> frags = new ArrayList<Fragment>();
+		frags.add(RecentFragment.getInstance());
+		frags.add(WaitReceivingFragment.getInstance());
+		frags.add(WaitPaymentFragment.getInstance());
+		
+		OrderFragmentPageAdapter adapter = new OrderFragmentPageAdapter(getActivity().getSupportFragmentManager(), frags);
+		viewPager.setAdapter(adapter);
+		viewPager.setOffscreenPageLimit(2);
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				setTab(arg0);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	private void initTab() {
@@ -67,6 +101,7 @@ public class OrderFragment extends Fragment{
 
 				@Override
 				public void onClick(View v) {
+					viewPager.setCurrentItem(index);
 					setTab(index);
 				}
 			});
@@ -81,19 +116,19 @@ public class OrderFragment extends Fragment{
 			if (i == index) {
 				switch (i) {
 				case 0:		//近一月
-					switchContent(RecentFragment.getInstance());
+//					switchContent(RecentFragment.getInstance());
 					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
 				case 1:		//待收货
-					switchContent(WaitReceivingFragment.getInstance());
+//					switchContent(WaitReceivingFragment.getInstance());
 					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
 				case 2:		//待支付
-					switchContent(WaitPaymentFragment.getInstance());
+//					switchContent(WaitPaymentFragment.getInstance());
 					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
