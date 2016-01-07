@@ -9,5 +9,7 @@
     <string name="order_title">订单</string>
     <string name="my_title">我的</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>

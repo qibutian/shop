@@ -24,62 +24,11 @@
             android:src="@drawable/icon_tel" />
 
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:background="@color/nothing"
             android:hint="请输入您的手机号"
-            android:inputType="number"
-            android:textColor="@color/text_43_black"
-            android:textSize="@dimen/text_small" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_fillet_5_yellow_bg"
-                android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="8dp"
-                android:text="获取验证码"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_small" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <View style="@style/line_horizontal" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/icon_verifycode" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="@color/nothing"
-            android:hint="请输入验证码"
             android:inputType="number"
             android:textColor="@color/text_43_black"
             android:textSize="@dimen/text_small" />
@@ -113,33 +62,6 @@
             android:textSize="@dimen/text_small" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="13dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="13dp" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/icon_check" />
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:layout_marginLeft="10dp"
-            android:text="我已阅读并接受" />
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:text="《天天快递协议》"
-            android:textColor="@color/text_ff9_yellow" />
-    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -147,8 +69,17 @@
         android:background="@drawable/btn_fillet_5_green_bg"
         android:textSize="@dimen/text_small"
         android:textColor="@color/white"
-        android:text="确定注册"
+        android:layout_marginTop="15dp"
+        android:text="登录"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
+    
+    <TextView 
+        style="@style/text_43_black_smaller"
+        android:textColor="@color/text_06_green"
+        android:text="忘记密码"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        />
 
 </LinearLayout>

@@ -10,19 +10,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.means.shopping.R;
+
 /**
  * 我的
+ * 
  * @author Administrator
- *
+ * 
  */
-public class MyFragment extends Fragment implements OnClickListener{
+public class MyFragment extends Fragment implements OnClickListener {
 	static MyFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
-	
-	private ImageView headI;
+
+	private ImageView headI, settingI;
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -45,8 +47,10 @@ public class MyFragment extends Fragment implements OnClickListener{
 
 	private void initView() {
 		headI = (ImageView) mainV.findViewById(R.id.head);
-		
+		settingI = (ImageView) mainV.findViewById(R.id.setting);
+
 		headI.setOnClickListener(this);
+		settingI.setOnClickListener(this);
 	}
 
 	@Override
@@ -54,7 +58,11 @@ public class MyFragment extends Fragment implements OnClickListener{
 		Intent it;
 		switch (v.getId()) {
 		case R.id.head:
-			it = new Intent(getActivity(),LoginActivity.class);
+			it = new Intent(getActivity(), LoginActivity.class);
+			getActivity().startActivity(it);
+			break;
+		case R.id.setting:
+			it = new Intent(getActivity(), SettingActivity.class);
 			getActivity().startActivity(it);
 			break;
 

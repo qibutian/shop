@@ -47,6 +47,14 @@
         <activity android:name=".activity.my.LoginActivity" />
         <activity android:name=".activity.market.MarketActivity" >
         </activity>
+        <activity
+            android:name=".activity.my.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>
