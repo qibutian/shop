@@ -26,11 +26,12 @@ public class CartView extends LinearLayout {
 	ImageView addI;
 
 	Good mGood;
+	
 
 	public CartView(Context context) {
 		super(context);
 	}
-
+	
 	public CartView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.mContext = context;
@@ -90,6 +91,12 @@ public class CartView extends LinearLayout {
 			cartNumT.setVisibility(View.INVISIBLE);
 			minusI.setVisibility(View.INVISIBLE);
 		}
+	}
+	
+	public void setThemeWhite(){
+		cartNumT.setTextColor(getResources().getColor(R.color.white));
+		minusI.setImageResource(R.drawable.icon_minus_white);
+		addI.setImageResource(R.drawable.icon_add_white);
 	}
 
 	public void setGood(Good good) {

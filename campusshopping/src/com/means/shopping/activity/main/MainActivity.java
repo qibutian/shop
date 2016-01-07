@@ -69,28 +69,9 @@ public class MainActivity extends ShopBaseFragmentActivity {
 					imgI.setImageResource(R.drawable.icon_home_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
-//					setTitle("南京邮电大学");
-//					setLeftAction(R.drawable.icon_home_s, "",
-//							new View.OnClickListener() {
-//
-//								@Override
-//								public void onClick(View v) {
-//
-//								}
-//							});
-//					setRightAction("", R.drawable.search_icon,
-//							new View.OnClickListener() {
-//
-//								@Override
-//								public void onClick(View v) {
-//
-//								}
-//							});
-//					setTitleLeftImg(R.drawable.location_icon);
 					break;
 
 				case 1:		//订单
-//					setOrderTab(0);
 					switchContent(OrderFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_order_s);
 					textT.setTextColor(getResources().getColor(
