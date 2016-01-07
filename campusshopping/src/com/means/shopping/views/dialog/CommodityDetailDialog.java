@@ -48,7 +48,12 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override
-			public void onClick() {
+			public void onMinusClick() {
+				cartView.setCartNumTextView();
+			}
+
+			@Override
+			public void onAddClick() {
 				cartView.setCartNumTextView();
 			}
 		});

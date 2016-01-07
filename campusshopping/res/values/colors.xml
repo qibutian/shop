@@ -29,5 +29,7 @@
     <color name="line_color">#dddddd</color>
     <color name="tab_grey">#ECEEF0</color>
     <color name="black_80">#cc000000</color>
+    
+    <color name="green_light">#91d5cc</color>
 
 </resources>

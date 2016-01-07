@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/black_80"
+        android:paddingLeft="10dp" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:layout_width="31dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="10dp" >
+
+                <ImageView
+                    android:id="@+id/cart"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icon_car" />
+
+                <net.duohuo.dhroid.view.BadgeView
+                    android:id="@+id/badgeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_white_smaller"
+                android:layout_height="23dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:gravity="bottom"
+                android:text="￥" />
+
+            <TextView
+                android:id="@+id/price"
+                style="@style/text_white_medium"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/cart_des"
+                style="@style/text_cc_grey_medium"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="bottom"
+                android:text="免费配送" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay"
+            android:layout_width="80dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/btn_green_s"
+            android:text="结算"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium" />
+    </LinearLayout>
+
+</LinearLayout>
