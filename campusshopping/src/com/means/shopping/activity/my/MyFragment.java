@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 
 /**
  * 我的
@@ -25,6 +27,8 @@ public class MyFragment extends Fragment implements OnClickListener {
 	LayoutInflater mLayoutInflater;
 
 	private ImageView headI, settingI;
+	private LinearLayout myredpacketLl;
+	
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -48,21 +52,30 @@ public class MyFragment extends Fragment implements OnClickListener {
 	private void initView() {
 		headI = (ImageView) mainV.findViewById(R.id.head);
 		settingI = (ImageView) mainV.findViewById(R.id.setting);
+		myredpacketLl = (LinearLayout) mainV.findViewById(R.id.myredpacket);
 
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
+		myredpacketLl.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		Intent it;
 		switch (v.getId()) {
+		//头像
 		case R.id.head:
 			it = new Intent(getActivity(), LoginActivity.class);
 			getActivity().startActivity(it);
 			break;
+		//设置
 		case R.id.setting:
 			it = new Intent(getActivity(), SettingActivity.class);
+			getActivity().startActivity(it);
+			break;
+		//我的红包
+		case R.id.myredpacket:
+			it = new Intent(getActivity(), MyRedPacketActivity.class);
 			getActivity().startActivity(it);
 			break;
 
