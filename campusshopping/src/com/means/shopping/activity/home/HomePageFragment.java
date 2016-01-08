@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.cat.CatActivity;
 import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
@@ -34,6 +35,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 超市点击按钮
 	View marketV;
+
+	// 分类按钮
+	View classifyV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -74,6 +78,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		marketV = headV.findViewById(R.id.market);
 		marketV.setOnClickListener(this);
+
+		classifyV = headV.findViewById(R.id.classify);
+		classifyV.setOnClickListener(this);
 	}
 
 	@Override
@@ -83,6 +90,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 超市
 		case R.id.market:
 			it = new Intent(getActivity(), MarketActivity.class);
+			startActivity(it);
+			break;
+
+		case R.id.classify:
+			it = new Intent(getActivity(), CatActivity.class);
 			startActivity(it);
 			break;
 

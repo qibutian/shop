@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res/com.means.shopping"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cat_bg_n"
+        android:gravity="center_horizontal"
+        android:paddingBottom="6dp"
+        android:orientation="vertical" >
+
+        <net.duohuo.dhroid.view.YToXImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/model_good"
+            android:layout_margin="5dp"
+            my:heightToWidth="1.0" />
+
+        <TextView
+            style="@style/text_99_grey_small"
+            android:layout_marginTop="1dp"
+            android:text="护理套装" />
+    </LinearLayout>
+
+</LinearLayout>
