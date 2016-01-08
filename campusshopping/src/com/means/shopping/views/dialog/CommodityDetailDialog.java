@@ -76,6 +76,7 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 	}
 
 	public OnCommodityResultListener getOnCommodityResultListener() {
+		
 		return commodityResultListener;
 	}
 

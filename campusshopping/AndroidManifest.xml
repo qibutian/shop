@@ -55,6 +55,10 @@
             android:name="com.means.shopping.activity.my.SettingActivity"
             android:label="@string/title_activity_setting" >
         </activity>
+        <activity
+            android:name="com.means.shopping.activity.cat.CatActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>
