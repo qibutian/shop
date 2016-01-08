@@ -2,7 +2,7 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Light">
@@ -143,6 +143,41 @@
         <item name="android:textSize">@dimen/text_small</item>
     </style>
 
+    <style name="text_cc_grey_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_cc_grey</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
+    <style name="text_06_green_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_06_green</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
+    <style name="text_06_green_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_06_green</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <style name="text_06_green_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_06_green</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_06_green_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_06_green</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
     <style name="text_ff4_red_biger">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -189,8 +224,8 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/line_color</item>
     </style>
-    
-     <style name="PopupLookAround" parent="android:Animation">
+
+    <style name="PopupLookAround" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/zoom_in</item>
         <item name="android:windowExitAnimation">@anim/zoom_out</item>
     </style>

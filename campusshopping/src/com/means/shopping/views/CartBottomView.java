@@ -2,6 +2,7 @@ package com.means.shopping.views;
 
 import net.duohuo.dhroid.view.BadgeView;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.PriceEB;
@@ -63,14 +65,22 @@ public class CartBottomView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 
 			}
 		});
 		badgeT = (BadgeView) findViewById(R.id.badgeView);// 创建一个BadgeView对象，view为你需要显示提醒信息的控件
+		badgeT.hide();
 		desT = (TextView) findViewById(R.id.cart_des);
 		priceT = (TextView) findViewById(R.id.price);
 		cartI = (ImageView) findViewById(R.id.cart);
+		cartI.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent it = new Intent(mContext, CartActivity.class);
+				mContext.startActivity(it);
+			}
+		});
 	}
 
 	public void setCartNum() {
@@ -93,5 +103,5 @@ public class CartBottomView extends LinearLayout {
 	public void onEventMainThread(PriceEB priceEB) {
 		setCartNum();
 	}
-	
+
 }

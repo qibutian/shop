@@ -6,9 +6,12 @@ import android.view.View;
 
 import com.means.shopping.R;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.PriceEB;
 import com.means.shopping.views.BaseAlertDialog;
 import com.means.shopping.views.CartView;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 商品详情
@@ -54,8 +57,9 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 			@Override
 			public void onAddClick() {
 				cartView.setCartNumTextView();
+				EventBus.getDefault().post(new PriceEB());
 				// TODO Auto-generated method stub
-				
+
 			}
 
 		});
@@ -76,7 +80,7 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 	}
 
 	public OnCommodityResultListener getOnCommodityResultListener() {
-		
+
 		return commodityResultListener;
 	}
 

@@ -7,6 +7,7 @@ import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.PriceEB;
 import com.means.shopping.utils.CartAnimUtil;
+import com.means.shopping.utils.CartAnimUtil.OnAnimationEndListener;
 import com.means.shopping.views.CartView;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 
@@ -64,7 +65,6 @@ public class HomePageAdapter extends NetJSONAdapter {
 			@Override
 			public void onMinusClick() {
 				notifyDataSetChanged();
-				EventBus.getDefault().post(new PriceEB());
 			}
 
 			@Override

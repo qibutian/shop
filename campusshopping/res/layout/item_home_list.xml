@@ -17,7 +17,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="1dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/model_pic" />
+            android:src="@drawable/model_good" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -27,7 +27,7 @@
 
             <TextView
                 style="@style/text_43_black_small"
-                android:text="蒙牛牛奶" />
+                android:text="洗面奶套装" />
 
             <TextView
                 style="@style/text_99_grey_smaller"
@@ -57,7 +57,6 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    
 
     <View
         android:id="@+id/line"

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                layout="@layout/include_refresh_listview"
+                android:paddingBottom="60dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_80"
+            android:paddingLeft="10dp" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            style="@style/text_white_small"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="合计" />
+
+                        <TextView
+                            style="@style/text_white_smaller"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="￥" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            style="@style/text_white_big"
+                            android:text="45" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/text_cc_grey_smaller"
+                        android:layout_marginTop="2dp"
+                        android:text="免费配送" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/cart_des"
+                    style="@style/text_06_green_medium"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="bottom"
+                    android:text="再选购" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/btn_green_s"
+                android:text="结算"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

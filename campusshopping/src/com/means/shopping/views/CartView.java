@@ -3,6 +3,9 @@ package com.means.shopping.views;
 import com.means.shopping.R;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.PriceEB;
+
+import de.greenrobot.event.EventBus;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -55,6 +58,7 @@ public class CartView extends LinearLayout {
 				if (onCartViewClickListener != null) {
 					onCartViewClickListener.onMinusClick();
 				}
+				EventBus.getDefault().post(new PriceEB());
 			}
 		});
 
