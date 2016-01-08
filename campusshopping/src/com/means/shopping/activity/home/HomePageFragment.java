@@ -16,6 +16,7 @@ import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.views.RefreshListViewAndMore;
+import com.means.shopping.views.dialog.RedPacketDialog;
 
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
@@ -33,7 +34,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	ListView contentListV;
 
 	// 超市点击按钮
-	View marketV;
+	View marketV,redpacketV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -73,7 +74,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		});
 
 		marketV = headV.findViewById(R.id.market);
+		redpacketV = headV.findViewById(R.id.redpacket);
 		marketV.setOnClickListener(this);
+		redpacketV.setOnClickListener(this);
 	}
 
 	@Override
@@ -84,6 +87,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.market:
 			it = new Intent(getActivity(), MarketActivity.class);
 			startActivity(it);
+			break;
+		//红包
+		case R.id.redpacket:
+			RedPacketDialog redDialog = new RedPacketDialog(getActivity());
+			redDialog.show();
 			break;
 
 		default:
