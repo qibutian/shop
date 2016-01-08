@@ -81,6 +81,7 @@ public class CartBottomView extends LinearLayout {
 				mContext.startActivity(it);
 			}
 		});
+		setCartNum();
 	}
 
 	public void setCartNum() {
