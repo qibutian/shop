@@ -11,5 +11,6 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_my_red_packet">MyRedPacketActivity</string>
 
 </resources>

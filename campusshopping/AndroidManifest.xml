@@ -52,12 +52,15 @@
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.SettingActivity"
+            android:name=".activity.my.SettingActivity"
             android:label="@string/title_activity_setting" >
         </activity>
         <activity
             android:name="com.means.shopping.activity.cat.CatActivity"
-            android:label="@string/title_activity_setting" >
+            android:label="@string/title_activity_setting" />
+        <activity
+            android:name="com.means.shopping.activity.my.redpacket.MyRedPacketActivity"
+            android:label="@string/title_activity_my_red_packet" >
         </activity>
     </application>
 

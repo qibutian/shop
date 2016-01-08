@@ -35,7 +35,7 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.pop_commodity_detail);
+		setContentView(R.layout.dialog_commodity_detail);
 		initView();
 	}
 
