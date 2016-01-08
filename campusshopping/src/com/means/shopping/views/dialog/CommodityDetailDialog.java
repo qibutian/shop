@@ -58,7 +58,6 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 			public void onAddClick() {
 				cartView.setCartNumTextView();
 				EventBus.getDefault().post(new PriceEB());
-				// TODO Auto-generated method stub
 
 			}
 
