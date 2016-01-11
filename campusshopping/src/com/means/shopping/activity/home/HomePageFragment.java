@@ -41,6 +41,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 分类按钮
 	View classifyV;
 
+	// 充值按钮
+	View chongzhiV;
+
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -85,6 +88,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		classifyV = headV.findViewById(R.id.classify);
 		classifyV.setOnClickListener(this);
 		redpacketV.setOnClickListener(this);
+
+		chongzhiV = headV.findViewById(R.id.chongzhi);
+		chongzhiV.setOnClickListener(this);
 	}
 
 	@Override
@@ -106,7 +112,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), CatActivity.class);
 			startActivity(it);
 			break;
-			
+
 		case R.id.chongzhi:
 			it = new Intent(getActivity(), RechargeActivity.class);
 			startActivity(it);
