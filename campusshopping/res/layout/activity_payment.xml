@@ -5,7 +5,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +43,8 @@
                     android:padding="10dp" >
 
                     <TextView
-                        style="@style/text_43_black_small"
+                        style="@style/text_43_black_medium"
+                        android:layout_width="wrap_content"
                         android:text="吴家丽" />
 
                     <TextView
@@ -52,18 +55,18 @@
                         android:text="南京市徐庄软件园" />
                 </LinearLayout>
             </RelativeLayout>
-            
-            <ImageView 
-                 android:layout_width="match_parent"
+
+            <ImageView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/colourline_bg"
-                />
+                android:src="@drawable/colourline_bg" />
 
             <View style="@style/line_horizontal_bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp" >
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical" >
             </LinearLayout>
 
             <RelativeLayout
@@ -96,11 +99,11 @@
                 android:paddingTop="10dp" >
 
                 <TextView
-                    style="@style/text_43_black_small"
+                    style="@style/text_43_black_medium"
                     android:text="红包金额" />
 
                 <TextView
-                    style="@style/text_cc_grey_smaller"
+                    style="@style/text_cc_grey_small"
                     android:layout_marginLeft="10dp"
                     android:text="3.0元" />
 
@@ -111,7 +114,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        style="@style/text_ff4_red_smaller"
+                        style="@style/text_ff4_red_small"
                         android:text="点击选择红包"
                         android:textColor="@color/text_ff9_yellow" />
 
@@ -129,9 +132,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp" >
+                android:padding="10dp" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -145,7 +146,7 @@
                         android:orientation="horizontal" >
 
                         <TextView
-                            style="@style/text_43_black_small"
+                            style="@style/text_43_black_medium"
                             android:text="使用余额" />
 
                         <TextView
@@ -162,7 +163,7 @@
                     </LinearLayout>
 
                     <TextView
-                        style="@style/text_cc_grey_smaller"
+                        style="@style/text_cc_grey_small"
                         android:layout_marginTop="5dp"
                         android:text="当前余额3.0,使用0.0" />
                 </LinearLayout>
@@ -172,9 +173,144 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/check_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/switch_check"
+                        android:button="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal_bold" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="64dp"
+                    android:gravity="center_vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_zhifubao" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/text_43_black_medium"
+                            android:text="支付宝" />
+
+                        <TextView
+                            style="@style/text_cc_grey_small"
+                            android:layout_marginTop="2dp"
+                            android:text="使用支付宝支付" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/green_check_s"
+                        android:button="@null" />
+                </LinearLayout>
+
+                <View style="@style/line_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="64dp"
+                    android:gravity="center_vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_weixin" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/text_43_black_medium"
+                            android:text="微信支付" />
+
+                        <TextView
+                            style="@style/text_cc_grey_small"
+                            android:layout_marginTop="2dp"
+                            android:text="使用微信支付" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/check_weixin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/green_check_s"
+                        android:button="@null" />
+                </LinearLayout>
+
+                <View style="@style/line_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="64dp"
+                    android:gravity="center_vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_delivery" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            style="@style/text_43_black_medium"
+                            android:text="货到付款" />
+
+                        <TextView
+                            style="@style/text_cc_grey_small"
+                            android:layout_marginTop="2dp"
+                            android:text="使用微信支付" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/check_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/green_check_s"
+                        android:button="@null" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <com.means.shopping.views.CartBottomView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
