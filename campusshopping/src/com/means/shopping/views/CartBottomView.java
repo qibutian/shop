@@ -81,11 +81,13 @@ public class CartBottomView extends LinearLayout {
 				mContext.startActivity(it);
 			}
 		});
+		setCartNum();
 	}
 
 	public void setCartNum() {
 		int count = Cart.getInstance().getCount();
 		badgeT.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
+		payB.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		badgeT.setText(count + "");
 	}
 

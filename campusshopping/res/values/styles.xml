@@ -2,7 +2,7 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Light">
@@ -210,6 +210,41 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/text_ff4_red</item>
+        <item name="android:textSize">@dimen/text_smaller</item>
+    </style>
+
+    <style name="text_ffd_yellow_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ffd_yellow</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_ffd_yellow_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ffd_yellow</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_ffd_yellow_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ffd_yellow</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_ffd_yellow_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ffd_yellow</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+    
+    <style name="text_ffd_yellow_smaller">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_ffd_yellow</item>
         <item name="android:textSize">@dimen/text_smaller</item>
     </style>
 

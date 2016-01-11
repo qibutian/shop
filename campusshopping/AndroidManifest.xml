@@ -74,6 +74,10 @@
             android:name="com.means.shopping.activity.pay.PaymentActivity"
             android:label="@string/title_activity_payment" >
         </activity>
+        <activity
+            android:name=".activity.market.RechargeActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>
