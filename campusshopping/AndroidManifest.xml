@@ -56,10 +56,10 @@
             android:label="@string/title_activity_setting" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.cat.CatActivity"
+            android:name=".activity.cat.CatActivity"
             android:label="@string/title_activity_setting" />
         <activity
-            android:name="com.means.shopping.activity.my.redpacket.MyRedPacketActivity"
+            android:name=".activity.my.redpacket.MyRedPacketActivity"
             android:label="@string/title_activity_my_red_packet" >
         </activity>
         <activity
@@ -69,6 +69,10 @@
         <activity
             android:name=".activity.market.CartActivity"
             android:label="@string/title_activity_setting" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.pay.PaymentActivity"
+            android:label="@string/title_activity_payment" >
         </activity>
     </application>
 

@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp" >
+
+                <ImageView
+                    android:id="@+id/icon_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_location" />
+
+                <ImageView
+                    android:id="@+id/icon_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_right" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/icon_right"
+                    android:layout_toRightOf="@+id/icon_location"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:text="吴家丽" />
+
+                    <TextView
+                        style="@style/text_99_grey_smaller"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="南京市徐庄软件园" />
+                </LinearLayout>
+            </RelativeLayout>
+            
+            <ImageView 
+                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/colourline_bg"
+                />
+
+            <View style="@style/line_horizontal_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    style="@style/text_cc_grey_smaller"
+                    android:text="共6份" />
+
+                <TextView
+                    style="@style/text_06_green_smaller"
+                    android:layout_alignParentRight="true"
+                    android:text="查看详情" />
+            </RelativeLayout>
+
+            <View style="@style/line_horizontal_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    style="@style/text_43_black_small"
+                    android:text="红包金额" />
+
+                <TextView
+                    style="@style/text_cc_grey_smaller"
+                    android:layout_marginLeft="10dp"
+                    android:text="3.0元" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_ff4_red_smaller"
+                        android:text="点击选择红包"
+                        android:textColor="@color/text_ff9_yellow" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/text_43_black_small"
+                            android:text="使用余额" />
+
+                        <TextView
+                            style="@style/text_ff4_red_smaller"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/tv_yellow_bg"
+                            android:gravity="center"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            android:paddingTop="2dp"
+                            android:text="去充值"
+                            android:textColor="@color/text_ff9_yellow" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/text_cc_grey_smaller"
+                        android:layout_marginTop="5dp"
+                        android:text="当前余额3.0,使用0.0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
