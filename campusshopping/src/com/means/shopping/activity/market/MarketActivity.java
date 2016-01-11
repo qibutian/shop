@@ -53,6 +53,7 @@ public class MarketActivity extends ShopBaseActivity {
 		setTitle("超市");
 		catListV = (ListView) findViewById(R.id.listview_normal);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
+		cartBootmView.setCartNum();
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
 

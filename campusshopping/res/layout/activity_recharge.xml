@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@color/app_bg_color"
+        android:gravity="center_vertical" >
+
+        <TextView
+            style="@style/text_43_black_small"
+            android:layout_marginLeft="12dp"
+            android:text="我的余额:" />
+
+        <TextView
+            style="@style/text_ffd_yellow_small"
+            android:layout_marginLeft="2dp"
+            android:text="0.0远" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/one"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_chongzhi_bg_s"
+                android:button="@null"
+                android:gravity="center"
+                android:text="50元"
+                android:textColor="@color/text_cc_grey"
+                android:textSize="@dimen/text_medium" />
+
+            <RadioButton
+                android:id="@+id/two"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_chongzhi_bg_s"
+                android:button="@null"
+                android:gravity="center"
+                android:text="100元"
+                android:textColor="@color/text_cc_grey"
+                android:textSize="@dimen/text_medium" />
+
+            <RadioButton
+                android:id="@+id/three"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_chongzhi_bg_s"
+                android:button="@null"
+                android:gravity="center"
+                android:text="200元"
+                android:textColor="@color/text_cc_grey"
+                android:textSize="@dimen/text_medium" />
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_grey_bg"
+            android:gravity="center_vertical"
+            android:hint="请输入充值金额"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_cc_grey"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            style="@style/text_43_black_small"
+            android:layout_marginTop="18dp"
+            android:text="充值方式" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:paddingBottom="10dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_zhifubao" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/text_43_black_medium"
+                    android:text="支付宝" />
+
+                <TextView
+                    style="@style/text_cc_grey_medium"
+                    android:layout_marginTop="5dp"
+                    android:text="使用支付宝支付" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/green_check_s"
+                android:button="@null" />
+        </LinearLayout>
+
+        <View style="@style/line_horizontal" />
+    </LinearLayout>
+
+</LinearLayout>
