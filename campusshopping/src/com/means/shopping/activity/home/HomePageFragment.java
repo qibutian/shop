@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatActivity;
 import com.means.shopping.activity.market.MarketActivity;
+import com.means.shopping.activity.market.RechargeActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.views.RefreshListViewAndMore;
@@ -105,7 +106,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), CatActivity.class);
 			startActivity(it);
 			break;
-
+			
+		case R.id.chongzhi:
+			it = new Intent(getActivity(), RechargeActivity.class);
+			startActivity(it);
+			break;
 		default:
 			break;
 		}
