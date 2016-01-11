@@ -74,6 +74,10 @@
             android:name=".activity.market.RechargeActivity"
             android:label="@string/title_activity_setting" >
         </activity>
+        <activity
+            android:name=".activity.main.ShareActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>
