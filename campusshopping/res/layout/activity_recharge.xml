@@ -95,7 +95,7 @@
 
         <TextView
             style="@style/text_43_black_small"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="17dp"
             android:text="充值方式" />
 
         <LinearLayout
