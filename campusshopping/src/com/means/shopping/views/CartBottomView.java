@@ -66,6 +66,8 @@ public class CartBottomView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 
+				
+				
 			}
 		});
 		badgeT = (BadgeView) findViewById(R.id.badgeView);// 创建一个BadgeView对象，view为你需要显示提醒信息的控件
