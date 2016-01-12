@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/labt"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/titlebar_color" >
+
+        <LinearLayout
+            android:id="@+id/backLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:src="@drawable/icon_back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/backLayout"
+            android:background="@drawable/fillet_5_white_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp" >
+
+            <TextView
+                style="@style/text_43_black_medium"
+                android:text="商品" />
+
+            <View
+                style="@style/line_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+
+            <EditText
+                style="@style/text_43_black_medium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/nothing"
+                android:hint="搜索感兴趣的商品"
+                android:drawableRight="@drawable/icon_search" />
+        </LinearLayout>
+
+        <View
+            style="@style/line_horizontal"
+            android:layout_alignParentBottom="true" >
+        </View>
+    </RelativeLayout>
+
+</LinearLayout>

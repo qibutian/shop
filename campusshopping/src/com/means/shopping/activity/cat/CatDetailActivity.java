@@ -34,7 +34,7 @@ public class CatDetailActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("商品");
+//		setTitle("商品");
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
