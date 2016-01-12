@@ -79,7 +79,6 @@ public class MarketActivity extends ShopBaseActivity {
 
 			}
 		});
-		goodListV.setAdapter(goodAdater);
 
 	}
 

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/fillet_5_white_bg"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/icon_search" />
+
+        <EditText
+            style="@style/text_43_black_medium"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@color/nothing"
+            android:hint="输入您的学校名称" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="10dp" >
+        <TextView style="@style/text_99_grey_small"
+            android:text="您的学校是不是:"/>
+        
+        <TextView style="@style/text_ffd_yellow_small"
+            android:layout_marginLeft="5dp"
+            android:text="南京师范大学"/>
+    </LinearLayout>
+    
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                layout="@layout/include_listview"
+                android:paddingBottom="60dp" />
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2.5"
+                layout="@layout/include_refresh_listview"
+                android:paddingBottom="60dp" />
+        </LinearLayout>
+
+</LinearLayout>

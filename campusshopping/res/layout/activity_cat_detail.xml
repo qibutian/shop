@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical" >
 
-    <include layout="@layout/include_title_bar" />
+    <include layout="@layout/include_search_titlebar" />
 
     <LinearLayout
         android:layout_width="fill_parent"

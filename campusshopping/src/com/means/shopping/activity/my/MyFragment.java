@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
+import com.means.shopping.activity.pay.PaymentActivity;
 
 /**
  * 我的
@@ -65,7 +66,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		//头像
 		case R.id.head:
-			it = new Intent(getActivity(), LoginActivity.class);
+//			it = new Intent(getActivity(), LoginActivity.class);
+			it = new Intent(getActivity(), PaymentActivity.class);
+//			it = new Intent(getActivity(), CampusSelectActivity.class);
 			getActivity().startActivity(it);
 			break;
 		//设置
