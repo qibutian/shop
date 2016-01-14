@@ -7,33 +7,32 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.means.shopping.R;
-import com.means.shopping.activity.my.ChangePasswordActivity.TimeCount;
-import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.base.ShopBaseActivity;
 
 /**
- * 注册页面
+ * 修改密码
  * 
  * @author Administrator
  * 
  */
-public class RegisterActivity extends ShopBaseFragmentActivity implements
+public class ChangePasswordActivity extends ShopBaseActivity implements
 		OnClickListener {
-	private TextView sendSMST;
 
+	private TextView sendSMST;
+	
 	private TimeCount time = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
-
-		initView();
+		setContentView(R.layout.activity_change_password);
 	}
 
-	private void initView() {
-		setTitle("注册");
+	@Override
+	public void initView() {
+		setTitle("修改登录密码");
 		time = new TimeCount(60000, 1000);
-
+		
 		sendSMST = (TextView) findViewById(R.id.sendsms);
 
 		sendSMST.setOnClickListener(this);

@@ -1,6 +1,10 @@
 package com.means.shopping.activity.my;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 
 import com.means.shopping.R;
 import com.means.shopping.base.ShopBaseFragmentActivity;
@@ -10,7 +14,9 @@ import com.means.shopping.base.ShopBaseFragmentActivity;
  * @author Administrator
  *
  */
-public class SettingActivity extends ShopBaseFragmentActivity {
+public class SettingActivity extends ShopBaseFragmentActivity implements OnClickListener{
+	
+	private LinearLayout addressLl,changepwdLl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +29,30 @@ public class SettingActivity extends ShopBaseFragmentActivity {
 	private void initView() {
 		// TODO Auto-generated method stub
 		setTitle("设置");
+		addressLl = (LinearLayout) findViewById(R.id.address);
+		changepwdLl = (LinearLayout) findViewById(R.id.changepwd);
+		
+		addressLl.setOnClickListener(this);
+		changepwdLl.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent it;
+		switch (v.getId()) {
+		//收货地址
+		case R.id.address:
+			it = new Intent(self,ConsigneeAddressActivity.class);
+			startActivity(it);
+			break;
+		//修改密码	
+		case R.id.changepwd:
+			it = new Intent(self,ChangePasswordActivity.class);
+			startActivity(it);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

@@ -14,5 +14,8 @@
     <string name="title_activity_my_red_packet">MyRedPacketActivity</string>
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="title_activity_campus_select">CampusSelectActivity</string>
+    <string name="title_activity_my_commission">MyCommissionActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="title_activity_consignee_address">ConsigneeAddressActivity</string>
 
 </resources>

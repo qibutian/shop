@@ -63,7 +63,7 @@ public class CampusSelectActivity extends ShopBaseActivity {
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
 		NetJSONAdapter adapter = new NetJSONAdapter(API.test, self,
-				R.layout.item_order_list);
+				R.layout.item_recent_order_list);
 		goodListV.setAdapter(adapter);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {
 

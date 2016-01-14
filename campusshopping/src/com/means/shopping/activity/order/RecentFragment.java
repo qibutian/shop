@@ -74,7 +74,7 @@ public class RecentFragment extends Fragment{
 //		listV.setEmptyView(mLayoutInflater.inflate(
 //				R.layout.list_nomal_emptyview, null));
 		adapter = new NetJSONAdapter(API.test, getActivity(),
-				R.layout.item_order_list);
+				R.layout.item_recent_order_list);
 		adapter.fromWhat("data");
 		// setUrl("http://cwapi.gongpingjia.com:8080/v2/activity/list?latitude=32&longitude=118&maxDistance=5000000&token="+user.getToken()+"&userId="+user.getUserId());
 //		adapter.addparam("uid", "");

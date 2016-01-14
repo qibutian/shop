@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nothing"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fillet_5_white_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                style="@style/text_43_black_small"
+                android:text="订单总额:" />
+
+            <TextView
+                style="@style/text_ff4_red_small"
+                android:layout_marginLeft="5dp"
+                android:text="￥"
+                android:textSize="@dimen/text_smaller" />
+
+            <TextView
+                style="@style/text_ff4_red_medium"
+                android:text="55" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:background="@drawable/circle_yellow_ff9_bg" >
+
+                    <TextView
+                        style="@style/text_white_small"
+                        android:layout_centerInParent="true"
+                        android:text="省" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/text_43_black_smaller"
+                    android:layout_marginLeft="5dp"
+                    android:text="3.0元"
+                    android:textColor="@color/text_ff9_yellow" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/line_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_small"
+                        android:text="支付方式:" />
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:layout_marginLeft="5dp"
+                        android:text="支付宝" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_small"
+                        android:text="下单时间:" />
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:layout_marginLeft="5dp"
+                        android:text="2016-1-6 10:36:39" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_small"
+                        android:text="预约时间:" />
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:layout_marginLeft="5dp"
+                        android:text="2016-1-6 10:37:07" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_small"
+                        android:text="订单编号:" />
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:layout_marginLeft="5dp"
+                        android:text="854152561231561" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_small"
+                        android:text="联系店长:" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_phone" />
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:layout_marginLeft="2dp"
+                        android:text="15205152201"
+                        android:textColor="@color/text_ff9_yellow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_unfinish" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/app_bg_color" />
+
+</LinearLayout>

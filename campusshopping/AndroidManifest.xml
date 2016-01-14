@@ -79,8 +79,20 @@
             android:label="@string/title_activity_setting" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.CampusSelectActivity"
+            android:name=".activity.my.CampusSelectActivity"
             android:label="@string/title_activity_campus_select" >
+        </activity>
+        <activity
+            android:name=".activity.my.MyCommissionActivity"
+            android:label="@string/title_activity_my_commission" >
+        </activity>
+        <activity
+            android:name=".activity.my.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.ConsigneeAddressActivity"
+            android:label="@string/title_activity_consignee_address" >
         </activity>
     </application>
 
