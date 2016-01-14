@@ -21,7 +21,7 @@
         <TextView
             style="@style/text_ffd_yellow_small"
             android:layout_marginLeft="2dp"
-            android:text="0.0远" />
+            android:text="0.0元" />
     </LinearLayout>
 
     <LinearLayout
@@ -90,7 +90,8 @@
             android:hint="请输入充值金额"
             android:inputType="number"
             android:paddingLeft="10dp"
-            android:textColor="@color/text_cc_grey"
+            android:textColorHint="@color/text_99_grey"
+            android:textColor="@color/text_99_grey"
             android:textSize="@dimen/text_medium" />
 
         <TextView
