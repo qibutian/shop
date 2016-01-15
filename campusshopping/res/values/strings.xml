@@ -17,5 +17,7 @@
     <string name="title_activity_my_commission">MyCommissionActivity</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="title_activity_consignee_address">ConsigneeAddressActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_guidance">GuidanceActivity</string>
 
 </resources>

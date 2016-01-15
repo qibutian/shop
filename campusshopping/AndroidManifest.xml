@@ -38,11 +38,6 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.my.LoginActivity" />
         <activity android:name=".activity.market.MarketActivity" >
@@ -78,10 +73,9 @@
             android:name=".activity.market.RechargeActivity"
             android:label="@string/title_activity_setting" >
         </activity>
+        <activity android:name=".activity.main.ShareActivity" />
         <activity
-            android:name=".activity.main.ShareActivity" />
-        <activity
-            android:name="com.means.shopping.activity.my.CampusSelectActivity"
+            android:name=".activity.my.CampusSelectActivity"
             android:label="@string/title_activity_campus_select" >
         </activity>
         <activity
@@ -93,8 +87,21 @@
             android:label="@string/title_activity_change_password" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.ConsigneeAddressActivity"
+            android:name=".activity.my.ConsigneeAddressActivity"
             android:label="@string/title_activity_consignee_address" >
+        </activity>
+        <activity
+            android:name=".activity.main.SplashActivity"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.main.GuidanceActivity"
+            android:label="@string/title_activity_guidance" >
         </activity>
     </application>
 
