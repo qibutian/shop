@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.activity.pay.PaymentActivity;
 
@@ -30,6 +31,8 @@ public class MyFragment extends Fragment implements OnClickListener {
 	private ImageView headI, settingI;
 	private LinearLayout myredpacketLl, commissionLl;
 
+	View recommendV;
+
 	public static MyFragment getInstance() {
 		if (instance == null) {
 			instance = new MyFragment();
@@ -45,7 +48,6 @@ public class MyFragment extends Fragment implements OnClickListener {
 		mainV = inflater.inflate(R.layout.fragment_my, null);
 		mLayoutInflater = inflater;
 		initView();
-		// TODO Auto-generated method stub
 		return mainV;
 	}
 
@@ -54,11 +56,12 @@ public class MyFragment extends Fragment implements OnClickListener {
 		settingI = (ImageView) mainV.findViewById(R.id.setting);
 		myredpacketLl = (LinearLayout) mainV.findViewById(R.id.myredpacket);
 		commissionLl = (LinearLayout) mainV.findViewById(R.id.commission);
-
+		recommendV = mainV.findViewById(R.id.recommend);
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
 		myredpacketLl.setOnClickListener(this);
 		commissionLl.setOnClickListener(this);
+		recommendV.setOnClickListener(this);
 	}
 
 	@Override
@@ -67,8 +70,8 @@ public class MyFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		// 头像
 		case R.id.head:
-			 it = new Intent(getActivity(), ChangePasswordActivity.class);
-//			it = new Intent(getActivity(), PaymentActivity.class);
+			it = new Intent(getActivity(), ChangePasswordActivity.class);
+			// it = new Intent(getActivity(), PaymentActivity.class);
 			// it = new Intent(getActivity(), CampusSelectActivity.class);
 			getActivity().startActivity(it);
 			break;
@@ -85,6 +88,11 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// 我的佣金
 		case R.id.commission:
 			it = new Intent(getActivity(), MyCommissionActivity.class);
+			getActivity().startActivity(it);
+			break;
+
+		case R.id.recommend:
+			it = new Intent(getActivity(), RecommendActivity.class);
 			getActivity().startActivity(it);
 			break;
 

@@ -179,14 +179,15 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
-            <View style="@style/line_horizontal"/>
-            
+
+            <View style="@style/line_horizontal" />
+
             <LinearLayout
+                android:id="@+id/recommend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
@@ -214,16 +215,16 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <View
                 style="@style/line_horizontal"
                 android:layout_height="5dp" />
-            
-             <LinearLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
@@ -251,15 +252,15 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
-            <View style="@style/line_horizontal"/>
-            
-             <LinearLayout
-                 android:id="@+id/commission"
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/commission"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
@@ -287,20 +288,20 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
-            <View style="@style/line_horizontal"/>
-            
-             <LinearLayout
-                 android:id="@+id/myredpacket"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginBottom="20dp"
-                 android:background="@color/white"
-                 android:gravity="center_vertical"
-                 android:orientation="horizontal"
-                 android:paddingBottom="10dp"
-                 android:paddingLeft="10dp"
-                 android:paddingTop="10dp" >
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/myredpacket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp" >
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -324,7 +325,6 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
         </LinearLayout>
     </ScrollView>
 
