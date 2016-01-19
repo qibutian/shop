@@ -48,16 +48,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 充值按钮
 	View chongzhiV;
 
-<<<<<<< HEAD
 	// 夜生活按钮
 	View night_lifeV;
-=======
 	// 分享按钮
 	View shareV;
 	
 	// 佣金
 	View commissionV;
->>>>>>> 632e7fad08cac0d332f9af7e514dff088a6b9551
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -138,13 +135,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), RechargeActivity.class);
 			startActivity(it);
 			break;
-<<<<<<< HEAD
 
 		case R.id.night_life:
 			it = new Intent(getActivity(), MarketActivity.class);
 			startActivity(it);
 			break;
-=======
 			
 			//佣金
 		case R.id.commission:
@@ -165,7 +160,6 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			});
 			pop.show();
 			break;
->>>>>>> 632e7fad08cac0d332f9af7e514dff088a6b9551
 		default:
 			break;
 		}
