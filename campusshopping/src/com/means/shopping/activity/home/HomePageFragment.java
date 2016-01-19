@@ -44,6 +44,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 充值按钮
 	View chongzhiV;
 
+	// 夜生活按钮
+	View night_lifeV;
+
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -83,6 +86,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		marketV = headV.findViewById(R.id.market);
 		redpacketV = headV.findViewById(R.id.redpacket);
+		night_lifeV = headV.findViewById(R.id.night_life);
+		night_lifeV.setOnClickListener(this);
 		marketV.setOnClickListener(this);
 
 		classifyV = headV.findViewById(R.id.classify);
@@ -115,6 +120,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		case R.id.chongzhi:
 			it = new Intent(getActivity(), RechargeActivity.class);
+			startActivity(it);
+			break;
+
+		case R.id.night_life:
+			it = new Intent(getActivity(), MarketActivity.class);
 			startActivity(it);
 			break;
 		default:
