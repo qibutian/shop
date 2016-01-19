@@ -15,10 +15,14 @@ import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatActivity;
 import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.activity.market.RechargeActivity;
+import com.means.shopping.activity.my.MyCommissionActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
+import com.means.shopping.utils.ShareUtil;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.RedPacketDialog;
+import com.means.shopping.views.pop.SharePop;
+import com.means.shopping.views.pop.SharePop.ShareResultListener;
 
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
@@ -43,6 +47,12 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 充值按钮
 	View chongzhiV;
+
+	// 分享按钮
+	View shareV;
+	
+	// 佣金
+	View commissionV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -91,6 +101,10 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		chongzhiV = headV.findViewById(R.id.chongzhi);
 		chongzhiV.setOnClickListener(this);
+		shareV = headV.findViewById(R.id.share);
+		shareV.setOnClickListener(this);
+		commissionV = headV.findViewById(R.id.commission);
+		commissionV.setOnClickListener(this);
 	}
 
 	@Override
@@ -116,6 +130,26 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.chongzhi:
 			it = new Intent(getActivity(), RechargeActivity.class);
 			startActivity(it);
+			break;
+			
+			//佣金
+		case R.id.commission:
+			it = new Intent(getActivity(), MyCommissionActivity.class);
+			startActivity(it);
+			break;
+
+			//分享
+		case R.id.share:
+			SharePop pop = new SharePop(getActivity());
+			pop.setOnShareResultListener(new ShareResultListener() {
+
+				@Override
+				public void onResult(int result) {
+					ShareUtil.wechatShare(result, getActivity(), "王者荣耀"+result,
+							"一起玩啊", "");
+				}
+			});
+			pop.show();
 			break;
 		default:
 			break;
