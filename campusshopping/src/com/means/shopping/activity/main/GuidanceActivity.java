@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.SimplePageAdapter;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.views.CirclePageIndicator;
 
 /**
  * 引导页
@@ -40,7 +40,8 @@ public class GuidanceActivity extends ShopBaseActivity {
 
 		pager.setAdapter(pagerAdapter);
 
-
+		CirclePageIndicator mIndicator  = (CirclePageIndicator) findViewById(R.id.indicator);
+        mIndicator.setViewPager(pager);
 		secondView.setOnClickListener(new View.OnClickListener() {
 
 			@Override

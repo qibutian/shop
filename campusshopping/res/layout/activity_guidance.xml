@@ -9,5 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </android.support.v4.view.ViewPager>
+    
+     <com.means.shopping.views.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp" />
 
 </RelativeLayout>
