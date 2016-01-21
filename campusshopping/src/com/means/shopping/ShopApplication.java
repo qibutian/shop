@@ -46,7 +46,7 @@ public class ShopApplication extends Application implements
 		super.onCreate();
 		// Thread.setDefaultUncaughtExceptionHandler(this);
 		instance = this;
-		Const.netadapter_page_no = "page";
+		Const.netadapter_page_no = "currentpage";
 		Const.netadapter_step = "pageNums";
 		Const.response_total = "totalRows";
 		Const.response_data = "data";
