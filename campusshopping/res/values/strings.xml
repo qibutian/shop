@@ -19,5 +19,6 @@
     <string name="title_activity_consignee_address">ConsigneeAddressActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_guidance">GuidanceActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
 
 </resources>

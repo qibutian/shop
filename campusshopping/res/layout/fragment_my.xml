@@ -221,6 +221,7 @@
                 android:layout_height="5dp" />
 
             <LinearLayout
+                android:id="@+id/myredpacket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -233,12 +234,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/my_allorder" />
+                    android:src="@drawable/my_redpacket" />
 
                 <TextView
                     style="@style/text_43_black_small"
                     android:layout_marginLeft="10dp"
-                    android:text="全部订单" />
+                    android:text="我的红包" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -256,7 +257,7 @@
             <View style="@style/line_horizontal" />
 
             <LinearLayout
-                android:id="@+id/commission"
+                android:id="@+id/changepwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -274,7 +275,7 @@
                 <TextView
                     style="@style/text_43_black_small"
                     android:layout_marginLeft="10dp"
-                    android:text="我的佣金" />
+                    android:text="修改密码" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -292,7 +293,6 @@
             <View style="@style/line_horizontal" />
 
             <LinearLayout
-                android:id="@+id/myredpacket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -306,12 +306,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/my_redpacket" />
+                    android:src="@drawable/my_allorder" />
 
                 <TextView
                     style="@style/text_43_black_small"
                     android:layout_marginLeft="10dp"
-                    android:text="我的红包" />
+                    android:text="清理缓存" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
