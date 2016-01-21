@@ -28,8 +28,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	LayoutInflater mLayoutInflater;
 
-	private ImageView headI, settingI;
-	private LinearLayout myredpacketLl, commissionLl;
+	private ImageView headI;
+	private ImageView settingI;
+	private LinearLayout myredpacketLl,changepwdLl;
 
 	View recommendV;
 
@@ -55,13 +56,13 @@ public class MyFragment extends Fragment implements OnClickListener {
 		headI = (ImageView) mainV.findViewById(R.id.head);
 		settingI = (ImageView) mainV.findViewById(R.id.setting);
 		myredpacketLl = (LinearLayout) mainV.findViewById(R.id.myredpacket);
-		commissionLl = (LinearLayout) mainV.findViewById(R.id.commission);
 		recommendV = mainV.findViewById(R.id.recommend);
+		changepwdLl = (LinearLayout) mainV.findViewById(R.id.changepwd);
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
 		myredpacketLl.setOnClickListener(this);
-		commissionLl.setOnClickListener(this);
 		recommendV.setOnClickListener(this);
+		changepwdLl.setOnClickListener(this);
 	}
 
 	@Override
@@ -70,7 +71,8 @@ public class MyFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		// 头像
 		case R.id.head:
-			it = new Intent(getActivity(), ChangePasswordActivity.class);
+//			it = new Intent(getActivity(), ChangePasswordActivity.class);
+			it = new Intent(getActivity(), RegisterActivity.class);
 			// it = new Intent(getActivity(), PaymentActivity.class);
 			// it = new Intent(getActivity(), CampusSelectActivity.class);
 			getActivity().startActivity(it);
@@ -85,17 +87,16 @@ public class MyFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), MyRedPacketActivity.class);
 			getActivity().startActivity(it);
 			break;
-		// 我的佣金
-		case R.id.commission:
-			it = new Intent(getActivity(), MyCommissionActivity.class);
-			getActivity().startActivity(it);
-			break;
 
 		case R.id.recommend:
 			it = new Intent(getActivity(), RecommendActivity.class);
 			getActivity().startActivity(it);
 			break;
-
+		//修改密码
+		case R.id.changepwd:
+			it = new Intent(getActivity(), ChangePasswordActivity.class);
+			getActivity().startActivity(it);
+			break;
 		default:
 			break;
 		}

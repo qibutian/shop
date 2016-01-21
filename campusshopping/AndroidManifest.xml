@@ -102,8 +102,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.means.shopping.activity.main.GuidanceActivity"
+            android:name=".activity.main.GuidanceActivity"
             android:label="@string/title_activity_guidance" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" >
         </activity>
     </application>
 
