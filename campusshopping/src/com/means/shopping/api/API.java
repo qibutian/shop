@@ -19,4 +19,9 @@ public class API {
 	// 修改密码
 	public static String resetpswdbyphone = Baseurl + "/home/user/resetpswdbyphone";
 
+	// 超市分类
+	public static String marketCat = Baseurl + "/home/market/catlist";
+
+	// 超市商品列表
+	public static String marketGoodList = Baseurl + "/home/market/contentlist";
 }

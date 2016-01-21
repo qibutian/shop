@@ -373,10 +373,7 @@ public class NetJSONAdapter extends BeanAdapter<JSONObject> implements
 			// 后台处理主要是数据封装
 			JSONArray array = null;
 			JSONObject responseJo = response.jSON();
-			total = JSONUtil.getInt(responseJo, "total_page");
-			if (total == 0) {
-				total = JSONUtil.getInt(responseJo, "page_num");
-			}
+			total = JSONUtil.getInt(responseJo, "totalpage");
 			if (fromWhat == null) {
 				array = response.jSONArrayFromData();
 			} else {

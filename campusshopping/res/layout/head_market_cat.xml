@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/market_bg_s"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="6dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/text_ffd_yellow_medium"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="每日爆款" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_huangguan" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/like"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="6dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            style="@style/text_ffd_yellow_medium"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="猜你喜欢" />
+    </RelativeLayout>
+
+</LinearLayout>

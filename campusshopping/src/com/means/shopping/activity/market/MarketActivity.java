@@ -1,13 +1,19 @@
 package com.means.shopping.activity.market;
 
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.view.BadgeView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
@@ -41,6 +47,11 @@ public class MarketActivity extends ShopBaseActivity {
 
 	CartBottomView cartBootmView;
 
+	View catHeadV;
+
+	// 每日爆款和猜你喜欢按钮
+	View hotV, likeV;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -51,17 +62,55 @@ public class MarketActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("超市");
+		catHeadV = LayoutInflater.from(self).inflate(R.layout.head_market_cat,
+				null);
+		hotV = catHeadV.findViewById(R.id.hot);
+		hotV.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				goodAdater.addparam("catid", "");
+				goodAdater.addparam("type", 1);
+				goodAdater.refreshDialog();
+				setBgColor(-2);
+			}
+		});
+		likeV = catHeadV.findViewById(R.id.like);
+		likeV.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setBgColor(-1);
+				goodAdater.addparam("catid", "");
+				goodAdater.addparam("type", 2);
+				goodAdater.refreshDialog();
+			}
+		});
 		catListV = (ListView) findViewById(R.id.listview_normal);
+		catListV.addHeaderView(catHeadV);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
 		cartBootmView.setCartNum();
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
+		catListV.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				setBgColor(position - 1);
+				JSONObject jo = catAdapter.getItem(position);
+				String catid = JSONUtil.getString(jo, "id");
+				goodAdater.addparam("catid", catid);
+				goodAdater.addparam("type", "");
+				goodAdater.refreshDialog();
+			}
+		});
 
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
-		goodAdater = new HomePageAdapter(API.test, self,
+		goodAdater = new HomePageAdapter(API.marketGoodList, self,
 				R.layout.item_home_list, 1);
-		goodAdater.fromWhat("data");
+		goodAdater.fromWhat("list");
 		goodAdater.setTargetView(cartBootmView.getCartImageView());
 		goodListV.setAdapter(goodAdater);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {
@@ -79,7 +128,40 @@ public class MarketActivity extends ShopBaseActivity {
 
 			}
 		});
+		getCatData();
+	}
 
+	private void getCatData() {
+		DhNet net = new DhNet(API.marketCat);
+		net.doGetInDialog(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONArray jsa = response.jSONArrayFrom("list");
+					catAdapter.setData(jsa);
+				}
+
+			}
+		});
+	}
+
+	private void setBgColor(int position) {
+
+		if (position == -2) {
+			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			hotV.setBackgroundColor(getResources().getColor(R.color.white));
+			catAdapter.setBg(-1);
+		} else if (position == -1) {
+			likeV.setBackgroundColor(getResources().getColor(R.color.white));
+			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			catAdapter.setBg(-1);
+		} else {
+			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			catAdapter.setBg(position);
+		}
 	}
 
 }
