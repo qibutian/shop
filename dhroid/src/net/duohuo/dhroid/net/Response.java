@@ -86,16 +86,16 @@ public class Response
                     {
                         success = JSONUtil.getBoolean(jo, Const.response_success);
                         
-                        String status = JSONUtil.getString(jo, Const.response_success);
-                        
-                        if (status.equals(Const.response_result_status))
-                        {
-                            success = true;
-                        }
-                        else
-                        {
-                            success = false;
-                        }
+//                        String status = JSONUtil.getString(jo, Const.response_success);
+//                        
+//                        if (status.equals(Const.response_result_status))
+//                        {
+//                            success = true;
+//                        }
+//                        else
+//                        {
+//                            success = false;
+//                        }
                     }
                     if (jo.has(Const.response_msg))
                     {
