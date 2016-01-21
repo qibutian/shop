@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.util.DhUtil;
+import net.duohuo.dhroid.util.ViewUtil;
 
 public class HomePageAdapter extends NetJSONAdapter {
 
@@ -52,6 +53,15 @@ public class HomePageAdapter extends NetJSONAdapter {
 		}
 
 		JSONObject jo = getTItem(position);
+		ViewUtil.bindNetImage((ImageView) convertView.findViewById(R.id.pic),
+				JSONUtil.getString(jo, "pic_m"), "default");
+
+		ViewUtil.bindView(convertView.findViewById(R.id.name),
+				JSONUtil.getString(jo, "title"));
+		ViewUtil.bindView(convertView.findViewById(R.id.price),
+				JSONUtil.getString(jo, "price"));
+		ViewUtil.bindView(convertView.findViewById(R.id.des),
+				JSONUtil.getString(jo, "des"));
 		Long goodId = JSONUtil.getLong(jo, "area_id");
 
 		Good good = new Good();

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content" >
 
     <RelativeLayout
+        android:id="@+id/bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,12 +19,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:text="方便速食" />
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_huangguan" />
     </RelativeLayout>
 
 </RelativeLayout>

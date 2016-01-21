@@ -25,9 +25,9 @@
             <include
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:layout_marginBottom="60dp"
                 android:layout_weight="2.5"
-                layout="@layout/include_refresh_listview"
-                android:paddingBottom="60dp" />
+                layout="@layout/include_refresh_listview" />
         </LinearLayout>
 
         <com.means.shopping.views.CartBottomView
@@ -35,7 +35,6 @@
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:layout_alignParentBottom="true" />
-
     </RelativeLayout>
 
 </LinearLayout>
