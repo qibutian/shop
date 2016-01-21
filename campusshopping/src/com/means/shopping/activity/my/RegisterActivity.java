@@ -3,6 +3,7 @@ package com.means.shopping.activity.my;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
@@ -10,12 +11,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.my.ChangePasswordActivity.TimeCount;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.utils.ShopUtils;
 
 /**
  * 注册页面
@@ -28,7 +31,8 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 	private TextView sendSMST;
 	private EditText telEt, codeEt, passwordEt;
 	private Button registerBtn;
-
+	private LinearLayout protocolLl;
+	
 	private TimeCount time = null;
 
 	@Override
@@ -48,9 +52,11 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 		telEt = (EditText) findViewById(R.id.tel);
 		codeEt = (EditText) findViewById(R.id.code);
 		passwordEt = (EditText) findViewById(R.id.password);
+		protocolLl = (LinearLayout) findViewById(R.id.protocol);
 
 		sendSMST.setOnClickListener(this);
 		registerBtn.setOnClickListener(this);
+		protocolLl.setOnClickListener(this);
 	}
 
 	@Override
@@ -62,10 +68,14 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 		case R.id.register:
 			register();
 			break;
+		case R.id.protocol:
+			Intent it = new Intent(self,UserProtocolActivity.class);
+			startActivity(it);
+			break;
 		}
 	}
-	
-	private void register(){
+
+	private void register() {
 		String tel = telEt.getText().toString();
 		String password = passwordEt.getText().toString();
 		String code = codeEt.getText().toString();
@@ -85,11 +95,15 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 			showToast("请输入密码");
 			return;
 		}
-		if (password.length()<6||password.length()>15) {
-            showToast("密码为6-15位字母或数字的组合");
-            return;
-        }
-		
+		if (password.length() < 6 || password.length() > 15) {
+			showToast("密码为6-15位字母和数字");
+			return;
+		}
+		if (!ShopUtils.isLetter(password)) {
+			showToast("密码中必须包含字母");
+			return;
+		}
+
 		DhNet smsNet = new DhNet(API.registaction);
 		smsNet.addParam("pswd", password);
 		smsNet.addParam("phone", tel);
@@ -101,10 +115,11 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					showToast("注册成功");
+					finish();
 				}
 			}
 		});
-		
+
 	}
 
 	// 获取验证码
@@ -121,7 +136,7 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 		DhNet smsNet = new DhNet(API.mobilecode);
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("type", "1"); // 1为注册
-		smsNet.doPost(new NetTask(self) {
+		smsNet.doGet(new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
@@ -151,4 +166,5 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 
 		}
 	}
+	
 }

@@ -106,8 +106,16 @@
             android:label="@string/title_activity_guidance" >
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".activity.my.AboutActivity"
             android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name=".activity.my.ForgetPasswordActivity"
+            android:label="@string/title_activity_forget_password" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.UserProtocolActivity"
+            android:label="@string/title_activity_user_protocol" >
         </activity>
     </application>
 

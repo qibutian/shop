@@ -114,10 +114,12 @@
             android:background="@color/nothing"
             android:hint="请输入密码"
             android:textColor="@color/text_43_black"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz"
             android:textSize="@dimen/text_small" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/protocol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

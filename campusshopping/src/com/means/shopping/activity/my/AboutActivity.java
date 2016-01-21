@@ -1,4 +1,4 @@
-package com.means.shopping;
+package com.means.shopping.activity.my;
 
 import org.json.JSONObject;
 
@@ -8,6 +8,9 @@ import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.DhUtil;
 
+import com.means.shopping.R;
+import com.means.shopping.R.id;
+import com.means.shopping.R.layout;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 

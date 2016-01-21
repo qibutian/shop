@@ -9,6 +9,8 @@ public class ShopPerference extends Perference {
 	public String pswd;
 
 	public String phone;
+	
+	public boolean login;
 
 	public String getPswd() {
 		return pswd;
@@ -32,6 +34,14 @@ public class ShopPerference extends Perference {
 
 	public void setIsFirst(int isFirst) {
 		this.isFirst = isFirst;
+	}
+
+	public boolean isLogin() {
+		return login;
+	}
+
+	public void setLogin(boolean login) {
+		this.login = login;
 	}
 
 }

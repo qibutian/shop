@@ -72,7 +72,8 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// 头像
 		case R.id.head:
 //			it = new Intent(getActivity(), ChangePasswordActivity.class);
-			it = new Intent(getActivity(), RegisterActivity.class);
+//			it = new Intent(getActivity(), RegisterActivity.class);
+			it = new Intent(getActivity(), LoginActivity.class);
 			// it = new Intent(getActivity(), PaymentActivity.class);
 			// it = new Intent(getActivity(), CampusSelectActivity.class);
 			getActivity().startActivity(it);

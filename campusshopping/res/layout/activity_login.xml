@@ -54,17 +54,20 @@
             android:src="@drawable/icon_password" />
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:background="@color/nothing"
             android:hint="请输入密码"
             android:textColor="@color/text_43_black"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz"
             android:textSize="@dimen/text_small" />
     </LinearLayout>
 
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@drawable/btn_fillet_5_green_bg"
@@ -76,6 +79,7 @@
         android:layout_marginRight="10dp" />
     
     <TextView 
+        android:id="@+id/forgetpwd"
         style="@style/text_43_black_smaller"
         android:textColor="@color/text_06_green"
         android:text="忘记密码"

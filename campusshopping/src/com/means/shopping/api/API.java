@@ -12,5 +12,11 @@ public class API {
 	public static String mobilecode = Baseurl + "/home/user/mobilecode";
 	// 用户注册
 	public static String registaction = Baseurl + "/home/user/registaction";
-	
+	// 注册协议
+	public static String aboutregist = Baseurl + "/home/index/aboutregist";
+	// 用户登录
+	public static String login = Baseurl + "/home/user/login";
+	// 修改密码
+	public static String resetpswdbyphone = Baseurl + "/home/user/resetpswdbyphone";
+
 }
