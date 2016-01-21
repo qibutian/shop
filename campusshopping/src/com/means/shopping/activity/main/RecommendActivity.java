@@ -18,5 +18,4 @@ public class RecommendActivity extends ShopBaseActivity {
 	public void initView() {
 		setTitle("推荐有奖");
 	}
-
 }

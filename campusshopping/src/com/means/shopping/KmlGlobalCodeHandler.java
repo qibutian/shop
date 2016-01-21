@@ -24,7 +24,7 @@ public class KmlGlobalCodeHandler implements GlobalCodeHandler {
 	public void hanlder(Context context, Response response) {
 
 		JSONObject jo = response.jSON();
-		if (!TextUtils.isEmpty(JSONUtil.getString(jo, "success"))) {
+		if (!TextUtils.isEmpty(JSONUtil.getString(jo, "code"))) {
 			if (JSONUtil.getString(jo, "success").equals("false")) {
 				String code = JSONUtil.getString(jo, "code");
 				String title = "";

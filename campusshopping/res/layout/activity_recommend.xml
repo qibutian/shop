@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <include layout="@layout/include_title_bar" />
@@ -49,9 +50,9 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp" >
 
                 <TextView
                     style="@style/text_43_black_small"
