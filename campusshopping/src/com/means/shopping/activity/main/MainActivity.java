@@ -1,5 +1,7 @@
 package com.means.shopping.activity.main;
 
+import net.duohuo.dhroid.ioc.IocContainer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,12 +15,14 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
+import com.means.shopping.activity.my.LoginActivity;
 import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
 import com.means.shopping.activity.order.RecentFragment;
 import com.means.shopping.activity.order.WaitPaymentFragment;
 import com.means.shopping.activity.order.WaitReceivingFragment;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.utils.ShopPerference;
 
 public class MainActivity extends ShopBaseFragmentActivity {
 
@@ -26,11 +30,13 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	private Fragment currentFragment;
 
 	private LinearLayout tabV;
+	ShopPerference per;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		per = IocContainer.getShare().get(ShopPerference.class);
+		per.load();
 		initView();
 		initTab();
 		setTab(0);
@@ -79,10 +85,16 @@ public class MainActivity extends ShopBaseFragmentActivity {
 					break;
 
 				case 2:		//我的
-					switchContent(MyFragment.getInstance());
-					imgI.setImageResource(R.drawable.icon_my_s);
-					textT.setTextColor(getResources().getColor(
-							R.color.tab_index_bg));
+					if (per.isLogin()) {
+						switchContent(MyFragment.getInstance());
+						imgI.setImageResource(R.drawable.icon_my_s);
+						textT.setTextColor(getResources().getColor(
+								R.color.tab_index_bg));
+					}else {
+						Intent it = new Intent(self,LoginActivity.class);
+						startActivity(it);
+					}
+					
 					break;
 
 				default:

@@ -37,6 +37,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/nickname"
                     style="@style/text_white_medium"
                     android:layout_below="@+id/headlayout"
                     android:layout_centerHorizontal="true"
@@ -64,13 +65,16 @@
                             android:src="@drawable/icon_msg" />
 
                         <RelativeLayout
+                            android:id="@+id/msglayout"
                             android:layout_width="15dp"
                             android:layout_height="15dp"
                             android:layout_alignParentRight="true"
                             android:layout_marginLeft="5dp"
+                            android:visibility="gone"
                             android:background="@drawable/circle_red_bg" >
 
                             <TextView
+                                android:id="@+id/msgcount"
                                 style="@style/text_white_small"
                                 android:layout_centerInParent="true"
                                 android:text="9"
@@ -112,6 +116,7 @@
                         android:text="余额" />
 
                     <TextView
+                        android:id="@+id/balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -134,6 +139,7 @@
                         android:text="我的佣金" />
 
                     <TextView
+                        android:id="@+id/gold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"

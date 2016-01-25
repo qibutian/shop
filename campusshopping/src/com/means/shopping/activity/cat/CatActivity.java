@@ -1,5 +1,13 @@
 package com.means.shopping.activity.cat;
 
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +19,7 @@ import android.widget.ListView;
 import com.means.shopping.R;
 import com.means.shopping.adapter.CatAdapter;
 import com.means.shopping.adapter.SecondCatAdapter;
+import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 
 public class CatActivity extends ShopBaseActivity {
@@ -22,6 +31,8 @@ public class CatActivity extends ShopBaseActivity {
 	GridView gridView;
 
 	SecondCatAdapter secondCatAdapter;
+	
+	JSONArray jsa_cat;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +57,20 @@ public class CatActivity extends ShopBaseActivity {
 					int position, long id) {
 				Intent it = new Intent(self, CatDetailActivity.class);
 				startActivity(it);
+			}
+		});
+	}
+	
+	private void getCatData(){
+		DhNet net = new DhNet(API.shop_catlist);
+		net.doGetInDialog(new NetTask(self) {
+			
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					jsa_cat = response.jSONArrayFromData();
+					catAdapter.setDate(jsa_cat);
+				}
 			}
 		});
 	}

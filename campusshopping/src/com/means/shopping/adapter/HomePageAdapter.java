@@ -54,15 +54,15 @@ public class HomePageAdapter extends NetJSONAdapter {
 
 		JSONObject jo = getTItem(position);
 		ViewUtil.bindNetImage((ImageView) convertView.findViewById(R.id.pic),
-				JSONUtil.getString(jo, "pic_m"), "default");
+				JSONUtil.getString(jo, "pic"), "default");
 
 		ViewUtil.bindView(convertView.findViewById(R.id.name),
 				JSONUtil.getString(jo, "title"));
 		ViewUtil.bindView(convertView.findViewById(R.id.price),
 				JSONUtil.getString(jo, "price"));
 		ViewUtil.bindView(convertView.findViewById(R.id.des),
-				JSONUtil.getString(jo, "des"));
-		Long goodId = JSONUtil.getLong(jo, "area_id");
+				JSONUtil.getString(jo, "stitle"));
+		Long goodId = JSONUtil.getLong(jo, "id");
 
 		Good good = new Good();
 		good.setGoodId(goodId);

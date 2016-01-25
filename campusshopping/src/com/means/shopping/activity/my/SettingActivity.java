@@ -1,13 +1,20 @@
 package com.means.shopping.activity.my;
 
+import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.means.shopping.R;
+import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.utils.ShopPerference;
 
 /**
  * 设置
@@ -19,12 +26,15 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 		OnClickListener {
 
 	private LinearLayout addressLl, changepwdLl, aboutLl;
+	private Button logoutBtn;
+	ShopPerference per;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
-
+		per = IocContainer.getShare().get(ShopPerference.class);
+		per.load();
 		initView();
 	}
 
@@ -34,10 +44,12 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 		addressLl = (LinearLayout) findViewById(R.id.address);
 		changepwdLl = (LinearLayout) findViewById(R.id.changepwd);
 		aboutLl = (LinearLayout) findViewById(R.id.about);
+		logoutBtn = (Button) findViewById(R.id.logout);
 
 		addressLl.setOnClickListener(this);
 		changepwdLl.setOnClickListener(this);
 		aboutLl.setOnClickListener(this);
+		logoutBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -59,9 +71,29 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 			it = new Intent(self, AboutActivity.class);
 			startActivity(it);
 			break;
+		// 推出登陆
+		case R.id.logout:
+			logout();
+			break;
 
 		default:
 			break;
 		}
+	}
+	
+	//退出登录
+	private void logout(){
+		DhNet net = new DhNet(API.logout);
+		net.doPostInDialog(new NetTask(self) {
+			
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					showToast("已退出登录");
+					per.setLogin(false);
+					per.commit();
+				}
+			}
+		});
 	}
 }

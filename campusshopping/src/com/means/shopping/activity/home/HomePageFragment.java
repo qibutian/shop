@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatActivity;
 import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.activity.market.RechargeActivity;
+import com.means.shopping.activity.my.CampusSelectActivity;
 import com.means.shopping.activity.my.MyCommissionActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
@@ -39,6 +41,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	ListView contentListV;
 
+	TextView titleT;
+
 	// 超市点击按钮
 	View marketV, redpacketV;
 
@@ -52,7 +56,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	View night_lifeV;
 	// 分享按钮
 	View shareV;
-	
+
 	// 佣金
 	View commissionV;
 
@@ -80,9 +84,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		headV = mLayoutInflater.inflate(R.layout.head_home_page, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new HomePageAdapter(API.test, getActivity(),
+		adapter = new HomePageAdapter(API.market_daylist, getActivity(),
 				R.layout.item_home_list);
-		adapter.fromWhat("data");
+		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -92,7 +96,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 			}
 		});
-
+		titleT = (TextView) mainV.findViewById(R.id.title);
+		titleT.setOnClickListener(this);
 		marketV = headV.findViewById(R.id.market);
 		redpacketV = headV.findViewById(R.id.redpacket);
 		night_lifeV = headV.findViewById(R.id.night_life);
@@ -115,6 +120,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		Intent it;
 		switch (v.getId()) {
+		// 校区选择
+		case R.id.title:
+			it = new Intent(getActivity(), CampusSelectActivity.class);
+			startActivity(it);
+			break;
 		// 超市
 		case R.id.market:
 			it = new Intent(getActivity(), MarketActivity.class);
@@ -140,22 +150,22 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), MarketActivity.class);
 			startActivity(it);
 			break;
-			
-			//佣金
+
+		// 佣金
 		case R.id.commission:
 			it = new Intent(getActivity(), MyCommissionActivity.class);
 			startActivity(it);
 			break;
 
-			//分享
+		// 分享
 		case R.id.share:
 			SharePop pop = new SharePop(getActivity());
 			pop.setOnShareResultListener(new ShareResultListener() {
 
 				@Override
 				public void onResult(int result) {
-					ShareUtil.wechatShare(result, getActivity(), "王者荣耀"+result,
-							"一起玩啊", "");
+					ShareUtil.wechatShare(result, getActivity(), "王者荣耀"
+							+ result, "一起玩啊", "");
 				}
 			});
 			pop.show();
