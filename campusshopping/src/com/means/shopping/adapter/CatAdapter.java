@@ -86,7 +86,7 @@ public class CatAdapter extends BaseAdapter {
 		RelativeLayout layout;
 	}
 	
-	public void setDate(JSONArray jsa){
+	public void setData(JSONArray jsa){
 		this.jsa = jsa;
 		notifyDataSetChanged();
 	}

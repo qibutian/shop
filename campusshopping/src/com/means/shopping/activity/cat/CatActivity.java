@@ -6,6 +6,7 @@ import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -50,6 +51,18 @@ public class CatActivity extends ShopBaseActivity {
 		gridView = (GridView) findViewById(R.id.gridView);
 		secondCatAdapter = new SecondCatAdapter(self);
 		gridView.setAdapter(secondCatAdapter);
+		
+		catListV.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				catAdapter.select(position);
+				JSONObject cat_jo = catAdapter.getItem(position);
+				JSONArray secondCat_jsa =  JSONUtil.getJSONArray(cat_jo, "_child");
+			}
+		});
+		
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -59,6 +72,8 @@ public class CatActivity extends ShopBaseActivity {
 				startActivity(it);
 			}
 		});
+		
+		getCatData();
 	}
 	
 	private void getCatData(){
@@ -69,7 +84,7 @@ public class CatActivity extends ShopBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					jsa_cat = response.jSONArrayFromData();
-					catAdapter.setDate(jsa_cat);
+					catAdapter.setData(jsa_cat);
 				}
 			}
 		});

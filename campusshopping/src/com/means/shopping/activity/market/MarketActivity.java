@@ -152,15 +152,15 @@ public class MarketActivity extends ShopBaseActivity {
 		if (position == -2) {
 			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
 			hotV.setBackgroundColor(getResources().getColor(R.color.white));
-			catAdapter.setBg(-1);
+			catAdapter.select(position);
 		} else if (position == -1) {
 			likeV.setBackgroundColor(getResources().getColor(R.color.white));
 			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
-			catAdapter.setBg(-1);
+			catAdapter.select(position);
 		} else {
 			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
 			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
-			catAdapter.setBg(position);
+			catAdapter.select(position);
 		}
 	}
 
