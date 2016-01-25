@@ -25,6 +25,8 @@ public class CatDetailActivity extends ShopBaseActivity {
 	HomePageAdapter goodAdater;
 	ListView goodListContentV;
 	CartBottomView cartBootmView;
+	
+	String id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +36,15 @@ public class CatDetailActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
+		id = getIntent().getStringExtra("id");
 //		setTitle("商品");
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
-		goodAdater = new HomePageAdapter(API.test, self,
+		goodAdater = new HomePageAdapter(API.shop_contentlist, self,
 				R.layout.item_home_list, 1);
-		goodAdater.fromWhat("data");
+		goodAdater.addparam("catid", id);
+		goodAdater.fromWhat("_child");
 		goodAdater.setTargetView(cartBootmView.getCartImageView());
 		goodListV.setAdapter(goodAdater);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {

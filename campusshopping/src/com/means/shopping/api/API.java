@@ -38,4 +38,7 @@ public class API {
 
 	// 商品分类列表
 	public static String shop_catlist = Baseurl + "/home/shop/catlist";
+
+	// 商品分页列表
+	public static String shop_contentlist = Baseurl + "/home/shop/contentlist";
 }

@@ -1,6 +1,8 @@
 package com.means.shopping.adapter;
 
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.util.ViewUtil;
+import net.duohuo.dhroid.view.YToXImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,27 +62,23 @@ public class SecondCatAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = mLayoutInflater.inflate(R.layout.item_second_cat,
 					null);
-			holder.cityname = (TextView) convertView.findViewById(R.id.city_name);
-			holder.layout = (LinearLayout) convertView.findViewById(R.id.layout);
+			holder.name = (TextView) convertView.findViewById(R.id.name);
+			holder.pic = (YToXImageView) convertView.findViewById(R.id.pic);
 			convertView.setTag(holder);
 		}else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		JSONObject jo = getItem(position);
-		holder.cityname.setText(JSONUtil.getString(jo, "name"));
-		if (select_id == position) {
-			holder.layout.setBackgroundResource(R.color.white);
-		}else {
-			holder.layout.setBackgroundResource(R.color.campus_grey);
-		}
+		holder.name.setText(JSONUtil.getString(jo, "name"));
+		ViewUtil.bindNetImage(holder.pic,JSONUtil.getString(jo, "pic"), "default");
 		
 		// TODO Auto-generated method stub
 		return convertView;
 	}
 	
 	class ViewHolder{
-		TextView cityname;
-		LinearLayout layout;
+		YToXImageView pic;
+		TextView name;
 	}
 	
 	public void setDate(JSONArray jsa){

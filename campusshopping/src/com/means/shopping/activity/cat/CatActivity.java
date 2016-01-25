@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.CatAdapter;
@@ -34,6 +35,8 @@ public class CatActivity extends ShopBaseActivity {
 	SecondCatAdapter secondCatAdapter;
 	
 	JSONArray jsa_cat;
+	
+	TextView child_title;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class CatActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("分类");
+		child_title = (TextView) findViewById(R.id.child_title);
 		catListV = (ListView) findViewById(R.id.listview_normal);
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
@@ -60,6 +64,8 @@ public class CatActivity extends ShopBaseActivity {
 				catAdapter.select(position);
 				JSONObject cat_jo = catAdapter.getItem(position);
 				JSONArray secondCat_jsa =  JSONUtil.getJSONArray(cat_jo, "_child");
+				secondCatAdapter.setDate(secondCat_jsa);
+				child_title.setText(JSONUtil.getString(cat_jo, "name"));
 			}
 		});
 		
@@ -68,7 +74,9 @@ public class CatActivity extends ShopBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				JSONObject jo = secondCatAdapter.getItem(position);
 				Intent it = new Intent(self, CatDetailActivity.class);
+				it.putExtra("id", JSONUtil.getString(jo, "id"));
 				startActivity(it);
 			}
 		});
@@ -85,6 +93,12 @@ public class CatActivity extends ShopBaseActivity {
 				if (response.isSuccess()) {
 					jsa_cat = response.jSONArrayFromData();
 					catAdapter.setData(jsa_cat);
+					
+					if (jsa_cat!=null&&jsa_cat.length()>0) {
+						JSONObject jo = JSONUtil.getJSONObjectAt(jsa_cat, 0);
+						secondCatAdapter.setDate(JSONUtil.getJSONArray(jo, "_child"));
+						child_title.setText(JSONUtil.getString(jo, "name"));
+					}
 				}
 			}
 		});
