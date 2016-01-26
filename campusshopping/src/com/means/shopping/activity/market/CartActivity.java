@@ -4,14 +4,18 @@ import net.duohuo.dhroid.net.JSONUtil;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
@@ -32,6 +36,7 @@ public class CartActivity extends ShopBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cart);
 	}
@@ -41,11 +46,15 @@ public class CartActivity extends ShopBaseActivity {
 		setTitle("购物车");
 		priceT = (TextView) findViewById(R.id.price);
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
+
 		goodListContentV = goodListV.getListView();
+
 		goodAdater = new HomePageAdapter(API.test, self,
 				R.layout.item_home_list, 1);
+
 		goodAdater.fromWhat("data");
 		goodAdater.setTargetView(priceT);
+
 		goodListV.setAdapter(goodAdater);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -63,6 +72,17 @@ public class CartActivity extends ShopBaseActivity {
 			}
 		});
 		goodListV.setAdapter(goodAdater);
+
+		Button payB = (Button) findViewById(R.id.pay);
+		payB.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent it = new Intent(self, PaymentActivity.class);
+				startActivity(it);
+
+			}
+		});
 	}
 
 }

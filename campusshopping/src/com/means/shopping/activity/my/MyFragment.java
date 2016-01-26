@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.main.MsgListActivity;
 import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.activity.pay.PaymentActivity;
@@ -49,6 +50,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 	View recommendV;
 
 	ShopPerference per;
+
+	// 我的消息点击区域
+	View msg_layoutV;
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -80,12 +84,13 @@ public class MyFragment extends Fragment implements OnClickListener {
 		nicknameT = (TextView) mainV.findViewById(R.id.nickname);
 		balanceT = (TextView) mainV.findViewById(R.id.balance);
 		goldT = (TextView) mainV.findViewById(R.id.gold);
-
+		msg_layoutV = mainV.findViewById(R.id.msg_layout);
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
 		myredpacketLl.setOnClickListener(this);
 		recommendV.setOnClickListener(this);
 		changepwdLl.setOnClickListener(this);
+		msg_layoutV.setOnClickListener(this);
 		getUserInfo();
 	}
 
@@ -147,6 +152,11 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// 修改密码
 		case R.id.changepwd:
 			it = new Intent(getActivity(), ChangePasswordActivity.class);
+			getActivity().startActivity(it);
+			break;
+
+		case R.id.msg_layout:
+			it = new Intent(getActivity(), MsgListActivity.class);
 			getActivity().startActivity(it);
 			break;
 		default:

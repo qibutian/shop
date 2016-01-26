@@ -20,6 +20,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 layout="@layout/include_listview"
+                android:background="@color/campus_grey"
                 android:paddingBottom="60dp" />
 
             <include

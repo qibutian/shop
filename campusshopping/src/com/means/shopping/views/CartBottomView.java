@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.market.CartActivity;
+import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.PriceEB;
@@ -65,9 +66,9 @@ public class CartBottomView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
+				Intent it = new Intent(mContext, PaymentActivity.class);
+				mContext.startActivity(it);
 
-				
-				
 			}
 		});
 		badgeT = (BadgeView) findViewById(R.id.badgeView);// 创建一个BadgeView对象，view为你需要显示提醒信息的控件

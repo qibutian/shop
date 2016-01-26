@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/padding_leftandright"
+        android:paddingRight="@dimen/padding_leftandright"
+        android:paddingTop="10dp" >
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp" >
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/icon_msg_pic" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/circle_red_bg" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/text_43_black_medium"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="小蚂蚁抢红包开始啦小蚂蚁抢红包开始啦小蚂蚁抢红包开始啦小蚂蚁抢红包开始啦小蚂蚁抢红包开始啦" />
+
+            <TextView
+                style="@style/text_99_grey_small"
+                android:layout_marginTop="3dp"
+                android:text="截止日期: 2016年2月1日" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

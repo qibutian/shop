@@ -117,6 +117,14 @@
             android:name="com.means.shopping.activity.my.UserProtocolActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
+        <activity
+            android:name="com.means.shopping.activity.main.SignActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.main.MsgListActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
     </application>
 
 </manifest>

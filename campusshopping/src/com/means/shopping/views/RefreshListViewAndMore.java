@@ -102,7 +102,7 @@ public class RefreshListViewAndMore extends LinearLayout {
 					mAdapter.refresh();
 				}
 			}
-		}, 400);
+		}, 300);
 
 	}
 

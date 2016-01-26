@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatActivity;
+import com.means.shopping.activity.main.SignActivity;
 import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.activity.market.RechargeActivity;
 import com.means.shopping.activity.my.CampusSelectActivity;
@@ -59,6 +60,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 佣金
 	View commissionV;
+
+	// 签到
+	View sign_layoutV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -114,6 +118,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		shareV.setOnClickListener(this);
 		commissionV = headV.findViewById(R.id.commission);
 		commissionV.setOnClickListener(this);
+		sign_layoutV = headV.findViewById(R.id.sign_layout);
+		sign_layoutV.setOnClickListener(this);
 	}
 
 	@Override
@@ -170,6 +176,12 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			});
 			pop.show();
 			break;
+
+		case R.id.sign_layout:
+			it = new Intent(getActivity(), SignActivity.class);
+			startActivity(it);
+			break;
+
 		default:
 			break;
 		}
