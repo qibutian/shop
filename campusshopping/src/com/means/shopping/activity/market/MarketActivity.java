@@ -150,16 +150,16 @@ public class MarketActivity extends ShopBaseActivity {
 	private void setBgColor(int position) {
 
 		if (position == -2) {
-			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			likeV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
 			hotV.setBackgroundColor(getResources().getColor(R.color.white));
 			catAdapter.select(position);
 		} else if (position == -1) {
 			likeV.setBackgroundColor(getResources().getColor(R.color.white));
-			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			hotV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
 			catAdapter.select(position);
 		} else {
-			likeV.setBackgroundColor(getResources().getColor(R.color.nothing));
-			hotV.setBackgroundColor(getResources().getColor(R.color.nothing));
+			likeV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
+			hotV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
 			catAdapter.select(position);
 		}
 	}

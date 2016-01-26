@@ -13,6 +13,8 @@ public class Good {
 	public Float price;
 	@DatabaseField
 	public Long goodId;
+	@DatabaseField
+	public Integer goodType;
 
 	public Good() {
 
@@ -45,7 +47,6 @@ public class Good {
 	public float getPrice() {
 		return price;
 	}
-	
 
 	public Long getGoodId() {
 		return goodId;
@@ -61,6 +62,16 @@ public class Good {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+	
+	
+
+	public Integer getGoodType() {
+		return goodType;
+	}
+
+	public void setGoodType(Integer goodType) {
+		this.goodType = goodType;
 	}
 
 	public boolean equals(Object obj) {

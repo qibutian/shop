@@ -41,4 +41,16 @@ public class API {
 
 	// 商品分页列表
 	public static String shop_contentlist = Baseurl + "/home/shop/contentlist";
+
+	// 添加购物车
+	public static String addCart = Baseurl + "/home/cart/add";
+
+	// 购物车列表
+	public static String cartList = Baseurl + "/home/cart/contentlist";
+
+	// 修改购物车数量
+	public static String changeCartCount = Baseurl + "/home/cart/setcount";
+
+	// 删除购物车
+	public static String removeCart = Baseurl + "/home/cart/remove";
 }

@@ -62,10 +62,11 @@ public class HomePageAdapter extends NetJSONAdapter {
 				JSONUtil.getString(jo, "price"));
 		ViewUtil.bindView(convertView.findViewById(R.id.des),
 				JSONUtil.getString(jo, "stitle"));
-		Long goodId = JSONUtil.getLong(jo, "id");
 
 		Good good = new Good();
-		good.setGoodId(goodId);
+		good.setGoodId(JSONUtil.getLong(jo, "id"));
+		good.setCount(0);
+		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
 		cartView.setGood(good);

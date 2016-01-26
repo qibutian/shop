@@ -1,6 +1,11 @@
 package com.means.shopping.views;
 
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+
 import com.means.shopping.R;
+import com.means.shopping.api.API;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.PriceEB;
@@ -22,19 +27,16 @@ public class CartView extends LinearLayout {
 
 	OnCartViewClickListener onCartViewClickListener;
 
-	Cart cart;
-
 	ImageView minusI;
 
 	ImageView addI;
 
 	Good mGood;
-	
 
 	public CartView(Context context) {
 		super(context);
 	}
-	
+
 	public CartView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.mContext = context;
@@ -42,7 +44,6 @@ public class CartView extends LinearLayout {
 	}
 
 	private void initView() {
-		cart = Cart.getInstance();
 		LayoutInflater.from(mContext).inflate(R.layout.include_cart_view, this);
 		cartNumT = (TextView) findViewById(R.id.cart_num);
 		minusI = (ImageView) findViewById(R.id.minus);
@@ -52,13 +53,11 @@ public class CartView extends LinearLayout {
 			public void onClick(View v) {
 
 				if (mGood != null) {
-					cart.reduceGood(mGood.getGoodId());
+					int count = mGood.getCount() == 1 ? 0 : 1;
+					changeGoodCount(mContext, mGood.getGoodId(), count,
+							mGood.getGoodType());
 				}
 
-				if (onCartViewClickListener != null) {
-					onCartViewClickListener.onMinusClick();
-				}
-				EventBus.getDefault().post(new PriceEB());
 			}
 		});
 
@@ -69,12 +68,9 @@ public class CartView extends LinearLayout {
 			public void onClick(View v) {
 
 				if (mGood != null) {
-					cart.getOrCreateGood(mGood.getGoodId());
+					addGood(mContext, mGood.getGoodId(), 1, mGood.getGoodType());
 				}
 
-				if (onCartViewClickListener != null) {
-					onCartViewClickListener.onAddClick();
-				}
 			}
 		});
 	}
@@ -84,20 +80,19 @@ public class CartView extends LinearLayout {
 	}
 
 	public void setCartNumTextView() {
-		Good good = cart.getGood(mGood.getGoodId());
-		if (good != null) {
-			cartNumT.setVisibility(good.getCount() >= 1 ? View.VISIBLE
+		if (mGood != null) {
+			cartNumT.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
 					: View.GONE);
-			minusI.setVisibility(good.getCount() >= 1 ? View.VISIBLE
+			minusI.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
 					: View.INVISIBLE);
-			cartNumT.setText(good.getCount() + "");
+			cartNumT.setText(mGood.getCount() + "");
 		} else {
 			cartNumT.setVisibility(View.INVISIBLE);
 			minusI.setVisibility(View.INVISIBLE);
 		}
 	}
-	
-	public void setThemeWhite(){
+
+	public void setThemeWhite() {
 		cartNumT.setTextColor(getResources().getColor(R.color.white));
 		minusI.setImageResource(R.drawable.icon_minus_white);
 		addI.setImageResource(R.drawable.icon_add_white);
@@ -122,4 +117,45 @@ public class CartView extends LinearLayout {
 
 		void onMinusClick();
 	}
+
+	public void addGood(Context context, Long goodId, int count, int type) {
+		DhNet net = new DhNet(API.addCart);
+		net.addParam("goodsid", goodId);
+		net.addParam("count", count);
+		net.addParam("type", type);
+		net.doPostInDialog(new NetTask(context) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					mGood.setCount(mGood.getCount() + 1);
+					if (onCartViewClickListener != null) {
+						onCartViewClickListener.onAddClick();
+					}
+				}
+			}
+		});
+	}
+
+	public void changeGoodCount(Context context, Long goodId, int count,
+			int type) {
+		DhNet net = new DhNet(API.changeCartCount);
+		net.addParam("goodsid", goodId);
+		net.addParam("count", count);
+		net.addParam("type", type);
+		net.doPostInDialog(new NetTask(context) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					mGood.setCount(mGood.getCount() - 1);
+					if (onCartViewClickListener != null) {
+						onCartViewClickListener.onMinusClick();
+					}
+					EventBus.getDefault().post(new PriceEB());
+				}
+			}
+		});
+	}
+
 }

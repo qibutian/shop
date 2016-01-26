@@ -6,9 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+
+import android.content.Context;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
+import com.means.shopping.api.API;
 
 public class Cart {
 
@@ -44,33 +50,46 @@ public class Cart {
 	 * @param goodid
 	 * @return
 	 */
-	public Good getOrCreateGood(Long goodid) {
-		Good good = new Good();
-		good.setGoodId(goodid);
-		// good.setName(name);
+//	public Good getOrCreateGood(Long goodid) {
+//		Good good = new Good();
+//		good.setGoodId(goodid);
+//		// good.setName(name);
+//
+//		int i = goodList.indexOf(good);
+//		if (i != -1) {
+//			Good oldgood = goodList.get(i);
+//			oldgood.setCount(1 + oldgood.getCount());
+//			try {
+//				goodDao.update(good);
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+//			good.setCount(1);
+//			goodList.add(good);
+//			try {
+//				goodDao.create(good);
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		return good;
+//	}
 
-		int i = goodList.indexOf(good);
-		if (i != -1) {
-			Good oldgood = goodList.get(i);
-			oldgood.setCount(1 + oldgood.getCount());
-			try {
-				goodDao.update(good);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			good.setCount(1);
-			goodList.add(good);
-			try {
-				goodDao.create(good);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return good;
-	}
+//	public void addGood(Context context, String goodId, int count, int type) {
+//		DhNet net = new DhNet(API.addCart);
+//		net.doPostInDialog(new NetTask(context) {
+//
+//			@Override
+//			public void doInUI(Response response, Integer transfer) {
+//				if (response.isSuccess()) {
+//					
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * 获取商品
@@ -94,20 +113,20 @@ public class Cart {
 	 * @param goodid
 	 * @return
 	 */
-	public void removeGood(Long goodId) {
-		Good good = new Good();
-		good.setGoodId(goodId);
-		int i = this.goodList.indexOf(good);
-		if (i != -1) {
-			try {
-				goodDao.delete(goodList.get(i));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			this.goodList.remove(i);
-		}
-	}
+//	public void removeGood(Long goodId) {
+//		Good good = new Good();
+//		good.setGoodId(goodId);
+//		int i = this.goodList.indexOf(good);
+//		if (i != -1) {
+//			try {
+//				goodDao.delete(goodList.get(i));
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			this.goodList.remove(i);
+//		}
+//	}
 
 	/**
 	 * 删减商品
@@ -115,26 +134,26 @@ public class Cart {
 	 * @param goodid
 	 * @return
 	 */
-	public void reduceGood(Long goodId) {
-		Good good = new Good();
-		good.setGoodId(goodId);
-		int i = this.goodList.indexOf(good);
-		if (i != -1) {
-			Good oldgood = this.goodList.get(i);
-			oldgood.setCount(oldgood.getCount() - 1);
-			if (oldgood.getCount() == 0) {
-				removeGood(good.getGoodId());
-			} else {
-				try {
-					goodDao.update(oldgood);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-
-	}
+//	public void reduceGood(Long goodId) {
+//		Good good = new Good();
+//		good.setGoodId(goodId);
+//		int i = this.goodList.indexOf(good);
+//		if (i != -1) {
+//			Good oldgood = this.goodList.get(i);
+//			oldgood.setCount(oldgood.getCount() - 1);
+//			if (oldgood.getCount() == 0) {
+//				removeGood(good.getGoodId());
+//			} else {
+//				try {
+//					goodDao.update(oldgood);
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//
+//	}
 
 	public List<Good> getGoods() {
 		return goodList;

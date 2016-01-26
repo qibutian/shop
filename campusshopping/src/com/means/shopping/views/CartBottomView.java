@@ -28,8 +28,6 @@ public class CartBottomView extends LinearLayout {
 
 	OnCartViewClickListener onCartViewClickListener;
 
-	Cart cart;
-
 	ImageView minusI;
 
 	ImageView addI;
@@ -58,7 +56,6 @@ public class CartBottomView extends LinearLayout {
 	}
 
 	private void initView() {
-		cart = Cart.getInstance();
 		LayoutInflater.from(mContext).inflate(
 				R.layout.include_cart_bottom_view, this);
 		payB = (Button) findViewById(R.id.pay);
