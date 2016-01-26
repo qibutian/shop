@@ -69,7 +69,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
-		cartView.setGood(good);
+		cartView.setGood(good);  
 		cartView.setCartNumTextView();
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
