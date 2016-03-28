@@ -1,7 +1,6 @@
 package com.means.shopping.activity.main;
 
 import net.duohuo.dhroid.ioc.IocContainer;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,14 +14,15 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
-import com.means.shopping.activity.my.LoginActivity;
 import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
-import com.means.shopping.activity.order.RecentFragment;
-import com.means.shopping.activity.order.WaitPaymentFragment;
-import com.means.shopping.activity.order.WaitReceivingFragment;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.bean.LogoutEB;
+import com.means.shopping.manage.UserInfoManage;
+import com.means.shopping.manage.UserInfoManage.LoginCallBack;
 import com.means.shopping.utils.ShopPerference;
+
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends ShopBaseFragmentActivity {
 
@@ -31,10 +31,13 @@ public class MainActivity extends ShopBaseFragmentActivity {
 
 	private LinearLayout tabV;
 	ShopPerference per;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		EventBus.getDefault().register(this);
 		per = IocContainer.getShare().get(ShopPerference.class);
 		per.load();
 		initView();
@@ -66,35 +69,50 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		for (int i = 0; i < tabV.getChildCount(); i++) {
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
 			RelativeLayout imgV = (RelativeLayout) childV.getChildAt(0);
-			ImageView imgI = (ImageView) imgV.getChildAt(0);
-			TextView textT = (TextView) childV.getChildAt(1);
+			final ImageView imgI = (ImageView) imgV.getChildAt(0);
+			final TextView textT = (TextView) childV.getChildAt(1);
+
+			if (index == 2) {
+				if (!per.isLogin()) {
+					UserInfoManage.getInstance().checkLogin(MainActivity.this,
+							new LoginCallBack() {
+
+								@Override
+								public void onisLogin() {
+
+								}
+
+								@Override
+								public void onLoginFail() {
+									// TODO Auto-generated method stub
+
+								}
+							});
+					return;
+				}
+			}
 			if (i == index) {
 				switch (i) {
-				case 0:		//首页
+				case 0: // 首页
 					switchContent(HomePageFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_home_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
 					break;
 
-				case 1:		//订单
+				case 1: // 订单
 					switchContent(OrderFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_order_s);
 					textT.setTextColor(getResources().getColor(
 							R.color.tab_index_bg));
 					break;
 
-				case 2:		//我的
-					if (per.isLogin()) {
-						switchContent(MyFragment.getInstance());
-						imgI.setImageResource(R.drawable.icon_my_s);
-						textT.setTextColor(getResources().getColor(
-								R.color.tab_index_bg));
-					}else {
-						Intent it = new Intent(self,LoginActivity.class);
-						startActivity(it);
-					}
-					
+				case 2: // 我的
+					switchContent(MyFragment.getInstance());
+					imgI.setImageResource(R.drawable.icon_my_s);
+					textT.setTextColor(getResources().getColor(
+							R.color.tab_index_bg));
+
 					break;
 
 				default:
@@ -143,5 +161,17 @@ public class MainActivity extends ShopBaseFragmentActivity {
 			currentFragment = fragment;
 		} catch (Exception e) {
 		}
+	}
+
+	public void onEventMainThread(LogoutEB out) {
+
+		setTab(0);
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 }

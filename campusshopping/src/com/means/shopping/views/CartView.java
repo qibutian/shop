@@ -3,15 +3,7 @@ package com.means.shopping.views;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
-
-import com.means.shopping.R;
-import com.means.shopping.api.API;
-import com.means.shopping.bean.Cart;
-import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
-
-import de.greenrobot.event.EventBus;
-
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -19,6 +11,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.means.shopping.R;
+import com.means.shopping.api.API;
+import com.means.shopping.bean.Good;
+import com.means.shopping.bean.PriceEB;
+import com.means.shopping.manage.UserInfoManage;
+import com.means.shopping.manage.UserInfoManage.LoginCallBack;
+
+import de.greenrobot.event.EventBus;
 
 public class CartView extends LinearLayout {
 	Context mContext;
@@ -118,23 +119,37 @@ public class CartView extends LinearLayout {
 		void onMinusClick();
 	}
 
-	public void addGood(Context context, Long goodId, int count, int type) {
-		DhNet net = new DhNet(API.addCart);
-		net.addParam("goodsid", goodId);
-		net.addParam("count", count);
-		net.addParam("type", type);
-		net.doPostInDialog(new NetTask(context) {
+	public void addGood(final Context context, final Long goodId, final int count, final int type) {
+		UserInfoManage.getInstance().checkLogin((Activity)context,
+				new LoginCallBack() {
 
-			@Override
-			public void doInUI(Response response, Integer transfer) {
-				if (response.isSuccess()) {
-					mGood.setCount(mGood.getCount() + 1);
-					if (onCartViewClickListener != null) {
-						onCartViewClickListener.onAddClick();
+					@Override
+					public void onisLogin() {
+						DhNet net = new DhNet(API.addCart);
+						net.addParam("goodsid", goodId);
+						net.addParam("count", count);
+						net.addParam("type", type);
+						net.doPostInDialog(new NetTask(context) {
+
+							@Override
+							public void doInUI(Response response, Integer transfer) {
+								if (response.isSuccess()) {
+									mGood.setCount(mGood.getCount() + 1);
+									if (onCartViewClickListener != null) {
+										onCartViewClickListener.onAddClick();
+									}
+								}
+							}
+						});
 					}
-				}
-			}
-		});
+
+					@Override
+					public void onLoginFail() {
+						// TODO Auto-generated method stub
+
+					}
+				});
+		
 	}
 
 	public void changeGoodCount(Context context, Long goodId, int count,
