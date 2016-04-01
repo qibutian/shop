@@ -1,11 +1,19 @@
 package com.means.shopping.activity.main;
 
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.means.shopping.R;
+import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.utils.ShopPerference;
 
@@ -33,12 +41,11 @@ public class SplashActivity extends ShopBaseActivity {
 		if (per.isFirst == 0) {
 			first();
 		} else {
-//
-//			if (!TextUtils.isEmpty(per.phone) && !TextUtils.isEmpty(per.pswd)) {
-//				login();
-//			} else {
+			if (!TextUtils.isEmpty(per.getPhone()) && !TextUtils.isEmpty(per.getPswd())) {
+				login();
+			} else {
 				notFirst();
-//			}
+			}
 		}
 	}
 
@@ -55,45 +62,30 @@ public class SplashActivity extends ShopBaseActivity {
 		}, 2000);
 	}
 
-//	private void login() {
-//
-//		DhNet net = new DhNet(API.login);
-//		net.addParam("phone", per.phone);
-//		net.addParam("password", per.pswd);
-//		// net.addParam("phone", "13852286536");
-//		// net.addParam("password", "123");
-//		net.doPostInDialog("登录中...", new NetTask(self) {
-//
-//			@Override
-//			public void doInUI(Response response, Integer transfer) {
-//				if (response.isSuccess()) {
-//					JSONObject jo = response.jSONFromData();
-//					User user = User.getInstance();
-//					user.setUid(JSONUtil.getString(jo, "uid"));
-//					user.setToken(JSONUtil.getString(jo, "pwd"));
-//					user.setLogin(true);
-//
-//					// showToast("登录成功");
-//
-//					// Intent it = new Intent(self, MainActivity.class);
-//					// startActivity(it);
-//					// finishWithoutAnim();
-//					// 登录成功后发送事件,关闭之前的页面
-//				}else {
-//					notFirst();
-//				}
-//
-//				notFirst();
-//			}
-//
-//			@Override
-//			public void onErray(Response response) {
-//				// TODO Auto-generated method stub
-//				super.onErray(response);
-//				notFirst();
-//			}
-//		});
-//	}
+	private void login() {
+		DhNet net = new DhNet(API.login);
+		net.addParam("pswd", per.getPswd());
+		net.addParam("phone", per.getPhone());
+		net.doPostInDialog("登录中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					per.setLogin(true);
+					per.commit();
+				}
+				notFirst();
+			}
+
+			@Override
+			public void onErray(Response response) {
+				// TODO Auto-generated method stub
+				super.onErray(response);
+				notFirst();
+			}
+		});
+	}
 
 	private void notFirst() {
 		mHandler.postDelayed(new Runnable() {

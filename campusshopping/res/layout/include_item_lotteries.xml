@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/nothing"
-     >
+    android:background="@color/nothing" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/lotteries_bg"
+        android:orientation="vertical"
         android:paddingBottom="5dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="5dp"
-        android:orientation="vertical" >
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp" >
 
         <TextView
+            android:id="@+id/minamount"
             style="@style/text_white_small"
             android:text="购物满1000.0减50.0" />
 
@@ -30,15 +30,32 @@
                 android:text="￥" />
 
             <TextView
+                android:id="@+id/amount"
                 style="@style/text_white_biger"
                 android:layout_marginLeft="5dp"
                 android:text="50" />
         </LinearLayout>
 
-        <TextView
-            style="@style/text_white_smaller"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="2016-1-8 14:32:14" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/startdate"
+                style="@style/text_white_smaller"
+                android:text="2016-1-8" />
+
+            <TextView
+                style="@style/text_white_smaller"
+                android:text="  至  " />
+
+            <TextView
+                android:id="@+id/enddate"
+                style="@style/text_white_smaller"
+                android:text="14:32:14" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

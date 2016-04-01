@@ -183,15 +183,15 @@ public class Cart {
 		}
 		return price;
 	}
-
-	public int getCount() {
-		int count = 0;
-		for (Iterator<Good> iterator = goodList.iterator(); iterator.hasNext();) {
-			Good good = (Good) iterator.next();
-			Integer goods = good.getCount();
-			count += goods != null ? goods : 0;
-		}
-		return count;
-	}
+//
+//	public int getCount() {
+//		int count = 0;
+//		for (Iterator<Good> iterator = goodList.iterator(); iterator.hasNext();) {
+//			Good good = (Good) iterator.next();
+//			Integer goods = good.getCount();
+//			count += goods != null ? goods : 0;
+//		}
+//		return count;
+//	}
 
 }

@@ -1,5 +1,7 @@
 package com.means.shopping.activity.order;
 
+import java.util.Date;
+
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.net.JSONUtil;
@@ -26,6 +28,7 @@ import android.widget.ListView;
 
 import com.means.shopping.R;
 import com.means.shopping.api.API;
+import com.means.shopping.utils.ShopUtils;
 import com.means.shopping.views.RefreshListViewAndMore;
 
 /**
@@ -70,19 +73,23 @@ public class RecentFragment extends Fragment{
 	
 	private void getData(){
 		
-//		// 设置空的emptyView
-//		listV.setEmptyView(mLayoutInflater.inflate(
-//				R.layout.list_nomal_emptyview, null));
-		adapter = new NetJSONAdapter(API.test, getActivity(),
+		adapter = new NetJSONAdapter(API.listall, getActivity(),
 				R.layout.item_recent_order_list);
-		adapter.fromWhat("data");
-		// setUrl("http://cwapi.gongpingjia.com:8080/v2/activity/list?latitude=32&longitude=118&maxDistance=5000000&token="+user.getToken()+"&userId="+user.getUserId());
-//		adapter.addparam("uid", "");
-//		adapter.addparam("recommend", "1");
-//		adapter.addField("name", R.id.name);
+		adapter.addparam("type", 1);
+		adapter.fromWhat("list");
+		adapter.addField("payprice", R.id.payprice);
+		adapter.addField("code", R.id.code);
+		adapter.addField("buyphone", R.id.buyphone);
+		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return ShopUtils.dateToStrLong(new Date(
+						Long.parseLong(o.toString()) * 1000));
+			}
+		});
 		
 		listV.setAdapter(adapter);
-
 		contentListV = listV.getListView();
 
 		contentListV.setOnItemClickListener(new OnItemClickListener() {

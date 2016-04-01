@@ -14,7 +14,10 @@ import android.widget.LinearLayout;
 import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.bean.LogoutEB;
 import com.means.shopping.utils.ShopPerference;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 设置
@@ -92,6 +95,9 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 					showToast("已退出登录");
 					per.setLogin(false);
 					per.commit();
+					LogoutEB out = new LogoutEB();
+					EventBus.getDefault().post(out);
+					finish();
 				}
 			}
 		});

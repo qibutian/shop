@@ -88,6 +88,10 @@ public class MarketActivity extends ShopBaseActivity {
 		catListV = (ListView) findViewById(R.id.listview_normal);
 		catListV.addHeaderView(catHeadV);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
+<<<<<<< HEAD
+=======
+//		cartBootmView.setCartNum();
+>>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
 		catListV.setOnItemClickListener(new OnItemClickListener() {

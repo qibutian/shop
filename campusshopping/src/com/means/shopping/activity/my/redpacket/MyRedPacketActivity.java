@@ -45,9 +45,9 @@ public class MyRedPacketActivity extends ShopBaseActivity {
 		tabV = (LinearLayout) findViewById(R.id.tab);
 		viewPager = (ViewPager) findViewById(R.id.viewpager);
 		List<Fragment> frags = new ArrayList<Fragment>();
-		frags.add(CanApplicableFragment.getInstance());
-		frags.add(AlreadyApplicableFragment.getInstance());
-		frags.add(PastApplicableFragment.getInstance());
+		frags.add(CanApplicableFragment.getInstance());	//可使用
+		frags.add(AlreadyApplicableFragment.getInstance());	//已使用
+		frags.add(PastApplicableFragment.getInstance());	//已过期
 		
 		OrderFragmentPageAdapter adapter = new OrderFragmentPageAdapter(getSupportFragmentManager(), frags);
 		viewPager.setAdapter(adapter);
@@ -98,20 +98,17 @@ public class MyRedPacketActivity extends ShopBaseActivity {
 			View lineV =  childV.getChildAt(1);
 			if (i == index) {
 				switch (i) {
-				case 0:		//近一月
-//					switchContent(RecentFragment.getInstance());
+				case 0:		
 					textT.setTextColor(getResources().getColor(R.color.text_ff9_yellow));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
-				case 1:		//待收货
-//					switchContent(WaitReceivingFragment.getInstance());
+				case 1:		
 					textT.setTextColor(getResources().getColor(R.color.text_ff9_yellow));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
-				case 2:		//待支付
-//					switchContent(WaitPaymentFragment.getInstance());
+				case 2:		
 					textT.setTextColor(getResources().getColor(R.color.text_ff9_yellow));
 					lineV.setVisibility(View.VISIBLE);
 					break;

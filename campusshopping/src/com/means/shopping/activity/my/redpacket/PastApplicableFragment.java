@@ -1,12 +1,25 @@
 package com.means.shopping.activity.my.redpacket;
 
+import java.util.Date;
+
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.adapter.FieldMap;
+import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.shopping.R;
+import com.means.shopping.api.API;
+import com.means.shopping.utils.ShopUtils;
+import com.means.shopping.views.RefreshListViewAndMore;
 
 /**
  * 已过期的红包
@@ -19,6 +32,10 @@ public class PastApplicableFragment extends Fragment{
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
+	
+	RefreshListViewAndMore listV;
+	NetJSONAdapter adapter;
+	ListView contentListV;
 
 	public static PastApplicableFragment getInstance() {
 		if (instance == null) {
@@ -40,6 +57,54 @@ public class PastApplicableFragment extends Fragment{
 	}
 
 	private void initView() {
+		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
+		getData();
+	}
+	
+	private void getData() {
+		adapter = new NetJSONAdapter(API.walletlist, getActivity(),
+				R.layout.item_my_redpacket_list);
+		adapter.addparam("status", 3);
+		adapter.fromWhat("list");
+		adapter.addField(new FieldMap("minamount", R.id.minamount) {
 
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				JSONObject jso = (JSONObject) jo;
+				String amount = JSONUtil.getString(jso, "amount");
+				// TODO Auto-generated method stub
+				return "购物满" + o.toString() + "减" + amount;
+			}
+		});
+		adapter.addField("amount", R.id.amount);
+		adapter.addField(new FieldMap("startdate", R.id.startdate) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return ShopUtils.dateToStr(new Date(
+						Long.parseLong(o.toString()) * 1000));
+			}
+		});
+		adapter.addField(new FieldMap("enddate", R.id.enddate) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return ShopUtils.dateToStr(new Date(
+						Long.parseLong(o.toString()) * 1000));
+			}
+		});
+
+		listV.setAdapter(adapter);
+
+		contentListV = listV.getListView();
+
+		contentListV.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+				JSONObject jo = adapter.getTItem(position - 1);
+			}
+		});
 	}
 }

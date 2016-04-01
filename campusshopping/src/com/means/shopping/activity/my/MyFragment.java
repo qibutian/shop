@@ -1,6 +1,6 @@
 package com.means.shopping.activity.my;
 
-import org.json.JSONObject;
+import java.io.File;
 
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
@@ -8,6 +8,9 @@ import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
+
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,14 +22,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.main.MsgListActivity;
 import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
-import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.api.API;
+import com.means.shopping.utils.FileUtil;
 import com.means.shopping.utils.ShopPerference;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * 我的
@@ -44,15 +49,17 @@ public class MyFragment extends Fragment implements OnClickListener {
 	private ImageView headI;
 	private ImageView settingI;
 	private LinearLayout myredpacketLl, changepwdLl;
-	private TextView nicknameT, balanceT, goldT;
+	private TextView nicknameT, balanceT, goldT, cacheT;
 	private RelativeLayout msgLayoutR;
 
-	View recommendV;
+	View recommendV, wipe_cacheV;
 
 	ShopPerference per;
 
 	// 我的消息点击区域
 	View msg_layoutV;
+
+	File mCacheDir;
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -85,12 +92,21 @@ public class MyFragment extends Fragment implements OnClickListener {
 		balanceT = (TextView) mainV.findViewById(R.id.balance);
 		goldT = (TextView) mainV.findViewById(R.id.gold);
 		msg_layoutV = mainV.findViewById(R.id.msg_layout);
+		wipe_cacheV = mainV.findViewById(R.id.wipe_cache);
+		cacheT = (TextView) mainV.findViewById(R.id.cache);
+
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
 		myredpacketLl.setOnClickListener(this);
 		recommendV.setOnClickListener(this);
 		changepwdLl.setOnClickListener(this);
 		msg_layoutV.setOnClickListener(this);
+		wipe_cacheV.setOnClickListener(this);
+
+		mCacheDir = new File(getActivity().getExternalCacheDir(), "Rabbit");
+		cacheT.setText(String.valueOf(FileUtil.getFileOrDirSize(mCacheDir,
+				FileUtil.UNIT_SACLE.M)) + " M");
+
 		getUserInfo();
 	}
 
@@ -158,6 +174,18 @@ public class MyFragment extends Fragment implements OnClickListener {
 		case R.id.msg_layout:
 			it = new Intent(getActivity(), MsgListActivity.class);
 			getActivity().startActivity(it);
+			// 清除缓存
+		case R.id.wipe_cache:
+			ImageLoader.getInstance().getMemoryCache().clear();
+			ImageLoader.getInstance().getDiskCache().clear();
+			if (FileUtil.deleteFileOrDir(mCacheDir)) {
+				Toast.makeText(getActivity(), "缓存清理成功", Toast.LENGTH_SHORT)
+						.show();
+				cacheT.setText("0M");
+			} else {
+				Toast.makeText(getActivity(), "已经非常干净了", Toast.LENGTH_SHORT)
+						.show();
+			}
 			break;
 		default:
 			break;
