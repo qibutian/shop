@@ -47,13 +47,10 @@ public class ShopApplication extends Application implements
 		// Thread.setDefaultUncaughtExceptionHandler(this);
 		instance = this;
 		Const.netadapter_page_no = "currentpage";
-		Const.netadapter_step = "pageNums";
-		Const.response_total = "totalRows";
+		Const.response_total = "totalcount";
 		Const.response_data = "data";
 		Const.netadapter_step_default = 10;
 		Const.DATABASE_VERSION = 23;
-		Const.response_success = "success";
-		Const.response_msg = "info";
 		Const.response_result_status = "1";
 		Const.netadapter_no_more = "";
 		// Const.postType = 2;

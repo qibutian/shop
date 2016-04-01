@@ -53,4 +53,7 @@ public class API {
 
 	// 删除购物车
 	public static String removeCart = Baseurl + "/home/cart/remove";
+
+	// 消息列表
+	public static String msgList = Baseurl + "/home/index/msglist";
 }

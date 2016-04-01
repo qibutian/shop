@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.means.shopping.R;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 import com.means.shopping.views.BaseAlertDialog;
 import com.means.shopping.views.CartView;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
@@ -47,21 +46,21 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 		cartView.setThemeWhite();
 		cartView.setGood(good);
 		cartView.setCartNumTextView();
-		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
-
-			@Override
-			public void onMinusClick() {
-				cartView.setCartNumTextView();
-			}
-
-			@Override
-			public void onAddClick() {
-				cartView.setCartNumTextView();
-				EventBus.getDefault().post(new PriceEB());
-
-			}
-
-		});
+//		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
+//
+//			@Override
+//			public void onMinusClick() {
+//				cartView.setCartNumTextView();
+//			}
+//
+//			@Override
+//			public void onAddClick() {
+//				cartView.setCartNumTextView();
+//				EventBus.getDefault().post(new PriceEB());
+//
+//			}
+//
+//		});
 
 		findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
 

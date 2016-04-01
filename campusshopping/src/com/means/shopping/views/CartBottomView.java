@@ -15,8 +15,8 @@ import com.means.shopping.R;
 import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.bean.Cart;
+import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 
 import de.greenrobot.event.EventBus;
@@ -81,11 +81,15 @@ public class CartBottomView extends LinearLayout {
 				mContext.startActivity(it);
 			}
 		});
-		setCartNum();
+		getData();
 	}
 
-	public void setCartNum() {
-		int count = Cart.getInstance().getCount();
+	public void getData() {
+
+	}
+
+	public void setCartNum(CartBottomNumEB cartBottomNumEB) {
+		int count = cartBottomNumEB.getCount();
 		badgeT.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		payB.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		badgeT.setText(count + "");
@@ -102,8 +106,8 @@ public class CartBottomView extends LinearLayout {
 		desT.setText(des);
 	}
 
-	public void onEventMainThread(PriceEB priceEB) {
-		setCartNum();
+	public void onEventMainThread(CartBottomNumEB cartBottomNumEB) {
+		setCartNum(cartBottomNumEB);
 	}
 
 }

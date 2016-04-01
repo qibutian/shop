@@ -30,19 +30,20 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+            
             android:gravity="center"
             android:orientation="vertical" >
 
             <RelativeLayout
                 android:id="@+id/img_layout"
-                android:layout_width="25dp"
-                android:layout_height="25dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/icon_home_s" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/test_icon" />
             </RelativeLayout>
 
             <TextView

@@ -26,7 +26,6 @@ import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
@@ -89,7 +88,6 @@ public class MarketActivity extends ShopBaseActivity {
 		catListV = (ListView) findViewById(R.id.listview_normal);
 		catListV.addHeaderView(catHeadV);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
-		cartBootmView.setCartNum();
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
 		catListV.setOnItemClickListener(new OnItemClickListener() {

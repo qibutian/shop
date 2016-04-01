@@ -55,10 +55,10 @@ public class CatDetailAdapter extends NetJSONAdapter {
 
 		ViewUtil.bindView(convertView.findViewById(R.id.name),
 				JSONUtil.getString(jo, "name"));
-//		ViewUtil.bindView(convertView.findViewById(R.id.price),
-//				JSONUtil.getString(jo, "price"));
-//		ViewUtil.bindView(convertView.findViewById(R.id.des),
-//				JSONUtil.getString(jo, "stitle"));
+		// ViewUtil.bindView(convertView.findViewById(R.id.price),
+		// JSONUtil.getString(jo, "price"));
+		// ViewUtil.bindView(convertView.findViewById(R.id.des),
+		// JSONUtil.getString(jo, "stitle"));
 		Long goodId = JSONUtil.getLong(jo, "id");
 
 		Good good = new Good();
@@ -70,12 +70,12 @@ public class CatDetailAdapter extends NetJSONAdapter {
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override
-			public void onMinusClick() {
+			public void onMinusClick(int count, double price) {
 				notifyDataSetChanged();
 			}
 
 			@Override
-			public void onAddClick() {
+			public void onAddClick(int count, double price) {
 				notifyDataSetChanged();
 				if (type != 0) {
 					int[] start_location = new int[2];// 一个整型数组，用来存储按钮的在屏幕的X、Y坐标
@@ -83,7 +83,8 @@ public class CatDetailAdapter extends NetJSONAdapter {
 					addI.getLocationInWindow(start_location);// 这是获取购买按钮的在屏幕的X、Y坐标（这也是动画开始的坐标）
 					ImageView buyImg = new ImageView(mContext);// buyImg是动画的图片，我的是一个小球（R.drawable.sign）
 					buyImg.setImageResource(R.drawable.sign);// 设置buyImg的图片
-					CartAnimUtil anim = new CartAnimUtil((Activity) mContext);
+					CartAnimUtil anim = new CartAnimUtil((Activity) mContext,
+							count, price);
 					anim.setAnim(buyImg, start_location, targetV);
 				}
 			}

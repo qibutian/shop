@@ -25,10 +25,10 @@ public class MsgListActivity extends ShopBaseActivity {
 	public void initView() {
 		setTitle("消息列表");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		adapter = new NetJSONAdapter(API.test, self, R.layout.item_msg_list);
+		adapter = new NetJSONAdapter(API.msgList, self, R.layout.item_msg_list);
+		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		adapter.showNextInDialog();
-
 	}
 
 }

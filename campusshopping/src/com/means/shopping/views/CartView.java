@@ -1,14 +1,16 @@
 package com.means.shopping.views;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 
 import com.means.shopping.R;
 import com.means.shopping.api.API;
-import com.means.shopping.bean.Cart;
+import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 
 import de.greenrobot.event.EventBus;
 
@@ -32,6 +34,9 @@ public class CartView extends LinearLayout {
 	ImageView addI;
 
 	Good mGood;
+
+	// 0代表超市,夜市页面
+	int cartViewType = 1;
 
 	public CartView(Context context) {
 		super(context);
@@ -113,9 +118,9 @@ public class CartView extends LinearLayout {
 
 	public interface OnCartViewClickListener {
 
-		void onAddClick();
+		void onAddClick(int count, double price);
 
-		void onMinusClick();
+		void onMinusClick(int count, double price);
 	}
 
 	public void addGood(Context context, Long goodId, int count, int type) {
@@ -128,9 +133,21 @@ public class CartView extends LinearLayout {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					mGood.setCount(mGood.getCount() + 1);
+					JSONObject jo = response.jSONFromData();
+					mGood.setCount(JSONUtil.getInt(jo, "count"));
+
+					if (cartViewType == 1) {
+
+						CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+						cartBottomNumEB.setCount(mGood.getCount());
+						cartBottomNumEB.setPrice(JSONUtil
+								.getDouble(jo, "price"));
+					}
+
+					EventBus.getDefault().post(new CartBottomNumEB());
 					if (onCartViewClickListener != null) {
-						onCartViewClickListener.onAddClick();
+						onCartViewClickListener.onAddClick(mGood.getCount(),
+								JSONUtil.getDouble(jo, "price"));
 					}
 				}
 			}
@@ -148,11 +165,20 @@ public class CartView extends LinearLayout {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					mGood.setCount(mGood.getCount() - 1);
-					if (onCartViewClickListener != null) {
-						onCartViewClickListener.onMinusClick();
+					JSONObject jo = response.jSONFromData();
+					mGood.setCount(JSONUtil.getInt(jo, "count"));
+
+					if (cartViewType == 1) {
+
+						CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+						cartBottomNumEB.setCount(mGood.getCount());
+						cartBottomNumEB.setPrice(JSONUtil
+								.getDouble(jo, "price"));
 					}
-					EventBus.getDefault().post(new PriceEB());
+					if (onCartViewClickListener != null) {
+						onCartViewClickListener.onMinusClick(mGood.getCount(),
+								JSONUtil.getDouble(jo, "price"));
+					}
 				}
 			}
 		});

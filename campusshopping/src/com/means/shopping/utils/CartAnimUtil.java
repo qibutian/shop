@@ -1,6 +1,8 @@
 package com.means.shopping.utils;
 
-import com.means.shopping.bean.PriceEB;
+import net.duohuo.dhroid.net.JSONUtil;
+
+import com.means.shopping.bean.CartBottomNumEB;
 
 import de.greenrobot.event.EventBus;
 import android.app.Activity;
@@ -21,9 +23,13 @@ public class CartAnimUtil {
 	Activity mActivity;
 
 	OnAnimationEndListener onAnimationEndListener;
+	int count;
+	double price;
 
-	public CartAnimUtil(Activity activity) {
+	public CartAnimUtil(Activity activity, int count, double price) {
 		this.mActivity = activity;
+		this.count = count;
+		this.price = price;
 	}
 
 	private ViewGroup createAnimLayout(Activity activity) {
@@ -100,7 +106,10 @@ public class CartAnimUtil {
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				v.setVisibility(View.GONE);
-				EventBus.getDefault().post(new PriceEB());
+				CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+				cartBottomNumEB.setCount(count);
+				cartBottomNumEB.setPrice(price);
+				EventBus.getDefault().post(new CartBottomNumEB());
 			}
 		});
 

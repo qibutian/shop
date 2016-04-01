@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import com.means.shopping.R;
 import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 import com.means.shopping.utils.CartAnimUtil;
 import com.means.shopping.utils.CartAnimUtil.OnAnimationEndListener;
 import com.means.shopping.views.CartView;
@@ -69,17 +68,17 @@ public class HomePageAdapter extends NetJSONAdapter {
 		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
-		cartView.setGood(good);  
+		cartView.setGood(good);
 		cartView.setCartNumTextView();
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override
-			public void onMinusClick() {
+			public void onMinusClick(int count, double price) {
 				notifyDataSetChanged();
 			}
 
 			@Override
-			public void onAddClick() {
+			public void onAddClick(int count, double price) {
 				notifyDataSetChanged();
 				if (type != 0) {
 					int[] start_location = new int[2];// 一个整型数组，用来存储按钮的在屏幕的X、Y坐标
@@ -87,7 +86,8 @@ public class HomePageAdapter extends NetJSONAdapter {
 					addI.getLocationInWindow(start_location);// 这是获取购买按钮的在屏幕的X、Y坐标（这也是动画开始的坐标）
 					ImageView buyImg = new ImageView(mContext);// buyImg是动画的图片，我的是一个小球（R.drawable.sign）
 					buyImg.setImageResource(R.drawable.sign);// 设置buyImg的图片
-					CartAnimUtil anim = new CartAnimUtil((Activity) mContext);
+					CartAnimUtil anim = new CartAnimUtil((Activity) mContext,
+							count, price);
 					anim.setAnim(buyImg, start_location, targetV);
 				}
 			}
