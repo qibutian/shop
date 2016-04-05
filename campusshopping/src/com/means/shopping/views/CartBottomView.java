@@ -14,14 +14,8 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.pay.PaymentActivity;
-import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
-<<<<<<< HEAD
-=======
-import com.means.shopping.bean.GoodEB;
-import com.means.shopping.bean.PriceEB;
->>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 
 import de.greenrobot.event.EventBus;
@@ -86,7 +80,6 @@ public class CartBottomView extends LinearLayout {
 				mContext.startActivity(it);
 			}
 		});
-<<<<<<< HEAD
 		getData();
 	}
 
@@ -96,11 +89,9 @@ public class CartBottomView extends LinearLayout {
 
 	public void setCartNum(CartBottomNumEB cartBottomNumEB) {
 		int count = cartBottomNumEB.getCount();
-=======
 	}
 
 	public void setCartNum(int   count) {
->>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
 		badgeT.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		payB.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		badgeT.setText(count + "");
@@ -117,13 +108,8 @@ public class CartBottomView extends LinearLayout {
 		desT.setText(des);
 	}
 
-<<<<<<< HEAD
 	public void onEventMainThread(CartBottomNumEB cartBottomNumEB) {
 		setCartNum(cartBottomNumEB);
-=======
-	public void onEventMainThread(GoodEB good) {
-		setCartNum(good.getCount());
->>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
 	}
 
 }

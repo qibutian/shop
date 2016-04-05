@@ -1,23 +1,13 @@
 package com.means.shopping.views;
 
-import org.json.JSONObject;
-
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
-<<<<<<< HEAD
 
-import com.means.shopping.R;
-import com.means.shopping.api.API;
-import com.means.shopping.bean.CartBottomNumEB;
-import com.means.shopping.bean.Good;
+import org.json.JSONObject;
 
-import de.greenrobot.event.EventBus;
-
-=======
 import android.app.Activity;
->>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,8 +18,8 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.api.API;
+import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
-import com.means.shopping.bean.PriceEB;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
 
@@ -136,8 +126,9 @@ public class CartView extends LinearLayout {
 		void onMinusClick(int count, double price);
 	}
 
-	public void addGood(final Context context, final Long goodId, final int count, final int type) {
-		UserInfoManage.getInstance().checkLogin((Activity)context,
+	public void addGood(final Context context, final Long goodId,
+			final int count, final int type) {
+		UserInfoManage.getInstance().checkLogin((Activity) context,
 				new LoginCallBack() {
 
 					@Override
@@ -149,11 +140,27 @@ public class CartView extends LinearLayout {
 						net.doPostInDialog(new NetTask(context) {
 
 							@Override
-							public void doInUI(Response response, Integer transfer) {
+							public void doInUI(Response response,
+									Integer transfer) {
 								if (response.isSuccess()) {
-									mGood.setCount(mGood.getCount() + 1);
+									JSONObject jo = response.jSONFromData();
+									mGood.setCount(JSONUtil.getInt(jo, "count"));
+
+									if (cartViewType == 1) {
+
+										CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+										cartBottomNumEB.setCount(mGood
+												.getCount());
+										cartBottomNumEB.setPrice(JSONUtil
+												.getDouble(jo, "price"));
+									}
+
+									EventBus.getDefault().post(
+											new CartBottomNumEB());
 									if (onCartViewClickListener != null) {
-										onCartViewClickListener.onAddClick();
+										onCartViewClickListener.onAddClick(
+												mGood.getCount(),
+												JSONUtil.getDouble(jo, "price"));
 									}
 								}
 							}
@@ -162,32 +169,11 @@ public class CartView extends LinearLayout {
 
 					@Override
 					public void onLoginFail() {
-						// TODO Auto-generated method stub
-
-<<<<<<< HEAD
-			@Override
-			public void doInUI(Response response, Integer transfer) {
-				if (response.isSuccess()) {
-					JSONObject jo = response.jSONFromData();
-					mGood.setCount(JSONUtil.getInt(jo, "count"));
-
-					if (cartViewType == 1) {
-
-						CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
-						cartBottomNumEB.setCount(mGood.getCount());
-						cartBottomNumEB.setPrice(JSONUtil
-								.getDouble(jo, "price"));
 					}
+					// TODO Auto-generated method stub
 
-					EventBus.getDefault().post(new CartBottomNumEB());
-					if (onCartViewClickListener != null) {
-						onCartViewClickListener.onAddClick(mGood.getCount(),
-								JSONUtil.getDouble(jo, "price"));
-=======
->>>>>>> aa2b4f58630bd3d67a72fc081c9f81564099d520
-					}
 				});
-		
+
 	}
 
 	public void changeGoodCount(Context context, Long goodId, int count,
