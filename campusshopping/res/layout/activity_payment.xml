@@ -53,11 +53,13 @@
                         android:padding="10dp" >
 
                         <TextView
+                            android:id="@+id/name"
                             style="@style/text_43_black_medium"
                             android:layout_width="wrap_content"
                             android:text="吴家丽" />
 
                         <TextView
+                            android:id="@+id/address"
                             style="@style/text_99_grey_smaller"
                             android:layout_marginTop="5dp"
                             android:ellipsize="end"

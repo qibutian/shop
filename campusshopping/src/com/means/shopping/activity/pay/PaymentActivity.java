@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.my.ConsigneeAddressActivity;
@@ -29,6 +30,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 	private int mWindoWidth;
 
 	private LinearLayout foodslayoutLl;
+	
+	private TextView nameT,addressT;
 
 	// 地址选择点击区域
 	View address_layoutV;
@@ -38,6 +41,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 			R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg,
 			R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg };
 
+	private final int ADDRESS_CODE = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +54,9 @@ public class PaymentActivity extends ShopBaseActivity implements
 		setTitle("订单");
 		foodslayoutLl = (LinearLayout) findViewById(R.id.foodslayout);
 		address_layoutV = findViewById(R.id.address_layout);
+		nameT = (TextView) findViewById(R.id.name);
+		addressT = (TextView) findViewById(R.id.address);
+		
 		address_layoutV.setOnClickListener(this);
 		setFoodsImgs();
 	}
@@ -91,7 +98,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 	private  void  getAddress () {
 		DhNet  net  =new DhNet(API.preorder);
-		net.addParam("", value)
+//		net.addParam("", value)
 	}
 
 	@Override
@@ -100,12 +107,24 @@ public class PaymentActivity extends ShopBaseActivity implements
 		switch (v.getId()) {
 		case R.id.address_layout:
 			it = new Intent(self, ConsigneeAddressActivity.class);
-			startActivity(it);
+			startActivityForResult(it, ADDRESS_CODE);
 			break;
 
 		default:
 			break;
 		}
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(arg0, arg1, arg2);
+		if (arg1 == RESULT_OK) {
+			if (arg0 == ADDRESS_CODE) {
+				nameT.setText(arg2.getStringExtra("lxname"));
+				addressT.setText(arg2.getStringExtra("lxaddress"));
+			}
+		}
 	}
 }

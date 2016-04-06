@@ -27,9 +27,14 @@
                 style="@style/text_43_black_small"
                 android:text="联系人" />
 
-            <TextView
+            <EditText
+                android:id="@+id/name"
                 style="@style/text_43_black_small"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
+                android:background="@color/nothing"
+                android:hint="请填写联系人"
                 android:text="郭富城" />
         </LinearLayout>
 
@@ -83,6 +88,7 @@
                 android:text="联系电话" />
 
             <EditText
+                android:id="@+id/phone"
                 style="@style/text_43_black_small"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,6 +96,7 @@
                 android:layout_marginLeft="10dp"
                 android:inputType="number"
                 android:maxLength="11"
+                android:hint="请输入联系电话"
                 android:text="" />
         </LinearLayout>
         
@@ -107,16 +114,42 @@
                 android:text="收货地址" />
 
             <TextView
+                android:id="@+id/address"
                 style="@style/text_43_black_small"
                 android:layout_marginLeft="10dp"
                 android:ellipsize="end"
                 android:singleLine="true"
+                
                 android:text="南京市" />
+        </LinearLayout>
+        
+        <View style="@style/line_horizontal" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+           	android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp" >
+             <TextView
+                style="@style/text_43_black_small"
+                android:text="详细地址" />
+
+            <EditText
+                android:id="@+id/detail"
+                style="@style/text_43_black_small"
+                android:background="@color/nothing"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:hint="请输入详细地址"
+                android:text="徐庄行政楼318" />
         </LinearLayout>
         
     </LinearLayout>
     
     <TextView 
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
