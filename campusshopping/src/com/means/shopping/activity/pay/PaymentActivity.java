@@ -1,5 +1,6 @@
 package com.means.shopping.activity.pay;
 
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.util.DhUtil;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.my.ConsigneeAddressActivity;
+import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 
 /**
@@ -45,6 +47,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 	@Override
 	public void initView() {
 		getWindowsWidth();
+		setTitle("订单");
 		foodslayoutLl = (LinearLayout) findViewById(R.id.foodslayout);
 		address_layoutV = findViewById(R.id.address_layout);
 		address_layoutV.setOnClickListener(this);
@@ -84,6 +87,11 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 		}
 
+	}
+
+	private  void  getAddress () {
+		DhNet  net  =new DhNet(API.preorder);
+		net.addParam("", value)
 	}
 
 	@Override

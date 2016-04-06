@@ -56,11 +56,16 @@ public class API {
 
 	// 消息列表
 	public static String msgList = Baseurl + "/home/index/msglist";
-	
+
 	// 我的红包
 	public static String walletlist = Baseurl + "/home/user/walletlist";
-	
+
 	// 我的订单列表分页
 	public static String listall = Baseurl + "/home/order/listall";
-	
+
+	// 订单预览
+	public static String preorder = Baseurl + "/home/order/preview";
+
+	// 下单
+	public static String addorder = Baseurl + "/home/order/submit";
 }

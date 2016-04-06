@@ -1,5 +1,6 @@
 package com.means.shopping.adapter;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.means.shopping.R;
@@ -51,7 +52,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 			convertView = mInflater.inflate(R.layout.item_home_list, null);
 		}
 
-		JSONObject jo = getTItem(position);
+		final JSONObject jo = getTItem(position);
 		ViewUtil.bindNetImage((ImageView) convertView.findViewById(R.id.pic),
 				JSONUtil.getString(jo, "pic"), "default");
 
@@ -64,7 +65,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 
 		Good good = new Good();
 		good.setGoodId(JSONUtil.getLong(jo, "id"));
-		good.setCount(0);
+		good.setCount(JSONUtil.getInt(jo, "cartcount"));
 		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
@@ -74,11 +75,23 @@ public class HomePageAdapter extends NetJSONAdapter {
 
 			@Override
 			public void onMinusClick(int count, double price) {
+				try {
+					jo.put("cartcount", JSONUtil.getInt(jo, "cartcount") - 1);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				notifyDataSetChanged();
 			}
 
 			@Override
 			public void onAddClick(int count, double price) {
+				try {
+					jo.put("cartcount", JSONUtil.getInt(jo, "cartcount") + 1);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				notifyDataSetChanged();
 				if (type != 0) {
 					int[] start_location = new int[2];// 一个整型数组，用来存储按钮的在屏幕的X、Y坐标

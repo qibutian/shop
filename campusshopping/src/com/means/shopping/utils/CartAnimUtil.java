@@ -109,7 +109,7 @@ public class CartAnimUtil {
 				CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
 				cartBottomNumEB.setCount(count);
 				cartBottomNumEB.setPrice(price);
-				EventBus.getDefault().post(new CartBottomNumEB());
+				EventBus.getDefault().post(cartBottomNumEB);
 			}
 		});
 

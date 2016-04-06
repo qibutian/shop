@@ -38,8 +38,10 @@ public class CartView extends LinearLayout {
 
 	Good mGood;
 
-	// 0代表超市,夜市页面
+	// 0代表超市,夜市,1代表首页页面
 	int cartViewType = 1;
+
+	public boolean isadd = false;
 
 	public CartView(Context context) {
 		super(context);
@@ -61,7 +63,8 @@ public class CartView extends LinearLayout {
 			public void onClick(View v) {
 
 				if (mGood != null) {
-					int count = mGood.getCount() == 1 ? 0 : 1;
+					int count = mGood.getCount() - 1;
+					isadd = false;
 					changeGoodCount(mContext, mGood.getGoodId(), count,
 							mGood.getGoodType());
 				}
@@ -74,9 +77,15 @@ public class CartView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
-
+				isadd = true;
 				if (mGood != null) {
-					addGood(mContext, mGood.getGoodId(), 1, mGood.getGoodType());
+					if (mGood.getCount() == 0) {
+						addGood(mContext, mGood.getGoodId(), 1,
+								mGood.getGoodType());
+					} else {
+						changeGoodCount(mContext, mGood.getGoodId(),
+								mGood.getCount() + 1, mGood.getGoodType());
+					}
 				}
 
 			}
@@ -153,10 +162,10 @@ public class CartView extends LinearLayout {
 												.getCount());
 										cartBottomNumEB.setPrice(JSONUtil
 												.getDouble(jo, "price"));
+										EventBus.getDefault().post(
+												cartBottomNumEB);
 									}
 
-									EventBus.getDefault().post(
-											new CartBottomNumEB());
 									if (onCartViewClickListener != null) {
 										onCartViewClickListener.onAddClick(
 												mGood.getCount(),
@@ -196,10 +205,19 @@ public class CartView extends LinearLayout {
 						cartBottomNumEB.setCount(mGood.getCount());
 						cartBottomNumEB.setPrice(JSONUtil
 								.getDouble(jo, "price"));
+						EventBus.getDefault().post(cartBottomNumEB);
 					}
 					if (onCartViewClickListener != null) {
-						onCartViewClickListener.onMinusClick(mGood.getCount(),
-								JSONUtil.getDouble(jo, "price"));
+
+						if (isadd) {
+							onCartViewClickListener.onAddClick(
+									mGood.getCount(),
+									JSONUtil.getDouble(jo, "price"));
+						} else {
+							onCartViewClickListener.onMinusClick(
+									mGood.getCount(),
+									JSONUtil.getDouble(jo, "price"));
+						}
 					}
 				}
 			}

@@ -1,5 +1,11 @@
 package com.means.shopping.views;
 
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.view.BadgeView;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +20,7 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.pay.PaymentActivity;
+import com.means.shopping.api.API;
 import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
@@ -84,14 +91,30 @@ public class CartBottomView extends LinearLayout {
 	}
 
 	public void getData() {
+		DhNet net = new DhNet(API.cartList);
+		net.doGet(new NetTask(mContext) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSON();
+					priceT.setText(JSONUtil.getString(jo, "price"));
+					setCartNum(JSONUtil.getInt(jo, "count"));
+				}
+
+			}
+		});
 
 	}
 
 	public void setCartNum(CartBottomNumEB cartBottomNumEB) {
 		int count = cartBottomNumEB.getCount();
+		setCartNum(count);
+		priceT.setText(cartBottomNumEB.getPrice() + "");
 	}
 
-	public void setCartNum(int   count) {
+	public void setCartNum(int count) {
 		badgeT.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		payB.setVisibility(count != 0 ? View.VISIBLE : View.GONE);
 		badgeT.setText(count + "");

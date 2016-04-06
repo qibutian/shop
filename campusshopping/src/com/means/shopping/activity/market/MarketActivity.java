@@ -88,7 +88,7 @@ public class MarketActivity extends ShopBaseActivity {
 		catListV = (ListView) findViewById(R.id.listview_normal);
 		catListV.addHeaderView(catHeadV);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
-//		cartBootmView.setCartNum();
+		// cartBootmView.setCartNum();
 		catAdapter = new CatAdapter(self);
 		catListV.setAdapter(catAdapter);
 		catListV.setOnItemClickListener(new OnItemClickListener() {
@@ -149,16 +149,20 @@ public class MarketActivity extends ShopBaseActivity {
 	private void setBgColor(int position) {
 
 		if (position == -2) {
-			likeV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
+			likeV.setBackgroundColor(getResources().getColor(
+					R.color.campus_grey));
 			hotV.setBackgroundColor(getResources().getColor(R.color.white));
 			catAdapter.select(position);
 		} else if (position == -1) {
 			likeV.setBackgroundColor(getResources().getColor(R.color.white));
-			hotV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
+			hotV.setBackgroundColor(getResources()
+					.getColor(R.color.campus_grey));
 			catAdapter.select(position);
 		} else {
-			likeV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
-			hotV.setBackgroundColor(getResources().getColor(R.color.campus_grey));
+			likeV.setBackgroundColor(getResources().getColor(
+					R.color.campus_grey));
+			hotV.setBackgroundColor(getResources()
+					.getColor(R.color.campus_grey));
 			catAdapter.select(position);
 		}
 	}
