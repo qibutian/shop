@@ -68,4 +68,10 @@ public class API {
 
 	// 下单
 	public static String addorder = Baseurl + "/home/order/submit";
+	
+	// 我的收货地址
+	public static String address = Baseurl + "/home/cart/address";
+	
+	// 编辑收货地址
+	public static String editaddress = Baseurl + "/home/cart/editaddress";
 }
