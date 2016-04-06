@@ -1,6 +1,8 @@
 package com.means.shopping.activity.market;
 
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 
 import org.json.JSONObject;
 
@@ -19,9 +21,12 @@ import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
+
+import de.greenrobot.event.EventBus;
 
 public class CartActivity extends ShopBaseActivity {
 
@@ -39,6 +44,8 @@ public class CartActivity extends ShopBaseActivity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cart);
+
+		EventBus.getDefault().register(this);
 	}
 
 	@Override
@@ -49,10 +56,23 @@ public class CartActivity extends ShopBaseActivity {
 
 		goodListContentV = goodListV.getListView();
 
-		goodAdater = new HomePageAdapter(API.test, self,
-				R.layout.item_home_list, 1);
+		goodAdater = new HomePageAdapter(API.cartList, self,
+				R.layout.item_home_list, 3);
 
-		goodAdater.fromWhat("data");
+		goodAdater.fromWhat("list");
+		goodListV.setOnLoadSuccess(new RefreshListViewAndMore.OnLoadSuccess() {
+
+			@Override
+			public void loadSuccess(Response response) {
+
+				if (!response.isCache) {
+					JSONObject jo = response.jSON();
+					priceT.setText(JSONUtil.getString(jo, "price"));
+				}
+
+			}
+
+		});
 		goodAdater.setTargetView(priceT);
 
 		goodListV.setAdapter(goodAdater);
@@ -83,6 +103,17 @@ public class CartActivity extends ShopBaseActivity {
 
 			}
 		});
+	}
+
+	public void onEventMainThread(CartBottomNumEB cartBottomNumEB) {
+		ViewUtil.bindView(priceT, cartBottomNumEB.getPrice() + "");
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 }

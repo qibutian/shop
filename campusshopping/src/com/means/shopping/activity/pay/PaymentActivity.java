@@ -1,7 +1,13 @@
 package com.means.shopping.activity.pay;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.util.DhUtil;
+import net.duohuo.dhroid.util.ViewUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,11 +39,6 @@ public class PaymentActivity extends ShopBaseActivity implements
 	// 地址选择点击区域
 	View address_layoutV;
 
-	int[] imgs = { R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg,
-			R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg,
-			R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg,
-			R.drawable.red_packet_top_bg, R.drawable.red_packet_top_bg };
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,7 +52,14 @@ public class PaymentActivity extends ShopBaseActivity implements
 		foodslayoutLl = (LinearLayout) findViewById(R.id.foodslayout);
 		address_layoutV = findViewById(R.id.address_layout);
 		address_layoutV.setOnClickListener(this);
-		setFoodsImgs();
+		String data = getIntent().getStringExtra("data");
+		try {
+			JSONArray jsa = new JSONArray(data);
+			setFoodsImgs(jsa);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void getWindowsWidth() {
@@ -59,17 +67,19 @@ public class PaymentActivity extends ShopBaseActivity implements
 		mWindoWidth = wm.getDefaultDisplay().getWidth();
 	}
 
-	private void setFoodsImgs() {
+	private void setFoodsImgs(JSONArray jsa) {
 		int with = DhUtil.dip2px(self,
 				(DhUtil.px2dip(self, mWindoWidth) - 60) / 7);
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(with, with);
 		lp.setMargins(0, 0, DhUtil.dip2px(self, 10), 0);
-		for (int i = 0; i < imgs.length; i++) {
+		for (int i = 0; i < jsa.length(); i++) {
+			JSONObject jo = JSONUtil.getJSONObjectAt(jsa, i);
 			ImageView img = new ImageView(self);
 			img.setLayoutParams(lp);
 			img.setScaleType(ScaleType.CENTER_CROP);
 			if (i == 6) {
 				img.setImageResource(R.drawable.icon_more);
+				img.setScaleType(ScaleType.FIT_XY);
 				foodslayoutLl.addView(img);
 				img.setOnClickListener(new View.OnClickListener() {
 
@@ -81,7 +91,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 				});
 				break;
 			}
-			img.setImageResource(imgs[i]);
+			ViewUtil.bindNetImage(img, JSONUtil.getString(jo, "pic"), "default");
+			// img.setImageResource(imgs[i]);
 			foodslayoutLl.addView(img);
 			Log.d("img---------", i + 1 + "");
 
@@ -89,9 +100,9 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 	}
 
-	private  void  getAddress () {
-		DhNet  net  =new DhNet(API.preorder);
-		net.addParam("", value)
+	private void getAddress() {
+		// DhNet net =new DhNet(API.preorder);
+		// net.addParam("", value)
 	}
 
 	@Override

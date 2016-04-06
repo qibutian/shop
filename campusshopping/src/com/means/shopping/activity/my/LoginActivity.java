@@ -20,6 +20,7 @@ import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
 
 /**
@@ -116,9 +117,10 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
+					User user = User.getInstance();
+					user.setLogin(true);
 					per = IocContainer.getShare().get(ShopPerference.class);
 					per.load();
-					per.setLogin(true);
 					per.setPhone(tel);
 					per.setPswd(password);
 					per.commit();

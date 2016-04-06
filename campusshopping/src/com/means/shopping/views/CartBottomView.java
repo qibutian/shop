@@ -1,5 +1,6 @@
 package com.means.shopping.views;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.net.DhNet;
@@ -50,6 +51,8 @@ public class CartBottomView extends LinearLayout {
 
 	BadgeView badgeT;
 
+	JSONArray jsa;
+
 	public CartBottomView(Context context) {
 		super(context);
 	}
@@ -70,6 +73,7 @@ public class CartBottomView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 				Intent it = new Intent(mContext, PaymentActivity.class);
+				it.putExtra("data", jsa.toString());
 				mContext.startActivity(it);
 
 			}
@@ -99,6 +103,7 @@ public class CartBottomView extends LinearLayout {
 
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSON();
+					jsa = JSONUtil.getJSONArray(jo, "list");
 					priceT.setText(JSONUtil.getString(jo, "price"));
 					setCartNum(JSONUtil.getInt(jo, "count"));
 				}

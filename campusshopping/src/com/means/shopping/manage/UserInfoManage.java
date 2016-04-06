@@ -5,12 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.means.shopping.activity.my.LoginActivity;
+import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
 
 public class UserInfoManage {
 
 	static UserInfoManage instance;
-	
+
 	static ShopPerference per;
 
 	public static UserInfoManage getInstance() {
@@ -24,7 +25,8 @@ public class UserInfoManage {
 
 	public boolean checkLogin(final Activity context,
 			final LoginCallBack loginCallBack) {
-		boolean islogin = per.isLogin();
+		User user = User.getInstance();
+		boolean islogin = user.isLogin();
 		if (!islogin) {
 
 			Intent it = new Intent(context, LoginActivity.class);

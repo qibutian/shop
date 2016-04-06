@@ -58,7 +58,7 @@ public class WaitReceivingFragment extends Fragment{
 	
 	private void getData() {
 
-		adapter = new NetJSONAdapter(API.test, getActivity(),
+		adapter = new NetJSONAdapter(API.listall, getActivity(),
 				R.layout.item_waitreceiving_order_list);
 		adapter.fromWhat("data");
 		listV.setAdapter(adapter);

@@ -65,7 +65,14 @@ public class HomePageAdapter extends NetJSONAdapter {
 
 		Good good = new Good();
 		good.setGoodId(JSONUtil.getLong(jo, "id"));
-		good.setCount(JSONUtil.getInt(jo, "cartcount"));
+
+		// 购物车那边
+		if (type == 3) {
+			good.setCount(JSONUtil.getInt(jo, "count"));
+		} else {
+			good.setCount(JSONUtil.getInt(jo, "cartcount"));
+		}
+
 		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
@@ -76,7 +83,12 @@ public class HomePageAdapter extends NetJSONAdapter {
 			@Override
 			public void onMinusClick(int count, double price) {
 				try {
-					jo.put("cartcount", JSONUtil.getInt(jo, "cartcount") - 1);
+					if (type == 3) {
+						jo.put("count", JSONUtil.getInt(jo, "count") - 1);
+					} else {
+						jo.put("cartcount",
+								JSONUtil.getInt(jo, "cartcount") - 1);
+					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -87,7 +99,14 @@ public class HomePageAdapter extends NetJSONAdapter {
 			@Override
 			public void onAddClick(int count, double price) {
 				try {
-					jo.put("cartcount", JSONUtil.getInt(jo, "cartcount") + 1);
+
+					if (type == 3) {
+						jo.put("count", JSONUtil.getInt(jo, "count") + 1);
+					} else {
+						jo.put("cartcount",
+								JSONUtil.getInt(jo, "cartcount") + 1);
+					}
+
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
