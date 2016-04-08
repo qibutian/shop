@@ -7,193 +7,86 @@
 
     <include layout="@layout/include_title_bar" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/sign_bg"
-        android:gravity="center"
-        android:text="快速签到 "
-        android:textColor="@color/text_ff9_yellow"
-        android:textSize="20sp" />
+        android:background="@drawable/sign_green_big_bg"
+        android:orientation="vertical"
+        android:padding="12dp" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="70dp" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sign_text_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="6dp"
-            android:layout_height="fill_parent" >
-
-            <View
-                android:layout_width="1.5px"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/text_43_black" />
-
-            <RelativeLayout
-                android:layout_width="6dp"
+            <TextView
+                android:id="@+id/des_one"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" >
+                android:text="今日已签到"
+                android:textColor="@color/text_ff9_yellow"
+                android:textSize="24sp" />
 
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/circle_white_bg" />
-
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="4dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circle_black_bg" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="7dp"
-            android:text="连续3日签到,可领取5元红包" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="70dp" >
-
-        <RelativeLayout
-            android:layout_width="6dp"
-            android:layout_height="fill_parent" >
-
-            <View
-                android:layout_width="1.5px"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/text_43_black" />
-
-            <RelativeLayout
-                android:layout_width="6dp"
+            <TextView
+                android:id="@+id/des_two"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" >
+                android:text="已连续3日签到"
+                android:textColor="@color/text_99_grey"
+                android:textSize="@dimen/text_medium" />
+        </LinearLayout>
 
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/circle_white_bg" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" >
 
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="4dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circle_black_bg" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="7dp"
-            android:text="连续3日签到,可领取5元红包" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="70dp" >
-
-        <RelativeLayout
-            android:layout_width="6dp"
-            android:layout_height="fill_parent" >
-
-            <View
-                android:layout_width="1.5px"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/text_43_black" />
-
-            <RelativeLayout
-                android:layout_width="6dp"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" >
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/sign_icon" />
 
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/circle_white_bg" />
-
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="4dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circle_black_bg" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="7dp"
-            android:text="连续3日签到,可领取5元红包" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="70dp" >
-
-        <RelativeLayout
-            android:layout_width="6dp"
-            android:layout_height="fill_parent" >
-
-            <View
-                android:layout_width="1.5px"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/text_43_black" />
-
-            <RelativeLayout
-                android:layout_width="6dp"
+            <Button
+                android:id="@+id/sign"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" >
-
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/circle_white_bg" />
-
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="4dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circle_black_bg" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <TextView
-            style="@style/text_43_black_small"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="7dp"
-            android:text="连续3日签到,可领取5元红包" />
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/sign_btn_s"
+                android:paddingBottom="22dp"
+                android:paddingTop="22dp"
+                android:text="签到"
+                android:textColor="@color/text_43_black"
+                android:textSize="24sp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="70dp" >
 
-        <RelativeLayout
-            android:layout_width="6dp"
-            android:layout_height="fill_parent" >
+        <ListView
+            android:id="@+id/listview_normal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/nothing"
+            android:cacheColorHint="#00000000"
+            android:clipToPadding="false"
+            android:divider="@color/nothing"
+            android:dividerHeight="0dp"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent" />
 
-            <View
-                android:layout_width="1.5px"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/text_43_black" />
-        </RelativeLayout>
-    </LinearLayout>
+        <View
+            android:layout_width="1.5px"
+            android:layout_height="fill_parent"
+            android:background="@color/text_43_black" />
+    </RelativeLayout>
 
 </LinearLayout>

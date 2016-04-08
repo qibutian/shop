@@ -4,6 +4,7 @@ import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -38,6 +39,8 @@ public class CartActivity extends ShopBaseActivity {
 
 	TextView priceT;
 
+	JSONArray jsa;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -67,6 +70,7 @@ public class CartActivity extends ShopBaseActivity {
 
 				if (!response.isCache) {
 					JSONObject jo = response.jSON();
+					jsa = response.jSONArrayFrom("list");
 					priceT.setText(JSONUtil.getString(jo, "price"));
 				}
 
@@ -99,6 +103,7 @@ public class CartActivity extends ShopBaseActivity {
 			@Override
 			public void onClick(View v) {
 				Intent it = new Intent(self, PaymentActivity.class);
+				it.putExtra("data", jsa.toString());
 				startActivity(it);
 
 			}

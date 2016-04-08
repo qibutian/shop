@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" >
+
+        <RelativeLayout
+            android:layout_width="6dp"
+            android:layout_height="fill_parent" >
+
+            <RelativeLayout
+                android:layout_width="6dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" >
+
+                <View
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/circle_white_bg" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circle_black_bg" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/des"
+            style="@style/text_43_black_small"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="7dp"
+            android:text="连续3日签到,可领取5元红包" />
+    </LinearLayout>
+
+</LinearLayout>

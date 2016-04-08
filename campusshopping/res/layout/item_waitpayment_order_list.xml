@@ -29,6 +29,7 @@
                 android:textSize="@dimen/text_smaller" />
 
             <TextView
+                android:id="@+id/payprice"
                 style="@style/text_ff4_red_medium"
                 android:text="55" />
 
@@ -52,7 +53,7 @@
                 <TextView
                     style="@style/text_43_black_smaller"
                     android:layout_marginLeft="5dp"
-                    android:text="3.0元"
+                    android:text="3.0元（无字段）"
                     android:textColor="@color/text_ff9_yellow" />
             </LinearLayout>
         </LinearLayout>
@@ -81,7 +82,7 @@
                     <TextView
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="5dp"
-                        android:text="支付宝" />
+                        android:text="支付宝（无字段）" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,6 +96,7 @@
                         android:text="下单时间:" />
 
                     <TextView
+                        android:id="@+id/adddateline"
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="5dp"
                         android:text="2016-1-6 10:36:39" />
@@ -113,7 +115,7 @@
                     <TextView
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="5dp"
-                        android:text="2016-1-6 10:37:07" />
+                        android:text="2016-1-6 10:37:07(无字段)" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -127,6 +129,7 @@
                         android:text="订单编号:" />
 
                     <TextView
+                        android:id="@+id/code"
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="5dp"
                         android:text="854152561231561" />
@@ -150,12 +153,22 @@
                         android:src="@drawable/icon_phone" />
 
                     <TextView
+                        android:id="@+id/buyphone"
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="2dp"
                         android:text="15205152201"
                         android:textColor="@color/text_ff9_yellow" />
                 </LinearLayout>
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_unfinish" />
         </RelativeLayout>
     </LinearLayout>
 

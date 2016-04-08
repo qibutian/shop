@@ -3,6 +3,8 @@ package com.means.shopping.views;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import net.duohuo.dhroid.dialog.IDialog;
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.market.CartActivity;
@@ -53,6 +56,9 @@ public class CartBottomView extends LinearLayout {
 
 	JSONArray jsa;
 
+	// 1代表订单确认页面
+	int type = 0;
+
 	public CartBottomView(Context context) {
 		super(context);
 	}
@@ -72,9 +78,16 @@ public class CartBottomView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
-				Intent it = new Intent(mContext, PaymentActivity.class);
-				it.putExtra("data", jsa.toString());
-				mContext.startActivity(it);
+				if (type == 0) {
+					Intent it = new Intent(mContext, PaymentActivity.class);
+					it.putExtra("data", jsa.toString());
+					mContext.startActivity(it);
+				} else {
+					addOrder();
+					// Intent it = new Intent(mContext, PaymentActivity.class);
+					// it.putExtra("data", jsa.toString());
+					// mContext.startActivity(it);
+				}
 
 			}
 		});
@@ -94,6 +107,10 @@ public class CartBottomView extends LinearLayout {
 		getData();
 	}
 
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public void getData() {
 		DhNet net = new DhNet(API.cartList);
 		net.doGet(new NetTask(mContext) {
@@ -111,6 +128,47 @@ public class CartBottomView extends LinearLayout {
 			}
 		});
 
+	}
+
+	// 下单
+	private void addOrder() {
+		DhNet net = new DhNet(API.addorder);
+		net.doPost(new NetTask(mContext) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSON();
+					JSONObject data = response.jSONFromData();
+					String orderid = JSONUtil.getString(jo, "id");
+					String price = JSONUtil.getString(data, "orderprice");
+					payByYue(orderid, price);
+				}
+
+			}
+		});
+	}
+
+	// 余额支付
+	private void payByYue(String orderid, String price) {
+		DhNet net = new DhNet(API.payyue);
+		net.addParam("orderid", orderid);
+		net.addParam("payprice", price);
+		net.doPost(new NetTask(mContext) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+
+					IDialog dialog = IocContainer.getShare().get(IDialog.class);
+					dialog.showToastShort(mContext, "支付成功");
+
+				}
+
+			}
+		});
 	}
 
 	public void setCartNum(CartBottomNumEB cartBottomNumEB) {

@@ -79,6 +79,7 @@ public class RecentFragment extends Fragment{
 		adapter.fromWhat("list");
 		adapter.addField("payprice", R.id.payprice);
 		adapter.addField("code", R.id.code);
+		
 		adapter.addField("buyphone", R.id.buyphone);
 		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
 

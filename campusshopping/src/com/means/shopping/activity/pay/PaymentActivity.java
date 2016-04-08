@@ -21,9 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+
 import com.means.shopping.activity.my.ConsigneeAddressActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.views.CartBottomView;
 
 /**
  * 付款页
@@ -54,6 +56,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 	public void initView() {
 		getWindowsWidth();
 		setTitle("订单");
+		CartBottomView bottom_view = (CartBottomView) findViewById(R.id.bottom_view);
+		bottom_view.setType(1);
 		foodslayoutLl = (LinearLayout) findViewById(R.id.foodslayout);
 		address_layoutV = findViewById(R.id.address_layout);
 		nameT = (TextView) findViewById(R.id.name);
@@ -83,6 +87,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 		for (int i = 0; i < jsa.length(); i++) {
 			JSONObject jo = JSONUtil.getJSONObjectAt(jsa, i);
 			ImageView img = new ImageView(self);
+			
 			img.setLayoutParams(lp);
 			img.setScaleType(ScaleType.CENTER_CROP);
 			if (i == 6) {
@@ -100,6 +105,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 				break;
 			}
 			ViewUtil.bindNetImage(img, JSONUtil.getString(jo, "pic"), "default");
+			
 			// img.setImageResource(imgs[i]);
 			foodslayoutLl.addView(img);
 			Log.d("img---------", i + 1 + "");
@@ -116,6 +122,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 	@Override
 	public void onClick(View v) {
 		Intent it;
+		
 		switch (v.getId()) {
 		case R.id.address_layout:
 			it = new Intent(self, ConsigneeAddressActivity.class);

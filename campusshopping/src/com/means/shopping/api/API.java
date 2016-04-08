@@ -68,10 +68,19 @@ public class API {
 
 	// 下单
 	public static String addorder = Baseurl + "/home/order/submit";
-	
+
 	// 我的收货地址
 	public static String address = Baseurl + "/home/cart/address";
-	
+
 	// 编辑收货地址
 	public static String editaddress = Baseurl + "/home/cart/editaddress";
+
+	// 支付
+	public static String payyue = Baseurl + "/home/order/orderpay";
+
+	// 签到信息
+	public static String signinfo = Baseurl + "/home/user/daywallet";
+
+	// 签到
+	public static String sign = Baseurl + "/home/user/daywalletaction";
 }
