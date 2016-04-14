@@ -1,6 +1,7 @@
 package com.means.shopping.activity.main;
 
 import net.duohuo.dhroid.ioc.IocContainer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -43,6 +44,16 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		initView();
 		initTab();
 		setTab(0);
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		// TODO Auto-generated method stub
+		super.onNewIntent(intent);
+		String type = intent.getStringExtra("type");
+		if ("pay".equals(type)) {
+			setTab(1);
+		}
 	}
 
 	private void initView() {

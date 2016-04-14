@@ -19,12 +19,14 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.OrderFragmentPageAdapter;
+
 /**
  * 订单
+ * 
  * @author Administrator
- *
+ * 
  */
-public class OrderFragment extends Fragment{
+public class OrderFragment extends Fragment {
 	static OrderFragment instance;
 
 	private View mainV;
@@ -32,9 +34,9 @@ public class OrderFragment extends Fragment{
 	private FragmentManager fm;
 	private Fragment currentFragment;
 	private LayoutInflater mLayoutInflater;
-	
+
 	private LinearLayout tabV;
-	
+
 	private ViewPager viewPager;
 
 	public static OrderFragment getInstance() {
@@ -45,7 +47,7 @@ public class OrderFragment extends Fragment{
 		return instance;
 
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -61,38 +63,39 @@ public class OrderFragment extends Fragment{
 	private void initView() {
 		fm = getActivity().getSupportFragmentManager();
 		tabV = (LinearLayout) mainV.findViewById(R.id.tab);
-		
+
 		viewPager = (ViewPager) mainV.findViewById(R.id.viewpager);
 		List<Fragment> frags = new ArrayList<Fragment>();
 		frags.add(RecentFragment.getInstance());
 		frags.add(WaitReceivingFragment.getInstance());
 		frags.add(WaitPaymentFragment.getInstance());
-		
-		OrderFragmentPageAdapter adapter = new OrderFragmentPageAdapter(getActivity().getSupportFragmentManager(), frags);
+
+		OrderFragmentPageAdapter adapter = new OrderFragmentPageAdapter(
+				getActivity().getSupportFragmentManager(), frags);
 		viewPager.setAdapter(adapter);
 		viewPager.setOffscreenPageLimit(2);
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-			
+
 			@Override
 			public void onPageSelected(int arg0) {
 				// TODO Auto-generated method stub
 				setTab(arg0);
 			}
-			
+
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 	}
-	
+
 	private void initTab() {
 		for (int i = 0; i < tabV.getChildCount(); i++) {
 			final int index = i;
@@ -107,29 +110,32 @@ public class OrderFragment extends Fragment{
 			});
 		}
 	}
-	
+
 	public void setTab(final int index) {
 		for (int i = 0; i < tabV.getChildCount(); i++) {
 			RelativeLayout childV = (RelativeLayout) tabV.getChildAt(i);
 			TextView textT = (TextView) childV.getChildAt(0);
-			View lineV =  childV.getChildAt(1);
+			View lineV = childV.getChildAt(1);
 			if (i == index) {
 				switch (i) {
-				case 0:		//近一月
-//					switchContent(RecentFragment.getInstance());
-					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
+				case 0: // 近一月
+					// switchContent(RecentFragment.getInstance());
+					textT.setTextColor(getActivity().getResources().getColor(
+							R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
-				case 1:		//待收货
-//					switchContent(WaitReceivingFragment.getInstance());
-					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
+				case 1: // 待收货
+					// switchContent(WaitReceivingFragment.getInstance());
+					textT.setTextColor(getActivity().getResources().getColor(
+							R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
-				case 2:		//待支付
-//					switchContent(WaitPaymentFragment.getInstance());
-					textT.setTextColor(getActivity().getResources().getColor(R.color.white));
+				case 2: // 待支付
+					// switchContent(WaitPaymentFragment.getInstance());
+					textT.setTextColor(getActivity().getResources().getColor(
+							R.color.white));
 					lineV.setVisibility(View.VISIBLE);
 					break;
 
@@ -137,7 +143,8 @@ public class OrderFragment extends Fragment{
 					break;
 				}
 			} else {
-				textT.setTextColor(getActivity().getResources().getColor(R.color.text_43_black));
+				textT.setTextColor(getActivity().getResources().getColor(
+						R.color.text_43_black));
 				lineV.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -157,5 +164,12 @@ public class OrderFragment extends Fragment{
 			currentFragment = fragment;
 		} catch (Exception e) {
 		}
+	}
+
+	public void refresh() {
+		RecentFragment.getInstance().refresh();
+		WaitReceivingFragment.getInstance().refresh();
+		WaitPaymentFragment.getInstance().refresh();
+
 	}
 }

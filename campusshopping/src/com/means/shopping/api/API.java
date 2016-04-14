@@ -83,4 +83,12 @@ public class API {
 
 	// 签到
 	public static String sign = Baseurl + "/home/user/daywalletaction";
+
+	// 支付宝支付
+	public static String pay_zhifubao = Baseurl
+			+ "/home/account/payorderaction";
+
+	// 充值接口
+	public static String chongzhi = Baseurl + "/home/account/chargeaction";
+
 }

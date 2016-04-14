@@ -4,19 +4,16 @@ import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
-import net.duohuo.dhroid.view.BadgeView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.means.shopping.R;
@@ -24,7 +21,6 @@ import com.means.shopping.adapter.CatAdapter;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
-import com.means.shopping.bean.Cart;
 import com.means.shopping.bean.Good;
 import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;

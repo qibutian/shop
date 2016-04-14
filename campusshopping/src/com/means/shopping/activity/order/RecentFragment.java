@@ -33,16 +33,17 @@ import com.means.shopping.views.RefreshListViewAndMore;
 
 /**
  * 订单->近一月
+ * 
  * @author Administrator
- *
+ * 
  */
-public class RecentFragment extends Fragment{
+public class RecentFragment extends Fragment {
 	static RecentFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
-	
+
 	RefreshListViewAndMore listV;
 	NetJSONAdapter adapter;
 	ListView contentListV;
@@ -70,26 +71,26 @@ public class RecentFragment extends Fragment{
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		getData();
 	}
-	
-	private void getData(){
-		
+
+	private void getData() {
+
 		adapter = new NetJSONAdapter(API.listall, getActivity(),
 				R.layout.item_recent_order_list);
 		adapter.addparam("type", 1);
 		adapter.fromWhat("list");
 		adapter.addField("payprice", R.id.payprice);
 		adapter.addField("code", R.id.code);
-		
+
 		adapter.addField("buyphone", R.id.buyphone);
 		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return ShopUtils.dateToStrLong(new Date(
-						Long.parseLong(o.toString()) * 1000));
+				return ShopUtils.dateToStrLong(new Date(Long.parseLong(o
+						.toString()) * 1000));
 			}
 		});
-		
+
 		listV.setAdapter(adapter);
 		contentListV = listV.getListView();
 
@@ -101,5 +102,9 @@ public class RecentFragment extends Fragment{
 				JSONObject jo = adapter.getTItem(position - 1);
 			}
 		});
+	}
+
+	public void refresh() {
+		listV.refresh();
 	}
 }

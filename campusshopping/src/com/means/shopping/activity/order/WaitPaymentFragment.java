@@ -90,4 +90,8 @@ public class WaitPaymentFragment extends Fragment {
 			}
 		});
 	}
+
+	public void refresh() {
+		listV.refresh();
+	}
 }

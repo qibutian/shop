@@ -90,4 +90,8 @@ public class WaitReceivingFragment extends Fragment {
 			}
 		});
 	}
+	
+	public void refresh() {
+		listV.refresh();
+	}
 }
