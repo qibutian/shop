@@ -32,6 +32,10 @@
         android:largeHeap="true"
         android:persistent="true"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="470f3daaf6c5dd630ba26f3d819d29fb" />
+
         <activity
             android:name=".activity.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

@@ -27,6 +27,8 @@ public class UserLocation implements AMapLocationListener {
     private String street = "";
     OnLocationChanged onLocationChanged;
     private static double EARTH_RADIUS = 6378.137;
+    
+    AMapLocation  aMapLocation;
 
 
     public static UserLocation getInstance() {
@@ -120,6 +122,12 @@ public class UserLocation implements AMapLocationListener {
     public void setDistrict(String district) {
         this.district = district;
     }
+    
+    public  AMapLocation  getAmapLocation () {
+    	return aMapLocation;
+    }
+    
+
 
     @Override
     public void onLocationChanged(Location arg0) {
@@ -162,6 +170,7 @@ public class UserLocation implements AMapLocationListener {
     public void onLocationChanged(AMapLocation amapLocation) {
         if (amapLocation != null
                 && amapLocation.getAMapException().getErrorCode() == 0) {
+        	aMapLocation = amapLocation;
             islocation = true;
             // 定位成功回调信息，设置相关消息
             city = amapLocation.getCity();

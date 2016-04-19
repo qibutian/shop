@@ -32,6 +32,8 @@ public class SignActivity extends ShopBaseActivity {
 
 	int isday;
 
+	int is_condays;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -79,6 +81,9 @@ public class SignActivity extends ShopBaseActivity {
 					isday = JSONUtil.getInt(jo, "is_days");
 					des_oneT.setText(isday == 1 ? "今日已签到" : "今日未签到");
 					signB.setText(isday == 1 ? "已签到" : "签到");
+
+					ViewUtil.bindView(findViewById(R.id.des_two), "已连续签到"
+							+ is_condays + "天");
 				}
 
 			}
@@ -94,9 +99,12 @@ public class SignActivity extends ShopBaseActivity {
 
 				if (response.isSuccess()) {
 					showToast("签到成功!");
+					is_condays = is_condays + 1;
 					isday = 1;
 					des_oneT.setText(isday == 1 ? "今日已签到" : "今日未签到");
 					signB.setText(isday == 1 ? "已签到" : "签到");
+					ViewUtil.bindView(findViewById(R.id.des_two), "已连续签到"
+							+ is_condays + "天");
 				}
 
 			}

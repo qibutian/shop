@@ -2,6 +2,8 @@ package com.means.shopping.activity.pay;
 
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.DhUtil;
 import net.duohuo.dhroid.util.ViewUtil;
 
@@ -11,6 +13,7 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,14 +66,17 @@ public class PaymentActivity extends ShopBaseActivity implements
 		addressT = (TextView) findViewById(R.id.address);
 
 		address_layoutV.setOnClickListener(this);
-		String data = getIntent().getStringExtra("data");
-		try {
-			JSONArray jsa = new JSONArray(data);
-			setFoodsImgs(jsa);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		getAddress();
+		getData();
+		// String data = getIntent().getStringExtra("data");
+		// try {
+		// JSONArray jsa = new JSONArray(data);
+		// setFoodsImgs(jsa);
+		// } catch (JSONException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 	}
 
 	private void getWindowsWidth() {
@@ -107,15 +113,47 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 			// img.setImageResource(imgs[i]);
 			foodslayoutLl.addView(img);
-			Log.d("img---------", i + 1 + "");
-
 		}
 
 	}
 
 	private void getAddress() {
-		DhNet net = new DhNet(API.preorder);
-		// net.addParam("", value)
+		DhNet net = new DhNet(API.address);
+		net.doGetInDialog(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					if(TextUtils.isEmpty(JSONUtil.getString(jo, "lxname"))) {
+						
+					} else {
+						nameT.setText(JSONUtil.getString(jo, "lxname"));
+						addressT.setText(JSONUtil.getString(jo, "lxaddress"));
+					}
+				}
+
+			}
+		});
+	}
+
+	public void getData() {
+		DhNet net = new DhNet(API.cartList);
+		net.doGet(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSON();
+					JSONArray jsa = JSONUtil.getJSONArray(jo, "list");
+					setFoodsImgs(jsa);
+				}
+
+			}
+		});
+
 	}
 
 	@Override

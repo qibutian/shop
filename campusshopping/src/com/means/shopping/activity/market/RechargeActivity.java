@@ -9,7 +9,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -22,7 +26,7 @@ public class RechargeActivity extends ShopBaseActivity {
 
 	EditText moneyE;
 
-	RadioGroup groupR;
+	LinearLayout groupL;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class RechargeActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("充值");
+		groupL = (LinearLayout) findViewById(R.id.group);
 		moneyE = (EditText) findViewById(R.id.money);
 		moneyE.addTextChangedListener(new TextWatcher() {
 
@@ -55,31 +60,9 @@ public class RechargeActivity extends ShopBaseActivity {
 
 				if (!TextUtils.isEmpty(moneyE.getText().toString())
 						&& Integer.parseInt(moneyE.getText().toString()) != 0) {
-					System.out.println("text");
-					((RadioButton) groupR.getChildAt(0)).setChecked(false);
-					((RadioButton) groupR.getChildAt(1)).setChecked(false);
-					((RadioButton) groupR.getChildAt(2)).setChecked(false);
+					cleanCheck(-1);
 				}
 
-			}
-		});
-
-		groupR = (RadioGroup) findViewById(R.id.group);
-		groupR.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				System.out.println("checkedId:" + checkedId);
-				if (((RadioButton) groupR.findViewById(groupR
-						.getCheckedRadioButtonId())).isChecked()) {
-					System.out.println("group");
-					moneyE.setText(null);
-				}
-
-				((RadioButton) groupR.findViewById(groupR
-						.getCheckedRadioButtonId()))
-						.setChecked(!((RadioButton) groupR.findViewById(groupR
-								.getCheckedRadioButtonId())).isChecked());
 			}
 		});
 
@@ -90,14 +73,16 @@ public class RechargeActivity extends ShopBaseActivity {
 				chongzhi();
 			}
 		});
+
+		initGroup();
 	}
 
 	private void chongzhi() {
+
+		CheckBox checkBox = getChecked();
 		String money;
-		if (groupR.getCheckedRadioButtonId() != -1) {
-			RadioButton rb = (RadioButton) groupR.findViewById(groupR
-					.getCheckedRadioButtonId());
-			money = rb.getTag().toString();
+		if (checkBox != null) {
+			money = checkBox.getTag().toString();
 		} else {
 			money = moneyE.getText().toString();
 		}
@@ -113,6 +98,7 @@ public class RechargeActivity extends ShopBaseActivity {
 		}
 
 		DhNet net = new DhNet(API.chongzhi);
+		net.addParam("amount", money);
 		net.doPostInDialog("充值中...", new NetTask(self) {
 
 			@Override
@@ -124,6 +110,43 @@ public class RechargeActivity extends ShopBaseActivity {
 
 			}
 		});
+	}
+
+	private void initGroup() {
+		for (int i = 0; i < groupL.getChildCount(); i++) {
+			final int index = i;
+			CheckBox check = (CheckBox) groupL.getChildAt(i);
+			check.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					if (isChecked) {
+						cleanCheck(index);
+						moneyE.setText("");
+					}
+				}
+			});
+		}
+	}
+
+	private void cleanCheck(int currentIndex) {
+		for (int i = 0; i < groupL.getChildCount(); i++) {
+			if (i != currentIndex) {
+				CheckBox check = (CheckBox) groupL.getChildAt(i);
+				check.setChecked(false);
+			}
+		}
+	}
+
+	private CheckBox getChecked() {
+		for (int i = 0; i < groupL.getChildCount(); i++) {
+			CheckBox check = (CheckBox) groupL.getChildAt(i);
+			if (check.isChecked()) {
+				return check;
+			}
+		}
+		return null;
 	}
 
 }

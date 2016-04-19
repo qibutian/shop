@@ -6,6 +6,7 @@ import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.Instance.InstanceScope;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.GlobalCodeHandler;
+import net.duohuo.dhroid.util.UserLocation;
 import android.app.Application;
 import android.content.Context;
 
@@ -97,6 +98,8 @@ public class ShopApplication extends Application implements
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
 				.build();
 		ImageLoader.getInstance().init(imageconfig);
+
+		UserLocation.getInstance().init(this);
 	}
 
 	@Override
