@@ -126,8 +126,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					if(TextUtils.isEmpty(JSONUtil.getString(jo, "lxname"))) {
-						
+					if (TextUtils.isEmpty(JSONUtil.getString(jo, "lxname"))) {
+
 					} else {
 						nameT.setText(JSONUtil.getString(jo, "lxname"));
 						addressT.setText(JSONUtil.getString(jo, "lxaddress"));
@@ -139,7 +139,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 	}
 
 	public void getData() {
-		DhNet net = new DhNet(API.cartList);
+		DhNet net = new DhNet(API.preorder);
 		net.doGet(new NetTask(self) {
 
 			@Override
