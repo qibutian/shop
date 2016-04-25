@@ -1,8 +1,12 @@
 package com.means.shopping.activity.market;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -19,6 +23,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.pay.PayUtil;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 
@@ -59,7 +64,7 @@ public class RechargeActivity extends ShopBaseActivity {
 			public void afterTextChanged(Editable s) {
 
 				if (!TextUtils.isEmpty(moneyE.getText().toString())
-						&& Integer.parseInt(moneyE.getText().toString()) != 0) {
+						&& Double.parseDouble(moneyE.getText().toString()) != 0) {
 					cleanCheck(-1);
 				}
 
@@ -75,6 +80,23 @@ public class RechargeActivity extends ShopBaseActivity {
 		});
 
 		initGroup();
+		getUserInfo();
+	}
+
+	private void getUserInfo() {
+		DhNet net = new DhNet(API.userInfo);
+		net.doGetInDialog(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					ViewUtil.bindView(findViewById(R.id.blance),
+							JSONUtil.getString(jo, "balance"));
+
+				}
+			}
+		});
 	}
 
 	private void chongzhi() {
@@ -92,7 +114,7 @@ public class RechargeActivity extends ShopBaseActivity {
 			return;
 		}
 
-		if (Integer.parseInt(money) == 0) {
+		if (Double.parseDouble(money) == 0) {
 			showToast("充值金额不能为0元!");
 			return;
 		}
@@ -105,6 +127,9 @@ public class RechargeActivity extends ShopBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
+					PayUtil payUtil = new PayUtil(response.jSONFromData(),
+							self, 1);
+					payUtil.pay("小蚂蚁校园购物");
 
 				}
 

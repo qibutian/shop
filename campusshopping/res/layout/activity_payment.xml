@@ -106,6 +106,7 @@
                 <View style="@style/line_horizontal_bold" />
 
                 <LinearLayout
+                    android:id="@+id/hongbao_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -119,9 +120,10 @@
                         android:text="红包金额" />
 
                     <TextView
+                        android:id="@+id/redpacket_money"
                         style="@style/text_cc_grey_small"
                         android:layout_marginLeft="10dp"
-                        android:text="3.0元" />
+                        android:text="0元" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,6 +132,7 @@
                         android:orientation="horizontal" >
 
                         <TextView
+                            android:id="@+id/redpacket_des"
                             style="@style/text_ff4_red_small"
                             android:text="点击选择红包"
                             android:textColor="@color/text_ff9_yellow" />
@@ -179,6 +182,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/blance_des"
                             style="@style/text_cc_grey_small"
                             android:layout_marginTop="5dp"
                             android:text="当前余额3.0,使用0.0" />

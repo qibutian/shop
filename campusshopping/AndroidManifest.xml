@@ -129,6 +129,14 @@
             android:name="com.means.shopping.activity.main.MsgListActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.CanUserRedPacket"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.SearchSchoolActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
     </application>
 
 </manifest>

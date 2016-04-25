@@ -19,6 +19,7 @@ import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
 import com.means.shopping.base.ShopBaseFragmentActivity;
 import com.means.shopping.bean.LogoutEB;
+import com.means.shopping.bean.User;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
 import com.means.shopping.utils.ShopPerference;
@@ -84,7 +85,7 @@ public class MainActivity extends ShopBaseFragmentActivity {
 			final TextView textT = (TextView) childV.getChildAt(1);
 
 			if (index == 2) {
-				if (!per.isLogin()) {
+				if (!User.getInstance().isLogin()) {
 					UserInfoManage.getInstance().checkLogin(MainActivity.this,
 							new LoginCallBack() {
 

@@ -23,16 +23,17 @@ import com.means.shopping.views.RefreshListViewAndMore;
 
 /**
  * 已过期的红包
+ * 
  * @author Administrator
- *
+ * 
  */
-public class PastApplicableFragment extends Fragment{
+public class PastApplicableFragment extends Fragment {
 	static PastApplicableFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
-	
+
 	RefreshListViewAndMore listV;
 	NetJSONAdapter adapter;
 	ListView contentListV;
@@ -60,7 +61,7 @@ public class PastApplicableFragment extends Fragment{
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		getData();
 	}
-	
+
 	private void getData() {
 		adapter = new NetJSONAdapter(API.walletlist, getActivity(),
 				R.layout.item_my_redpacket_list);
@@ -81,16 +82,14 @@ public class PastApplicableFragment extends Fragment{
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return ShopUtils.dateToStr(new Date(
-						Long.parseLong(o.toString()) * 1000));
+				return o;
 			}
 		});
 		adapter.addField(new FieldMap("enddate", R.id.enddate) {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return ShopUtils.dateToStr(new Date(
-						Long.parseLong(o.toString()) * 1000));
+				return o;
 			}
 		});
 

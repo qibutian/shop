@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.my.CanUserRedPacket;
 import com.means.shopping.activity.my.ConsigneeAddressActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
@@ -48,6 +49,12 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 	private final int ADDRESS_CODE = 1;
 
+	private final int REDPACKET_CODE = 2;
+
+	JSONArray walletjsa;
+
+	double blance;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,16 +74,21 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 		address_layoutV.setOnClickListener(this);
 
+		findViewById(R.id.hongbao_layout).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						if (walletjsa != null && walletjsa.length() != 0) {
+							Intent it = new Intent(self, CanUserRedPacket.class);
+							it.putExtra("data", walletjsa.toString());
+							startActivityForResult(it, REDPACKET_CODE);
+						}
+					}
+				});
+
 		getAddress();
 		getData();
-		// String data = getIntent().getStringExtra("data");
-		// try {
-		// JSONArray jsa = new JSONArray(data);
-		// setFoodsImgs(jsa);
-		// } catch (JSONException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
 	}
 
 	private void getWindowsWidth() {
@@ -148,6 +160,23 @@ public class PaymentActivity extends ShopBaseActivity implements
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSON();
 					JSONArray jsa = JSONUtil.getJSONArray(jo, "list");
+					walletjsa = JSONUtil.getJSONArray(jo, "wallet");
+					if (walletjsa == null || walletjsa.length() == 0) {
+						ViewUtil.bindView(findViewById(R.id.redpacket_des),
+								"没有可用红包");
+					}
+					blance = JSONUtil.getDouble(jo, "blance");
+
+					if (blance > JSONUtil.getDouble(jo, "price")) {
+						ViewUtil.bindView(
+								findViewById(R.id.blance_des),
+								"当前余额" + blance + ",使用"
+										+ JSONUtil.getDouble(jo, "price"));
+					} else {
+						ViewUtil.bindView(findViewById(R.id.blance_des), "当前余额"
+								+ blance + ",使用" + blance);
+					}
+
 					setFoodsImgs(jsa);
 				}
 
@@ -180,6 +209,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 			if (arg0 == ADDRESS_CODE) {
 				nameT.setText(arg2.getStringExtra("lxname"));
 				addressT.setText(arg2.getStringExtra("lxaddress"));
+			} else if (arg0 == REDPACKET_CODE) {
+
 			}
 		}
 	}

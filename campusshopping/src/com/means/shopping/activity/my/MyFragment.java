@@ -29,9 +29,13 @@ import com.means.shopping.activity.main.MsgListActivity;
 import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.api.API;
+import com.means.shopping.bean.CartBottomNumEB;
+import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.utils.FileUtil;
 import com.means.shopping.utils.ShopPerference;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 我的
@@ -82,6 +86,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
+		EventBus.getDefault().register(this);
 		headI = (ImageView) mainV.findViewById(R.id.head);
 		settingI = (ImageView) mainV.findViewById(R.id.setting);
 		myredpacketLl = (LinearLayout) mainV.findViewById(R.id.myredpacket);
@@ -190,5 +195,16 @@ public class MyFragment extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	public void onEventMainThread(ReChargeEB reChargeEB) {
+		getUserInfo();
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 }

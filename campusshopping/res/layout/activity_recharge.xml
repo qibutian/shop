@@ -19,6 +19,7 @@
             android:text="我的余额:" />
 
         <TextView
+            android:id="@+id/blance"
             style="@style/text_ffd_yellow_small"
             android:layout_marginLeft="2dp"
             android:text="0.0元" />
@@ -92,7 +93,7 @@
             android:background="@drawable/btn_grey_bg"
             android:gravity="center_vertical"
             android:hint="请输入充值金额"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingLeft="10dp"
             android:textColor="@color/text_99_grey"
             android:textColorHint="@color/text_99_grey"

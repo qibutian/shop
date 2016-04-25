@@ -15,12 +15,14 @@ import android.text.TextUtils;
 import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
 
 /**
  * 欢迎页
+ * 
  * @author Administrator
- *
+ * 
  */
 public class SplashActivity extends ShopBaseActivity {
 	ShopPerference per;
@@ -41,7 +43,8 @@ public class SplashActivity extends ShopBaseActivity {
 		if (per.isFirst == 0) {
 			first();
 		} else {
-			if (!TextUtils.isEmpty(per.getPhone()) && !TextUtils.isEmpty(per.getPswd())) {
+			if (!TextUtils.isEmpty(per.getPhone())
+					&& !TextUtils.isEmpty(per.getPswd())) {
 				login();
 			} else {
 				notFirst();
@@ -72,8 +75,7 @@ public class SplashActivity extends ShopBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					per.setLogin(true);
-					per.commit();
+					User.getInstance().setLogin(true);
 				}
 				notFirst();
 			}

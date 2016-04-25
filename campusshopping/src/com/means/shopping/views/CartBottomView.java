@@ -232,8 +232,8 @@ public class CartBottomView extends LinearLayout {
 
 				if (response.isSuccess()) {
 					PayUtil payUtil = new PayUtil(response.jSONFromData(),
-							mContext);
-					payUtil.pay("小蚂蚁校园购物");  
+							mContext, 0);
+					payUtil.pay("小蚂蚁校园购物");
 					// IDialog dialog =
 					// IocContainer.getShare().get(IDialog.class);
 					// dialog.showToastShort(mContext, "支付成功");

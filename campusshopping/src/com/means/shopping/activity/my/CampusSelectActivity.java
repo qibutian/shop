@@ -23,28 +23,38 @@ import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * 
  * 校区选择
+ * 
  * @author Administrator
- *
+ * 
  */
 public class CampusSelectActivity extends ShopBaseActivity {
-	
-	ListView lv_city,lv_school;
+
+	ListView lv_city, lv_school;
 	CampusCityAdapter city_adapter;
 	CampusSchoolAdapter school_adapter;
-	
+
 	JSONArray city_jsa;
+
+	EditText keywordE;
+
+	private int SEARCH = 1;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,22 +64,39 @@ public class CampusSelectActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("校区选择");
-		setRightAction("", R.drawable.refresh, new View.OnClickListener() {
-			
+		// setRightAction("", R.drawable.refresh, new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		//
+		// }
+		// });
+		keywordE = (EditText) findViewById(R.id.keyword);
+		findViewById(R.id.search).setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				
+
+				if (TextUtils.isEmpty(keywordE.getText().toString())) {
+					showToast("请输入学校名称");
+					return;
+				}
+
+				Intent it = new Intent(self, SearchSchoolActivity.class);
+				it.putExtra("keywords", keywordE.getText().toString());
+				startActivityForResult(it, SEARCH);
+
 			}
 		});
-		
+
 		lv_city = (ListView) findViewById(R.id.listview_city);
 		city_adapter = new CampusCityAdapter(self);
 		lv_city.setAdapter(city_adapter);
-		
+
 		lv_school = (ListView) findViewById(R.id.listview_school);
 		school_adapter = new CampusSchoolAdapter(self);
 		lv_school.setAdapter(school_adapter);
-		
+
 		lv_city.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -81,24 +108,51 @@ public class CampusSelectActivity extends ShopBaseActivity {
 				city_adapter.select(position);
 			}
 		});
-		
+
 		getDate();
 	}
 
 	private void getDate() {
 		DhNet net = new DhNet(API.schooldata);
 		net.doGetInDialog(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					city_jsa = response.jSONArrayFrom("list");
 					city_adapter.setDate(city_jsa);
-					if (city_jsa!=null&&city_jsa.length()>0) {
+					if (city_jsa != null && city_jsa.length() > 0) {
 						JSONObject jo = JSONUtil.getJSONObjectAt(city_jsa, 0);
-						school_adapter.setDate(JSONUtil.getJSONArray(jo, "_item"));
+						school_adapter.setDate(JSONUtil.getJSONArray(jo,
+								"_item"));
 					}
-					
+
+				}
+			}
+		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, arg2);
+
+		if (resultCode == Activity.RESULT_OK && requestCode == SEARCH) {
+			finish();
+		}
+
+	}
+
+	private void serachSchool(String key, String areaid) {
+		DhNet net = new DhNet(API.search_school);
+		net.addParam("keywords", key);
+		net.addParam("areaid", areaid);
+		net.doGetInDialog(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+
 				}
 			}
 		});

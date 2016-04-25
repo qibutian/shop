@@ -25,6 +25,9 @@ import android.widget.Toast;
 import com.alipay.sdk.app.PayTask;
 import com.means.shopping.activity.main.MainActivity;
 import com.means.shopping.api.Constant;
+import com.means.shopping.bean.ReChargeEB;
+
+import de.greenrobot.event.EventBus;
 
 public class PayUtil {
 
@@ -41,10 +44,14 @@ public class PayUtil {
 
 	private static final int SDK_PAY_FLAG = 1;
 
-	public PayUtil(JSONObject jo, Context mContext) {
+	// 0代表付款,1代表充值
+	int type = 0;
+
+	public PayUtil(JSONObject jo, Context mContext, int type) {
 		this.jo = jo;
 		this.mContext = mContext;
 		keyJo = JSONUtil.getJSONObject(jo, "app");
+		this.type = type;
 	}
 
 	/**
@@ -209,11 +216,14 @@ public class PayUtil {
 							.showToastShort(mContext, "支付成功");
 
 					((Activity) mContext).finish();
-					Intent it = new Intent(mContext, MainActivity.class);
-					it.putExtra("type", "pay");
-					it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					mContext.startActivity(it);
-					;
+					if (type == 0) {
+						Intent it = new Intent(mContext, MainActivity.class);
+						it.putExtra("type", "pay");
+						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						mContext.startActivity(it);
+					} else {
+						EventBus.getDefault().post(new ReChargeEB());
+					}
 
 				} else {
 					// 判断resultStatus 为非"9000"则代表可能支付失败
@@ -221,19 +231,22 @@ public class PayUtil {
 					if (TextUtils.equals(resultStatus, "8000")) {
 						IocContainer.getShare().get(IDialog.class)
 								.showToastShort(mContext, "支付结果确认中");
-						Intent it = new Intent(mContext, MainActivity.class);
-						it.putExtra("type", "pay");
-						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						mContext.startActivity(it);
-						;
+						if (type == 0) {
+							Intent it = new Intent(mContext, MainActivity.class);
+							it.putExtra("type", "pay");
+							it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							mContext.startActivity(it);
+						}
 					} else {
 						// 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
 						IocContainer.getShare().get(IDialog.class)
 								.showToastShort(mContext, "支付失败");
-						Intent it = new Intent(mContext, MainActivity.class);
-						it.putExtra("type", "pay");
-						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						mContext.startActivity(it);
+						if (type == 0) {
+							Intent it = new Intent(mContext, MainActivity.class);
+							it.putExtra("type", "pay");
+							it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							mContext.startActivity(it);
+						}
 					}
 				}
 				break;

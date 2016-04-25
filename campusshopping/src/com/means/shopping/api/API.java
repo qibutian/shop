@@ -91,4 +91,7 @@ public class API {
 	// 充值接口
 	public static String chongzhi = Baseurl + "/home/account/chargeaction";
 
+	// 学校搜索
+	public static String search_school = Baseurl + "/home/market/schoolist";
+
 }

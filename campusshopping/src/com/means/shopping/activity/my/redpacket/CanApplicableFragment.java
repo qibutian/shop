@@ -83,16 +83,14 @@ public class CanApplicableFragment extends Fragment {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return ShopUtils.dateToStr(new Date(
-						Long.parseLong(o.toString()) * 1000));
+				return o;
 			}
 		});
 		adapter.addField(new FieldMap("enddate", R.id.enddate) {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return ShopUtils.dateToStr(new Date(
-						Long.parseLong(o.toString()) * 1000));
+				return o;
 			}
 		});
 
