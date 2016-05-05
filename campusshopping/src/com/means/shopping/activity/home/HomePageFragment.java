@@ -126,7 +126,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 				Good good = new Good();
 				good.setCount(JSONUtil.getInt(jo, "cartcount"));
 				good.setGoodId(goodId);
-				good.setGoodType(1);
+				good.setGoodType(JSONUtil.getInt(jo, "carttype"));
 				CommodityDetailDialog dialog = new CommodityDetailDialog(
 						getActivity(), good, jo);
 				dialog.setOnResultListener(new OnResultListener() {

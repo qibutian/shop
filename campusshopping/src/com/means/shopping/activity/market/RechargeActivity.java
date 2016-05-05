@@ -129,7 +129,7 @@ public class RechargeActivity extends ShopBaseActivity {
 				if (response.isSuccess()) {
 					PayUtil payUtil = new PayUtil(response.jSONFromData(),
 							self, 1);
-					payUtil.pay("小蚂蚁校园购物");
+					payUtil.pay("小蚂蚁校园购物充值");
 
 				}
 

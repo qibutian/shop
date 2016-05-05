@@ -71,11 +71,15 @@ public class HomePageAdapter extends NetJSONAdapter {
 		// 购物车那边
 		if (type == 3) {
 			good.setCount(JSONUtil.getInt(jo, "count"));
+			good.setGoodType(JSONUtil.getInt(jo, "type"));
+		} else if (type == 2) {
+			good.setCount(JSONUtil.getInt(jo, "cartcount"));
+			good.setGoodType(2);
 		} else {
 			good.setCount(JSONUtil.getInt(jo, "cartcount"));
+			good.setGoodType(JSONUtil.getInt(jo, "carttype"));
 		}
 
-		good.setGoodType(1);
 		final CartView cartView = (CartView) convertView
 				.findViewById(R.id.cartView);
 		cartView.setGood(good);

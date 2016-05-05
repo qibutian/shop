@@ -27,4 +27,7 @@ public class ForgetPasswordActivity extends ShopBaseActivity {
 		// TODO Auto-generated method stub
 		setTitle("找回密码");
 	}
+	
+	
+	
 }

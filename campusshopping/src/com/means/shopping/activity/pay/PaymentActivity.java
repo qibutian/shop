@@ -55,6 +55,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 	double blance;
 
+	CartBottomView bottom_view;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 	public void initView() {
 		getWindowsWidth();
 		setTitle("订单");
-		CartBottomView bottom_view = (CartBottomView) findViewById(R.id.bottom_view);
+		bottom_view = (CartBottomView) findViewById(R.id.bottom_view);
 		bottom_view.setType(1);
 		foodslayoutLl = (LinearLayout) findViewById(R.id.foodslayout);
 		address_layoutV = findViewById(R.id.address_layout);
@@ -165,8 +167,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 						ViewUtil.bindView(findViewById(R.id.redpacket_des),
 								"没有可用红包");
 					}
-					blance = JSONUtil.getDouble(jo, "blance");
-
+					blance = JSONUtil.getDouble(jo, "balance");
+					bottom_view.setYuE(blance);
 					if (blance > JSONUtil.getDouble(jo, "price")) {
 						ViewUtil.bindView(
 								findViewById(R.id.blance_des),

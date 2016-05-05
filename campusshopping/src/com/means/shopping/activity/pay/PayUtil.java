@@ -62,7 +62,8 @@ public class PayUtil {
 
 		// PayUtil payUtil = new PayUtil(JSONUtil.getJSONObject(jo, "app"));
 
-		String orderInfo = getOrderInfo(title, title, "0.1",
+		String orderInfo = getOrderInfo(title, title,
+				JSONUtil.getString(jo, "amount"),
 				JSONUtil.getString(jo, "paycode"),
 				JSONUtil.getString(jo, "callback"));
 

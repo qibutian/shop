@@ -77,6 +77,8 @@ public class CartBottomView extends LinearLayout {
 
 	CheckBox zhifubaoC, yueC;
 
+	double yue;
+
 	public CartBottomView(Context context) {
 		super(context);
 	}
@@ -124,6 +126,11 @@ public class CartBottomView extends LinearLayout {
 		});
 
 		getData();
+	}
+
+	public void setYuE(double money) {
+		this.yue = money;
+
 	}
 
 	public void setType(int type) {
@@ -177,6 +184,8 @@ public class CartBottomView extends LinearLayout {
 	// 下单
 	private void addOrder() {
 		DhNet net = new DhNet(API.addorder);
+		net.addParam("walletid", "");
+		net.addParam("is_balance", yueC.isChecked() ? 1 : 0);
 		net.doPost(new NetTask(mContext) {
 
 			@Override
@@ -189,10 +198,36 @@ public class CartBottomView extends LinearLayout {
 					String price = JSONUtil.getString(data, "orderprice");
 
 					if (yueC.isChecked()) {
-						payByYue(orderid, price);
+						if (yue >= JSONUtil.getDouble(data, "orderprice")) {
+							payByYue(orderid, price);
+						} else {
+							recharge(orderid,
+									JSONUtil.getDouble(data, "orderprice")
+											- yue);
+						}
 					} else {
 						payZhifuBao(orderid, price);
 					}
+				}
+
+			}
+		});
+	}
+
+	// 充值
+	private void recharge(String orderid, double price) {
+		DhNet net = new DhNet(API.chongzhi);
+		net.addParam("amount", price);
+		net.addParam("orderid", orderid);
+		net.doPostInDialog("余额不足,充值中...", new NetTask(mContext) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					PayUtil payUtil = new PayUtil(response.jSONFromData(),
+							mContext, 0);
+					payUtil.pay("小蚂蚁校园购物充值");
 				}
 
 			}
@@ -213,6 +248,10 @@ public class CartBottomView extends LinearLayout {
 
 					IDialog dialog = IocContainer.getShare().get(IDialog.class);
 					dialog.showToastShort(mContext, "支付成功");
+					Intent it = new Intent(mContext, MainActivity.class);
+					it.putExtra("type", "pay");
+					it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					mContext.startActivity(it);
 
 				}
 

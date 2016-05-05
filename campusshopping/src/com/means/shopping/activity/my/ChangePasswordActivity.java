@@ -93,7 +93,7 @@ public class ChangePasswordActivity extends ShopBaseActivity implements
 			return;
 		}
 
-		DhNet smsNet = new DhNet(API.resetpswdbyphone	);
+		DhNet smsNet = new DhNet(API.resetpswdbyphone);
 		smsNet.addParam("pswd", password);
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("mobilecode", code);

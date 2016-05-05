@@ -75,7 +75,7 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 			break;
 		// 忘记密码
 		case R.id.forgetpwd:
-			Intent intent = new Intent(self, ForgetPasswordActivity.class);
+			Intent intent = new Intent(self, ChangePasswordActivity.class);
 			startActivity(intent);
 			break;
 
@@ -85,11 +85,11 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 	}
 
 	private void login() {
-		// final String tel = telEt.getText().toString();
-		// final String password = passwordEt.getText().toString();
+//		 final String tel = telEt.getText().toString();
+//		 final String password = passwordEt.getText().toString();
 
-		final String tel = "15663848680";
-		final String password = "qq111111";
+		final String tel = "13770791947";
+		final String password = "123456a";
 		if (TextUtils.isEmpty(tel)) {
 			showToast("请输入手机号");
 			return;

@@ -44,7 +44,7 @@ public class CatDetailActivity extends ShopBaseActivity {
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
 		goodAdater = new HomePageAdapter(API.shop_contentlist, self,
-				R.layout.item_home_list, 1);
+				R.layout.item_home_list, 2);
 		goodAdater.addparam("catid", id);
 		goodAdater.fromWhat("list");
 		goodAdater.setTargetView(cartBootmView.getCartImageView());
@@ -60,7 +60,7 @@ public class CatDetailActivity extends ShopBaseActivity {
 				Good good = new Good();
 				good.setCount(JSONUtil.getInt(jo, "cartcount"));
 				good.setGoodId(goodId);
-				good.setGoodType(1);
+				good.setGoodType(JSONUtil.getInt(jo, "carttype"));
 				CommodityDetailDialog dialog = new CommodityDetailDialog(self,
 						good, jo);
 				dialog.setOnResultListener(new OnResultListener() {

@@ -15,6 +15,7 @@ import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseFragmentActivity;
 import com.means.shopping.bean.LogoutEB;
+import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
 
 import de.greenrobot.event.EventBus;
@@ -83,18 +84,19 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 			break;
 		}
 	}
-	
-	//退出登录
-	private void logout(){
+
+	// 退出登录
+	private void logout() {
 		DhNet net = new DhNet(API.logout);
 		net.doPostInDialog(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					showToast("已退出登录");
 					LogoutEB out = new LogoutEB();
 					EventBus.getDefault().post(out);
+					User.getInstance().setLogin(false);
 					finish();
 				}
 			}
