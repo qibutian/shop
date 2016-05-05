@@ -9,8 +9,10 @@ public class ShopPerference extends Perference {
 	public String pswd;
 
 	public String phone;
-	
-	public boolean login;
+
+	public String schoolId;
+
+	public String schoolName;
 
 	public String getPswd() {
 		return pswd;
@@ -36,12 +38,22 @@ public class ShopPerference extends Perference {
 		this.isFirst = isFirst;
 	}
 
-	public boolean isLogin() {
-		return login;
+	public String getSchoolId() {
+		return schoolId;
 	}
 
-	public void setLogin(boolean login) {
-		this.login = login;
+	public void setSchoolId(String schoolId) {
+		this.schoolId = schoolId;
 	}
+
+	public String getSchoolName() {
+		return schoolName;
+	}
+
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+	
+	
 
 }

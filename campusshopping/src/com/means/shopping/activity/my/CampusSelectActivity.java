@@ -1,7 +1,9 @@
 package com.means.shopping.activity.my;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -18,9 +20,13 @@ import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.SchoolEB;
+import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
+
+import de.greenrobot.event.EventBus;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -109,6 +115,31 @@ public class CampusSelectActivity extends ShopBaseActivity {
 			}
 		});
 
+		lv_school.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				JSONObject jo = school_adapter.getItem(position);
+				GlobalParams globalParams = IocContainer.getShare().get(
+						GlobalParams.class);
+
+				ShopPerference per = IocContainer.getShare().get(
+						ShopPerference.class);
+				per.load();
+				globalParams.setGlobalParam("schoolid", per.schoolId);
+				per.schoolId = JSONUtil.getString(jo, "id");
+				per.schoolName = JSONUtil.getString(jo, "name");
+				per.commit();
+
+				SchoolEB school = new SchoolEB();
+				school.setId(JSONUtil.getString(jo, "id"));
+				school.setName(JSONUtil.getString(jo, "name"));
+				EventBus.getDefault().post(school);
+				finish();
+			}
+		});
+
 		getDate();
 	}
 
@@ -143,18 +174,4 @@ public class CampusSelectActivity extends ShopBaseActivity {
 
 	}
 
-	private void serachSchool(String key, String areaid) {
-		DhNet net = new DhNet(API.search_school);
-		net.addParam("keywords", key);
-		net.addParam("areaid", areaid);
-		net.doGetInDialog(new NetTask(self) {
-
-			@Override
-			public void doInUI(Response response, Integer transfer) {
-				if (response.isSuccess()) {
-
-				}
-			}
-		});
-	}
 }

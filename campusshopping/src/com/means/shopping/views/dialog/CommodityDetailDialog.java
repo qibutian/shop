@@ -1,11 +1,21 @@
 package com.means.shopping.views.dialog;
 
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.util.ViewUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.means.shopping.R;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.GoodEB;
+import com.means.shopping.utils.CartAnimUtil;
 import com.means.shopping.views.BaseAlertDialog;
 import com.means.shopping.views.CartView;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
@@ -21,16 +31,19 @@ import de.greenrobot.event.EventBus;
 public class CommodityDetailDialog extends BaseAlertDialog {
 	Context mContext;
 
-	OnCommodityResultListener commodityResultListener;
+	OnResultListener commodityResultListener;
 
 	CartView cartView;
 
 	Good good;
 
-	public CommodityDetailDialog(Context context, Good good) {
+	JSONObject jo;
+
+	public CommodityDetailDialog(Context context, Good good, JSONObject jo) {
 		super(context);
 		this.mContext = context;
 		this.good = good;
+		this.jo = jo;
 	}
 
 	@Override
@@ -46,21 +59,33 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 		cartView.setThemeWhite();
 		cartView.setGood(good);
 		cartView.setCartNumTextView();
-//		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
-//
-//			@Override
-//			public void onMinusClick() {
-//				cartView.setCartNumTextView();
-//			}
-//
-//			@Override
-//			public void onAddClick() {
-//				cartView.setCartNumTextView();
-//				EventBus.getDefault().post(new PriceEB());
-//
-//			}
-//
-//		});
+		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
+
+			@Override
+			public void onMinusClick(int count, int cartcount, double price) {
+				cartView.setCartNumTextView();
+				if (commodityResultListener != null) {
+					commodityResultListener.onResult(count);
+				}
+			}
+
+			@Override
+			public void onAddClick(int count, int cartcount, double price) {
+				cartView.setCartNumTextView();
+				if (commodityResultListener != null) {
+					commodityResultListener.onResult(count);
+				}
+			}
+		});
+
+		ViewUtil.bindNetImage((ImageView) findViewById(R.id.pic),
+				JSONUtil.getString(jo, "pic"), "default");
+		ViewUtil.bindView(findViewById(R.id.title),
+				JSONUtil.getString(jo, "title"));
+		ViewUtil.bindView(findViewById(R.id.price),
+				JSONUtil.getString(jo, "price"));
+		ViewUtil.bindView(findViewById(R.id.des),
+				JSONUtil.getString(jo, "stitle"));
 
 		findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
 
@@ -73,17 +98,16 @@ public class CommodityDetailDialog extends BaseAlertDialog {
 
 	}
 
-	public interface OnCommodityResultListener {
-		void onResult(String year, String month, String day);
+	public interface OnResultListener {
+		void onResult(int cartcount);
 	}
 
-	public OnCommodityResultListener getOnCommodityResultListener() {
+	public OnResultListener getOnResultListener() {
 
 		return commodityResultListener;
 	}
 
-	public void setOnCommodityResultListener(
-			OnCommodityResultListener commodityResultListener) {
+	public void setOnResultListener(OnResultListener commodityResultListener) {
 		this.commodityResultListener = commodityResultListener;
 	}
 

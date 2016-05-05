@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.means.shopping.R;
 import com.means.shopping.activity.main.MsgListActivity;
 import com.means.shopping.activity.main.RecommendActivity;
+import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CartBottomNumEB;
@@ -52,11 +53,13 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	private ImageView headI;
 	private ImageView settingI;
-	private LinearLayout myredpacketLl, changepwdLl;
-	private TextView nicknameT, balanceT, goldT, cacheT;
+	private LinearLayout myredpacketLl;
+	private TextView nicknameT, balanceT, goldT;
 	private RelativeLayout msgLayoutR;
 
-	View recommendV, wipe_cacheV;
+	View cartV;
+
+	View recommendV;
 
 	ShopPerference per;
 
@@ -91,26 +94,20 @@ public class MyFragment extends Fragment implements OnClickListener {
 		settingI = (ImageView) mainV.findViewById(R.id.setting);
 		myredpacketLl = (LinearLayout) mainV.findViewById(R.id.myredpacket);
 		recommendV = mainV.findViewById(R.id.recommend);
-		changepwdLl = (LinearLayout) mainV.findViewById(R.id.changepwd);
 		msgLayoutR = (RelativeLayout) mainV.findViewById(R.id.msglayout);
 		nicknameT = (TextView) mainV.findViewById(R.id.nickname);
 		balanceT = (TextView) mainV.findViewById(R.id.balance);
 		goldT = (TextView) mainV.findViewById(R.id.gold);
 		msg_layoutV = mainV.findViewById(R.id.msg_layout);
-		wipe_cacheV = mainV.findViewById(R.id.wipe_cache);
-		cacheT = (TextView) mainV.findViewById(R.id.cache);
 
 		headI.setOnClickListener(this);
 		settingI.setOnClickListener(this);
 		myredpacketLl.setOnClickListener(this);
 		recommendV.setOnClickListener(this);
-		changepwdLl.setOnClickListener(this);
 		msg_layoutV.setOnClickListener(this);
-		wipe_cacheV.setOnClickListener(this);
 
-		mCacheDir = new File(getActivity().getExternalCacheDir(), "Rabbit");
-		cacheT.setText(String.valueOf(FileUtil.getFileOrDirSize(mCacheDir,
-				FileUtil.UNIT_SACLE.M)) + " M");
+		cartV = mainV.findViewById(R.id.cart_layout);
+		cartV.setOnClickListener(this);
 
 		getUserInfo();
 	}
@@ -170,28 +167,35 @@ public class MyFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), RecommendActivity.class);
 			getActivity().startActivity(it);
 			break;
-		// 修改密码
-		case R.id.changepwd:
-			it = new Intent(getActivity(), ChangePasswordActivity.class);
+
+		case R.id.cart_layout:
+			it = new Intent(getActivity(), CartActivity.class);
 			getActivity().startActivity(it);
 			break;
+		// // 修改密码
+		// case R.id.changepwd:
+		// it = new Intent(getActivity(), ChangePasswordActivity.class);
+		// getActivity().startActivity(it);
+		// break;
 
 		case R.id.msg_layout:
 			it = new Intent(getActivity(), MsgListActivity.class);
 			getActivity().startActivity(it);
-			// 清除缓存
-		case R.id.wipe_cache:
-			ImageLoader.getInstance().getMemoryCache().clear();
-			ImageLoader.getInstance().getDiskCache().clear();
-			if (FileUtil.deleteFileOrDir(mCacheDir)) {
-				Toast.makeText(getActivity(), "缓存清理成功", Toast.LENGTH_SHORT)
-						.show();
-				cacheT.setText("0M");
-			} else {
-				Toast.makeText(getActivity(), "已经非常干净了", Toast.LENGTH_SHORT)
-						.show();
-			}
+
 			break;
+		// 清除缓存
+		// case R.id.wipe_cache:
+		// ImageLoader.getInstance().getMemoryCache().clear();
+		// ImageLoader.getInstance().getDiskCache().clear();
+		// if (FileUtil.deleteFileOrDir(mCacheDir)) {
+		// Toast.makeText(getActivity(), "缓存清理成功", Toast.LENGTH_SHORT)
+		// .show();
+		// cacheT.setText("0M");
+		// } else {
+		// Toast.makeText(getActivity(), "已经非常干净了", Toast.LENGTH_SHORT)
+		// .show();
+		// }
+		// break;
 		default:
 			break;
 		}

@@ -6,12 +6,15 @@ import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.Instance.InstanceScope;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.GlobalCodeHandler;
+import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.util.UserLocation;
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.means.shopping.db.DaoHelper;
+import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.views.NomalDialog;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -100,6 +103,17 @@ public class ShopApplication extends Application implements
 		ImageLoader.getInstance().init(imageconfig);
 
 		UserLocation.getInstance().init(this);
+		
+		
+		GlobalParams globalParams = IocContainer.getShare().get(
+				GlobalParams.class);
+
+		ShopPerference per = IocContainer.getShare().get(
+				ShopPerference.class);
+		per.load();
+		if (!TextUtils.isEmpty(per.schoolId)) {
+			globalParams.setGlobalParam("schoolid", per.schoolId);
+		}
 	}
 
 	@Override

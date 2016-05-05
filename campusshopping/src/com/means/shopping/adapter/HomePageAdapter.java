@@ -26,6 +26,8 @@ import net.duohuo.dhroid.util.ViewUtil;
 public class HomePageAdapter extends NetJSONAdapter {
 
 	Cart cart;
+
+	// 1是超市,2是商城,3是购物车
 	int type = 0;
 
 	View targetV;
@@ -81,7 +83,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override
-			public void onMinusClick(int count, double price) {
+			public void onMinusClick(int count, int cartcount, double price) {
 				try {
 					if (type == 3) {
 						jo.put("count", JSONUtil.getInt(jo, "count") - 1);
@@ -97,7 +99,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 			}
 
 			@Override
-			public void onAddClick(int count, double price) {
+			public void onAddClick(int count, int cartcount, double price) {
 				try {
 
 					if (type == 3) {
@@ -119,7 +121,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 					ImageView buyImg = new ImageView(mContext);// buyImg是动画的图片，我的是一个小球（R.drawable.sign）
 					buyImg.setImageResource(R.drawable.sign);// 设置buyImg的图片
 					CartAnimUtil anim = new CartAnimUtil((Activity) mContext,
-							count, price);
+							cartcount, price);
 					anim.setAnim(buyImg, start_location, targetV);
 				}
 			}

@@ -70,12 +70,12 @@ public class CatDetailAdapter extends NetJSONAdapter {
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override
-			public void onMinusClick(int count, double price) {
+			public void onMinusClick(int count,int cartcount, double price) {
 				notifyDataSetChanged();
 			}
 
 			@Override
-			public void onAddClick(int count, double price) {
+			public void onAddClick(int count, int cartcount,double price) {
 				notifyDataSetChanged();
 				if (type != 0) {
 					int[] start_location = new int[2];// 一个整型数组，用来存储按钮的在屏幕的X、Y坐标
@@ -84,7 +84,7 @@ public class CatDetailAdapter extends NetJSONAdapter {
 					ImageView buyImg = new ImageView(mContext);// buyImg是动画的图片，我的是一个小球（R.drawable.sign）
 					buyImg.setImageResource(R.drawable.sign);// 设置buyImg的图片
 					CartAnimUtil anim = new CartAnimUtil((Activity) mContext,
-							count, price);
+							cartcount, price);
 					anim.setAnim(buyImg, start_location, targetV);
 				}
 			}

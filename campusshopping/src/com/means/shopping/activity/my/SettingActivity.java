@@ -93,8 +93,6 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					showToast("已退出登录");
-					per.setLogin(false);
-					per.commit();
 					LogoutEB out = new LogoutEB();
 					EventBus.getDefault().post(out);
 					finish();

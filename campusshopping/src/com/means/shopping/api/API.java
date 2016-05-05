@@ -92,6 +92,6 @@ public class API {
 	public static String chongzhi = Baseurl + "/home/account/chargeaction";
 
 	// 学校搜索
-	public static String search_school = Baseurl + "/home/market/schoolist";
+	public static String search_school = Baseurl + "/home/market/schoollist";
 
 }

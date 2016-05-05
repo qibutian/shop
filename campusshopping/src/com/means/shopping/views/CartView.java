@@ -130,9 +130,9 @@ public class CartView extends LinearLayout {
 
 	public interface OnCartViewClickListener {
 
-		void onAddClick(int count, double price);
+		void onAddClick(int count, int cartcount, double price);
 
-		void onMinusClick(int count, double price);
+		void onMinusClick(int count, int cartcount, double price);
 	}
 
 	public void addGood(final Context context, final Long goodId,
@@ -153,13 +153,13 @@ public class CartView extends LinearLayout {
 									Integer transfer) {
 								if (response.isSuccess()) {
 									JSONObject jo = response.jSONFromData();
-									mGood.setCount(JSONUtil.getInt(jo, "count"));
+									mGood.setCount(mGood.getCount() + 1);
 
 									if (cartViewType == 1) {
 
 										CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
-										cartBottomNumEB.setCount(mGood
-												.getCount());
+										cartBottomNumEB.setCount(JSONUtil
+												.getInt(jo, "count"));
 										cartBottomNumEB.setPrice(JSONUtil
 												.getDouble(jo, "price"));
 										EventBus.getDefault().post(
@@ -169,6 +169,7 @@ public class CartView extends LinearLayout {
 									if (onCartViewClickListener != null) {
 										onCartViewClickListener.onAddClick(
 												mGood.getCount(),
+												JSONUtil.getInt(jo, "count"),
 												JSONUtil.getDouble(jo, "price"));
 									}
 								}
@@ -185,7 +186,7 @@ public class CartView extends LinearLayout {
 
 	}
 
-	public void changeGoodCount(Context context, Long goodId, int count,
+	public void changeGoodCount(Context context, Long goodId, final int count,
 			int type) {
 		DhNet net = new DhNet(API.changeCartCount);
 		net.addParam("goodsid", goodId);
@@ -197,12 +198,12 @@ public class CartView extends LinearLayout {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					mGood.setCount(JSONUtil.getInt(jo, "count"));
+					mGood.setCount(count);
 
 					if (cartViewType == 1) {
 
 						CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
-						cartBottomNumEB.setCount(mGood.getCount());
+						cartBottomNumEB.setCount(JSONUtil.getInt(jo, "count"));
 						cartBottomNumEB.setPrice(JSONUtil
 								.getDouble(jo, "price"));
 						EventBus.getDefault().post(cartBottomNumEB);
@@ -212,10 +213,12 @@ public class CartView extends LinearLayout {
 						if (isadd) {
 							onCartViewClickListener.onAddClick(
 									mGood.getCount(),
+									JSONUtil.getInt(jo, "count"),
 									JSONUtil.getDouble(jo, "price"));
 						} else {
 							onCartViewClickListener.onMinusClick(
 									mGood.getCount(),
+									JSONUtil.getInt(jo, "count"),
 									JSONUtil.getDouble(jo, "price"));
 						}
 					}

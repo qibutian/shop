@@ -1,8 +1,14 @@
 package com.means.shopping.activity.home;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,11 +27,18 @@ import com.means.shopping.activity.my.CampusSelectActivity;
 import com.means.shopping.activity.my.MyCommissionActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
+import com.means.shopping.bean.Good;
+import com.means.shopping.bean.SchoolEB;
 import com.means.shopping.utils.ShareUtil;
+import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.views.RefreshListViewAndMore;
+import com.means.shopping.views.dialog.CommodityDetailDialog;
+import com.means.shopping.views.dialog.CommodityDetailDialog.OnResultListener;
 import com.means.shopping.views.dialog.RedPacketDialog;
 import com.means.shopping.views.pop.SharePop;
 import com.means.shopping.views.pop.SharePop.ShareResultListener;
+
+import de.greenrobot.event.EventBus;
 
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
@@ -78,6 +91,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_home_page, null);
 		mLayoutInflater = inflater;
+		EventBus.getDefault().register(this);
 		initView();
 		// TODO Auto-generated method stub
 		return mainV;
@@ -86,6 +100,14 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	private void initView() {
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		headV = mLayoutInflater.inflate(R.layout.head_home_page, null);
+		headV.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
 		adapter = new HomePageAdapter(API.market_daylist, getActivity(),
@@ -98,10 +120,42 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
+				final JSONObject jo = adapter.getTItem(position
+						- contentListV.getHeaderViewsCount());
+				Long goodId = JSONUtil.getLong(jo, "id");
+				Good good = new Good();
+				good.setCount(JSONUtil.getInt(jo, "cartcount"));
+				good.setGoodId(goodId);
+				good.setGoodType(1);
+				CommodityDetailDialog dialog = new CommodityDetailDialog(
+						getActivity(), good, jo);
+				dialog.setOnResultListener(new OnResultListener() {
+
+					@Override
+					public void onResult(int cartcount) {
+						try {
+							jo.put("cartcount", cartcount);
+							adapter.notifyDataSetChanged();
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+				dialog.show();
+
 			}
 		});
 		titleT = (TextView) mainV.findViewById(R.id.title);
 		titleT.setOnClickListener(this);
+
+		ShopPerference per = IocContainer.getShare().get(ShopPerference.class);
+		per.load();
+
+		if (!TextUtils.isEmpty(per.schoolName)) {
+			titleT.setText(per.schoolName);
+		}
+
 		marketV = headV.findViewById(R.id.market);
 		redpacketV = headV.findViewById(R.id.redpacket);
 		night_lifeV = headV.findViewById(R.id.night_life);
@@ -185,5 +239,18 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
+	}
+
+	public void onEventMainThread(SchoolEB school) {
+		titleT.setText(school.getName());
+		adapter.addparam("schoolid", school.getId());
+		adapter.refresh();
 	}
 }

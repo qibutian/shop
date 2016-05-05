@@ -90,7 +90,7 @@ public class CartActivity extends ShopBaseActivity {
 				Good good = new Good();
 				good.setGoodId(goodId);
 				CommodityDetailDialog dialog = new CommodityDetailDialog(self,
-						good);
+						good,jo);
 				dialog.show();
 
 			}

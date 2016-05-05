@@ -5,11 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.means.shopping.R;
-import com.means.shopping.bean.Good;
 import com.means.shopping.views.BaseAlertDialog;
-import com.means.shopping.views.CartView;
-import com.means.shopping.views.CartView.OnCartViewClickListener;
-import com.means.shopping.views.dialog.CommodityDetailDialog.OnCommodityResultListener;
 
 /**
  * 获得红包弹出框
