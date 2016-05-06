@@ -84,8 +84,10 @@ public class ConsigneeAddressActivity extends ShopBaseActivity {
 					JSONObject jo = response.jSONFromData();
 					if (TextUtils.isEmpty(JSONUtil.getString(jo, "lxaddress"))) {
 						UserLocation location = UserLocation.getInstance();
-						addressT.setText(location.getAmapLocation()
-								.getAddress());
+						if (location.getAmapLocation() != null) {
+							addressT.setText(location.getAmapLocation()
+									.getAddress());
+						}
 					} else {
 
 						nameEt.setText(JSONUtil.getString(jo, "lxname"));

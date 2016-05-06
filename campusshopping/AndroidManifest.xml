@@ -137,6 +137,22 @@
             android:name="com.means.shopping.activity.my.SearchSchoolActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
+        <activity
+            android:name="com.means.shopping.activity.main.TiXianActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.MyBlanceActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
+        <activity
+            android:name="com.means.shopping.activity.my.RedeemActivity"
+            android:label="@string/title_activity_user_protocol" >
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

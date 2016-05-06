@@ -104,6 +104,7 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
+                    android:id="@+id/yue_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,7 +127,35 @@
                         android:textSize="@dimen/text_small" />
                 </LinearLayout>
 
+                <View style="@style/line_vertical" />
+
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        style="@style/text_43_black_small"
+                        android:text="我的积分" />
+
+                    <TextView
+                        android:id="@+id/jifen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="0"
+                        android:textColor="@color/text_ff9_yellow"
+                        android:textSize="@dimen/text_small" />
+                </LinearLayout>
+
+                <View style="@style/line_vertical" />
+
+                <LinearLayout
+                    android:id="@+id/yongjin_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -264,10 +293,9 @@
             <View style="@style/line_horizontal" />
 
             <LinearLayout
-                android:id="@+id/cart_layout"
+                android:id="@+id/jifen_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -278,7 +306,43 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/my_allorder" />
+                    android:src="@drawable/icon_jifen" />
+
+                <TextView
+                    style="@style/text_43_black_small"
+                    android:layout_marginLeft="10dp"
+                    android:text="积分兑换" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/cart_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_gouwuche" />
 
                 <TextView
                     style="@style/text_43_black_small"
@@ -291,13 +355,14 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View style="@style/line_horizontal" />
         </LinearLayout>
     </ScrollView>
 

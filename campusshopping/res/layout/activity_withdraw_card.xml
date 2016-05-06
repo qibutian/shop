@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_43_black_medium"
+                android:text="提现金额" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/money"
+                    style="@style/text_43_black_big"
+                    android:background="@color/white"
+                    android:hint="请输入提现金额"
+                    android:inputType="number"
+                    android:gravity="right"
+                    android:textColor="@color/text_06_green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/line_horizontal"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_43_black_medium"
+                android:text="卡号" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/cardid"
+                    style="@style/text_43_black_big"
+                    android:background="@color/white"
+                    android:hint="请输入银行卡号"
+                    android:inputType="number"
+                    android:gravity="right"
+                    android:textColor="@color/text_06_green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/line_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_43_black_medium"
+                android:text="姓名" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/name"
+                    style="@style/text_43_black_big"
+                    android:background="@color/white"
+                    android:hint="请输入姓名"
+                    android:gravity="right"
+                    android:textColor="@color/text_06_green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/line_horizontal" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_fillet_5_green_bg"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium" />
+    </LinearLayout>
+
+</LinearLayout>

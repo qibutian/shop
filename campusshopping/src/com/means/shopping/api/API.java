@@ -94,4 +94,11 @@ public class API {
 	// 学校搜索
 	public static String search_school = Baseurl + "/home/market/schoollist";
 
+	// 提现
+	public static String tixian = Baseurl + "/home/user/cashapply";
+
+	// 注册红包
+	public static String registwallet = Baseurl
+			+ "/home/user/registwalletaction";
+
 }

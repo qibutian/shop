@@ -11,10 +11,8 @@ public class Constant {
 	public static final int ZOOM_PIC = 1003;
 
 	// 价公测试
-	public static final String WX_APP_KEY = "wx21353c1dd9301a4f";
-	public static final String WX_APP_SECRET = "d81f985ef0249fa38b709a7519135ad4";
-	public static final String partnerId = "1224995502";
-	public static final String WX_API_SECRET = "9f8fjrwsfdjl54csaaslthlas3fgjczc";
+	public static final String WX_APP_KEY = "wx332dac088bc963e6";
+	public static final String WX_APP_SECRET = "fe0cef8b924538c567ce91f4a3a4c2b5";
 
 
 }

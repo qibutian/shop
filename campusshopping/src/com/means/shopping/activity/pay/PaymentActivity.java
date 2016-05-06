@@ -141,7 +141,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
 					if (TextUtils.isEmpty(JSONUtil.getString(jo, "lxname"))) {
-
+						addressT.setText("请填写地址");
 					} else {
 						nameT.setText(JSONUtil.getString(jo, "lxname"));
 						addressT.setText(JSONUtil.getString(jo, "lxaddress"));

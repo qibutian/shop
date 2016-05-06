@@ -33,7 +33,7 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 	private EditText telEt, codeEt, passwordEt;
 	private Button registerBtn;
 	private LinearLayout protocolLl;
-	
+
 	private TimeCount time = null;
 
 	@Override
@@ -70,7 +70,7 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 			register();
 			break;
 		case R.id.protocol:
-			Intent it = new Intent(self,UserProtocolActivity.class);
+			Intent it = new Intent(self, UserProtocolActivity.class);
 			startActivity(it);
 			break;
 		}
@@ -116,11 +116,29 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					showToast("注册成功");
-					finish();
+					getWallet();
 				}
 			}
 		});
 
+	}
+
+	// 获取红包
+	private void getWallet() {
+		DhNet net = new DhNet(API.registwallet);
+		net.doGetInDialog("正在获取注册红包", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+
+					showToast("恭喜你获取一张注册红包,可在我的红包里面查看!");
+					finish();
+
+				}
+
+			}
+		});
 	}
 
 	// 获取验证码
@@ -167,5 +185,5 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 
 		}
 	}
-	
+
 }

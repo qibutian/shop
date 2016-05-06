@@ -29,6 +29,8 @@ import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.SchoolEB;
+import com.means.shopping.manage.UserInfoManage;
+import com.means.shopping.manage.UserInfoManage.LoginCallBack;
 import com.means.shopping.utils.ShareUtil;
 import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.views.RefreshListViewAndMore;
@@ -192,8 +194,22 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			break;
 		// 红包
 		case R.id.redpacket:
-			RedPacketDialog redDialog = new RedPacketDialog(getActivity());
-			redDialog.show();
+			UserInfoManage.getInstance().checkLogin(getActivity(),
+					new LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							RedPacketDialog redDialog = new RedPacketDialog(
+									getActivity());
+							redDialog.show();
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
 			break;
 
 		case R.id.classify:
@@ -202,8 +218,24 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.chongzhi:
-			it = new Intent(getActivity(), RechargeActivity.class);
-			startActivity(it);
+
+			UserInfoManage.getInstance().checkLogin(getActivity(),
+					new LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							Intent it = new Intent(getActivity(),
+									RechargeActivity.class);
+							startActivity(it);
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
+
 			break;
 
 		case R.id.night_life:
@@ -213,8 +245,24 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		// 佣金
 		case R.id.commission:
-			it = new Intent(getActivity(), MyCommissionActivity.class);
-			startActivity(it);
+
+			UserInfoManage.getInstance().checkLogin(getActivity(),
+					new LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							Intent it = new Intent(getActivity(),
+									MyCommissionActivity.class);
+							startActivity(it);
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
+
 			break;
 
 		// 分享
@@ -232,8 +280,24 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.sign_layout:
-			it = new Intent(getActivity(), SignActivity.class);
-			startActivity(it);
+
+			UserInfoManage.getInstance().checkLogin(getActivity(),
+					new LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							Intent it = new Intent(getActivity(),
+									SignActivity.class);
+							startActivity(it);
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
+
 			break;
 
 		default:

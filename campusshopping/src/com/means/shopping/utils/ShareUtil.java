@@ -33,8 +33,7 @@ public class ShareUtil {
 		}
 		api.registerApp(Constant.WX_APP_KEY);
 		WXWebpageObject webpage = new WXWebpageObject();
-//		webpage.webpageUrl = "http://www.foodies.im/wap.php?g=Wap&c=Food&a=shop&mer_id=68&store_id="
-//				+ store_id;
+		webpage.webpageUrl = "http://www.baidu.com";
 		WXMediaMessage msg = new WXMediaMessage(webpage);
 		msg.title = name;
 		msg.description = reason;

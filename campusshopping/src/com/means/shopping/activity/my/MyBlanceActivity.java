@@ -8,37 +8,27 @@ import net.duohuo.dhroid.util.ViewUtil;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 import com.means.shopping.R;
-import com.means.shopping.R.layout;
 import com.means.shopping.activity.main.TiXianActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-/**
- * 我的佣金
- * 
- * @author Administrator
- * 
- */
-public class MyCommissionActivity extends ShopBaseActivity {
+public class MyBlanceActivity extends ShopBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_my_commission);
+		setContentView(R.layout.activity_myblance);
 	}
 
 	@Override
 	public void initView() {
-		setTitle("我的佣金");
+		setTitle("我的余额");
 		getUserInfo();
 	}
 
@@ -51,10 +41,10 @@ public class MyCommissionActivity extends ShopBaseActivity {
 				if (response.isSuccess()) {
 					final JSONObject jo = response.jSONFromData();
 					ViewUtil.bindView(findViewById(R.id.money_one),
-							JSONUtil.getString(jo, "balance"));
+							JSONUtil.getString(jo, "gold"));
 
 					ViewUtil.bindView(findViewById(R.id.money),
-							JSONUtil.getString(jo, "balance"));
+							JSONUtil.getString(jo, "gold"));
 
 					findViewById(R.id.submit).setOnClickListener(
 							new OnClickListener() {
@@ -64,12 +54,12 @@ public class MyCommissionActivity extends ShopBaseActivity {
 									double money = JSONUtil.getDouble(jo,
 											"balance");
 									if (money == 0) {
-										showToast("你没有可提现的佣金");
+										showToast("你没有可提现的余额");
 									} else {
-										// Intent it = new Intent(self,
-										// TiXianActivity.class);
-										// it.putExtra("money", money + "");
-										// startActivity(it);
+										Intent it = new Intent(self,
+												TiXianActivity.class);
+										it.putExtra("money", money + "");
+										startActivity(it);
 									}
 								}
 							});

@@ -68,6 +68,12 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	File mCacheDir;
 
+	// 我的余额.我的佣金按钮
+	View yueV, yongjinV;
+
+	// 积分兑换按钮
+	View jifenV;
+
 	public static MyFragment getInstance() {
 		if (instance == null) {
 			instance = new MyFragment();
@@ -109,6 +115,13 @@ public class MyFragment extends Fragment implements OnClickListener {
 		cartV = mainV.findViewById(R.id.cart_layout);
 		cartV.setOnClickListener(this);
 
+		yueV = mainV.findViewById(R.id.yue_layout);
+		yongjinV = mainV.findViewById(R.id.yongjin_layout);
+		yueV.setOnClickListener(this);
+		yongjinV.setOnClickListener(this);
+
+		jifenV = mainV.findViewById(R.id.jifen_layout);
+		jifenV.setOnClickListener(this);
 		getUserInfo();
 	}
 
@@ -182,6 +195,21 @@ public class MyFragment extends Fragment implements OnClickListener {
 			it = new Intent(getActivity(), MsgListActivity.class);
 			getActivity().startActivity(it);
 
+			break;
+
+		case R.id.yue_layout:
+			it = new Intent(getActivity(), MyBlanceActivity.class);
+			getActivity().startActivity(it);
+			break;
+
+		case R.id.yongjin_layout:
+			it = new Intent(getActivity(), MyCommissionActivity.class);
+			getActivity().startActivity(it);
+			break;
+
+		case R.id.jifen_layout:
+			it = new Intent(getActivity(), RedeemActivity.class);
+			getActivity().startActivity(it);
 			break;
 		// 清除缓存
 		// case R.id.wipe_cache:

@@ -183,6 +183,15 @@ public class CartBottomView extends LinearLayout {
 
 	// 下单
 	private void addOrder() {
+
+		TextView addressT = (TextView) getRootView().findViewById(R.id.name);
+
+		if (TextUtils.isEmpty(addressT.getText().toString())) {
+			IDialog dialog = IocContainer.getShare().get(IDialog.class);
+			dialog.showToastShort(mContext, "请填写收货地址!");
+			return;
+		}
+
 		DhNet net = new DhNet(API.addorder);
 		net.addParam("walletid", "");
 		net.addParam("is_balance", yueC.isChecked() ? 1 : 0);
