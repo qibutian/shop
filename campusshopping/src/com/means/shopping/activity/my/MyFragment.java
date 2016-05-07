@@ -31,7 +31,9 @@ import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CartBottomNumEB;
+import com.means.shopping.bean.CreditEB;
 import com.means.shopping.bean.ReChargeEB;
+import com.means.shopping.bean.User;
 import com.means.shopping.utils.FileUtil;
 import com.means.shopping.utils.ShopPerference;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -73,6 +75,11 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	// 积分兑换按钮
 	View jifenV;
+
+	// 按钮按钮
+	View anhaoV;
+
+	String credit;
 
 	public static MyFragment getInstance() {
 		if (instance == null) {
@@ -122,6 +129,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 		jifenV = mainV.findViewById(R.id.jifen_layout);
 		jifenV.setOnClickListener(this);
+
+		anhaoV = mainV.findViewById(R.id.anhao_layout);
+		anhaoV.setOnClickListener(this);
 		getUserInfo();
 	}
 
@@ -138,9 +148,14 @@ public class MyFragment extends Fragment implements OnClickListener {
 					ViewUtil.bindView(goldT, JSONUtil.getString(jo, "gold"));
 					ViewUtil.bindView(balanceT,
 							JSONUtil.getString(jo, "balance"));
+					ViewUtil.bindView(mainV.findViewById(R.id.jifen),
+							JSONUtil.getString(jo, "credit"));
+					credit = JSONUtil.getString(jo, "credit");
 					ViewUtil.bindNetImage(headI,
 							JSONUtil.getString(jo, "faceimg_s"), "default");
 					int msgcount = JSONUtil.getInt(jo, "msgcount");
+					User.getInstance().setBlance(
+							JSONUtil.getDouble(jo, "balance"));
 					if (msgcount > 0) {
 						msgLayoutR.setVisibility(View.VISIBLE);
 						ViewUtil.bindView(mainV.findViewById(R.id.msgcount),
@@ -160,10 +175,10 @@ public class MyFragment extends Fragment implements OnClickListener {
 		case R.id.head:
 			// it = new Intent(getActivity(), ChangePasswordActivity.class);
 			// it = new Intent(getActivity(), RegisterActivity.class);
-			it = new Intent(getActivity(), LoginActivity.class);
-			// it = new Intent(getActivity(), PaymentActivity.class);
-			// it = new Intent(getActivity(), CampusSelectActivity.class);
-			getActivity().startActivity(it);
+			// it = new Intent(getActivity(), LoginActivity.class);
+			// // it = new Intent(getActivity(), PaymentActivity.class);
+			// // it = new Intent(getActivity(), CampusSelectActivity.class);
+			// getActivity().startActivity(it);
 			break;
 		// 设置
 		case R.id.setting:
@@ -202,6 +217,11 @@ public class MyFragment extends Fragment implements OnClickListener {
 			getActivity().startActivity(it);
 			break;
 
+		case R.id.anhao_layout:
+			it = new Intent(getActivity(), AnhaoActivity.class);
+			getActivity().startActivity(it);
+			break;
+
 		case R.id.yongjin_layout:
 			it = new Intent(getActivity(), MyCommissionActivity.class);
 			getActivity().startActivity(it);
@@ -209,6 +229,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 		case R.id.jifen_layout:
 			it = new Intent(getActivity(), RedeemActivity.class);
+			it.putExtra("credit", credit);
 			getActivity().startActivity(it);
 			break;
 		// 清除缓存
@@ -230,6 +251,10 @@ public class MyFragment extends Fragment implements OnClickListener {
 	}
 
 	public void onEventMainThread(ReChargeEB reChargeEB) {
+		getUserInfo();
+	}
+	
+	public void onEventMainThread(CreditEB creditEB) {
 		getUserInfo();
 	}
 

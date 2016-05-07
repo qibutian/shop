@@ -2,6 +2,7 @@ package com.means.shopping.activity.main;
 
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 
@@ -75,7 +76,10 @@ public class SplashActivity extends ShopBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					User.getInstance().setLogin(true);
+					User user = User.getInstance();
+					user.setShareCode(JSONUtil.getString(jo, "code"));
+					user.setLogin(true);
+					user.setUserid(JSONUtil.getString(jo, "id"));
 				}
 				notFirst();
 			}

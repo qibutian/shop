@@ -72,6 +72,7 @@ public class HomePageAdapter extends NetJSONAdapter {
 		if (type == 3) {
 			good.setCount(JSONUtil.getInt(jo, "count"));
 			good.setGoodType(JSONUtil.getInt(jo, "type"));
+			// 商城
 		} else if (type == 2) {
 			good.setCount(JSONUtil.getInt(jo, "cartcount"));
 			good.setGoodType(2);

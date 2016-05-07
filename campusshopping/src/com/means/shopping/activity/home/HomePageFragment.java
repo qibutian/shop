@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatActivity;
+import com.means.shopping.activity.cat.CatDetailActivity;
 import com.means.shopping.activity.main.SignActivity;
 import com.means.shopping.activity.market.MarketActivity;
 import com.means.shopping.activity.market.RechargeActivity;
@@ -78,6 +79,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 签到
 	View sign_layoutV;
+
+	// 搜索按钮
+	View searchV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -176,6 +180,10 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		commissionV.setOnClickListener(this);
 		sign_layoutV = headV.findViewById(R.id.sign_layout);
 		sign_layoutV.setOnClickListener(this);
+
+		searchV = mainV.findViewById(R.id.search);
+		searchV.setOnClickListener(this);
+
 	}
 
 	@Override
@@ -267,16 +275,38 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		// 分享
 		case R.id.share:
-			SharePop pop = new SharePop(getActivity());
-			pop.setOnShareResultListener(new ShareResultListener() {
 
-				@Override
-				public void onResult(int result) {
-					ShareUtil.wechatShare(result, getActivity(), "王者荣耀"
-							+ result, "一起玩啊", "");
-				}
-			});
-			pop.show();
+			UserInfoManage.getInstance().checkLogin(getActivity(),
+					new LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							SharePop pop = new SharePop(getActivity());
+							pop.setOnShareResultListener(new ShareResultListener() {
+
+								@Override
+								public void onResult(int result) {
+									ShareUtil.wechatShare(result,
+											getActivity(), "小蚂蚁校园购物" + result,
+											"方便实用的校园购物助手,你想要的我们都有", "");
+								}
+							});
+							pop.show();
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
+
+			break;
+
+		// 搜索
+		case R.id.search:
+			it = new Intent(getActivity(), CatDetailActivity.class);
+			startActivity(it);
 			break;
 
 		case R.id.sign_layout:

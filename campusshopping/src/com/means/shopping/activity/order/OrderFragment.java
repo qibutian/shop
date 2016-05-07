@@ -19,6 +19,11 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.OrderFragmentPageAdapter;
+import com.means.shopping.bean.PayEB;
+import com.means.shopping.bean.ReChargeEB;
+import com.means.shopping.bean.SchoolEB;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 订单
@@ -53,6 +58,7 @@ public class OrderFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_order, null);
 		mLayoutInflater = inflater;
+		EventBus.getDefault().register(this);
 		initView();
 		initTab();
 		setTab(0);
@@ -166,10 +172,24 @@ public class OrderFragment extends Fragment {
 		}
 	}
 
+	public void onEventMainThread(PayEB payEB) {
+		refresh();
+	}
+
+	public void onEventMainThread(ReChargeEB reChargeEB) {
+		refresh();
+	}
+
 	public void refresh() {
 		RecentFragment.getInstance().refresh();
 		WaitReceivingFragment.getInstance().refresh();
 		WaitPaymentFragment.getInstance().refresh();
+	}
 
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 }

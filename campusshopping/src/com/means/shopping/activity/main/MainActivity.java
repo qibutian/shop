@@ -84,7 +84,7 @@ public class MainActivity extends ShopBaseFragmentActivity {
 			final ImageView imgI = (ImageView) imgV.getChildAt(0);
 			final TextView textT = (TextView) childV.getChildAt(1);
 
-			if (index == 2) {
+			if (index == 2 || index == 1) {
 				if (!User.getInstance().isLogin()) {
 					UserInfoManage.getInstance().checkLogin(MainActivity.this,
 							new LoginCallBack() {

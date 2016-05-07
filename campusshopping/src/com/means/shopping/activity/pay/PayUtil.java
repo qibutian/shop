@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.alipay.sdk.app.PayTask;
 import com.means.shopping.activity.main.MainActivity;
 import com.means.shopping.api.Constant;
+import com.means.shopping.bean.PayEB;
 import com.means.shopping.bean.ReChargeEB;
 
 import de.greenrobot.event.EventBus;
@@ -215,13 +216,15 @@ public class PayUtil {
 				if (TextUtils.equals(resultStatus, "9000")) {
 					IocContainer.getShare().get(IDialog.class)
 							.showToastShort(mContext, "支付成功");
-
-					((Activity) mContext).finish();
+					// if(!isorder) {
+					// ((Activity) mContext).finish();
+					// }
 					if (type == 0) {
 						Intent it = new Intent(mContext, MainActivity.class);
 						it.putExtra("type", "pay");
 						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						mContext.startActivity(it);
+						EventBus.getDefault().post(new PayEB());
 					} else {
 						EventBus.getDefault().post(new ReChargeEB());
 					}

@@ -63,7 +63,9 @@
         </activity>
         <activity
             android:name=".activity.cat.CatDetailActivity"
-            android:label="@string/title_activity_setting" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_setting"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <activity
             android:name=".activity.market.CartActivity"
@@ -88,6 +90,10 @@
         </activity>
         <activity
             android:name=".activity.my.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password" >
+        </activity>
+        <activity
+            android:name=".activity.my.AnhaoActivity"
             android:label="@string/title_activity_change_password" >
         </activity>
         <activity

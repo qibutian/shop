@@ -67,7 +67,7 @@ public class SignActivity extends ShopBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.signinfo);
+		DhNet net = new DhNet(API.jifenlist);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override
@@ -91,7 +91,7 @@ public class SignActivity extends ShopBaseActivity {
 	}
 
 	private void sign() {
-		DhNet net = new DhNet(API.sign);
+		DhNet net = new DhNet(API.jifen);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

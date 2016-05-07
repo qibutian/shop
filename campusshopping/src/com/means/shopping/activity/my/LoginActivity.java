@@ -41,7 +41,6 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
 	}
 
 	@Override
@@ -85,8 +84,8 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 	}
 
 	private void login() {
-//		 final String tel = telEt.getText().toString();
-//		 final String password = passwordEt.getText().toString();
+		// final String tel = telEt.getText().toString();
+		// final String password = passwordEt.getText().toString();
 
 		final String tel = "13770791947";
 		final String password = "123456a";
@@ -119,6 +118,8 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 					JSONObject jo = response.jSONFromData();
 					User user = User.getInstance();
 					user.setLogin(true);
+					user.setUserid(JSONUtil.getString(jo, "id"));
+					user.setShareCode(JSONUtil.getString(jo, "code"));
 					per = IocContainer.getShare().get(ShopPerference.class);
 					per.load();
 					per.setPhone(tel);

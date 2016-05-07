@@ -7,7 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.means.shopping.R;
+import com.means.shopping.api.API;
 import com.means.shopping.api.Constant;
+import com.means.shopping.bean.User;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
@@ -31,9 +33,11 @@ public class ShareUtil {
 					.showToastShort(context, "请先安装微信");
 			return;
 		}
+		User user = User.getInstance();
 		api.registerApp(Constant.WX_APP_KEY);
 		WXWebpageObject webpage = new WXWebpageObject();
-		webpage.webpageUrl = "http://www.baidu.com";
+		webpage.webpageUrl = API.Baseurl + "/home/index/download?userid="
+				+ user.getUserid() + "&code=" + user.getShareCode();
 		WXMediaMessage msg = new WXMediaMessage(webpage);
 		msg.title = name;
 		msg.description = reason;

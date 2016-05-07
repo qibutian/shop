@@ -67,7 +67,7 @@ public class CatDetailActivity extends ShopBaseActivity implements
 				R.layout.item_home_list, 2);
 		goodAdater.addparam("catid", id);
 		goodAdater.addparam("price", "asc");
-		goodAdater.addparam("ordercount", "asc");
+		// goodAdater.addparam("ordercount", "asc");
 		goodAdater.fromWhat("list");
 		goodAdater.setTargetView(cartBootmView.getCartImageView());
 		goodListV.setAdapter(goodAdater);
@@ -109,7 +109,7 @@ public class CatDetailActivity extends ShopBaseActivity implements
 			@Override
 			public void onClick(View v) {
 
-				goodAdater.addparam("Keywords", contentE.getText().toString());
+				goodAdater.addparam("keywords", contentE.getText().toString());
 				goodAdater.refreshDialog();
 			}
 		});
@@ -125,10 +125,12 @@ public class CatDetailActivity extends ShopBaseActivity implements
 				countI.setImageResource(R.drawable.paixu_down);
 				countI.setTag("1");
 				goodAdater.addparam("ordercount", "desc");
+				goodAdater.addparam("price", "");
 			} else if (countI.getTag().toString().equals("1")) {
 				countI.setImageResource(R.drawable.paixu_up);
 				countI.setTag("0");
 				goodAdater.addparam("ordercount", "asc");
+				goodAdater.addparam("price", "");
 			}
 			goodAdater.refreshDialog();
 			break;
@@ -137,10 +139,12 @@ public class CatDetailActivity extends ShopBaseActivity implements
 				priceI.setImageResource(R.drawable.paixu_down);
 				priceI.setTag("1");
 				goodAdater.addparam("price", "desc");
+				goodAdater.addparam("ordercount", "");
 			} else if (countI.getTag().toString().equals("1")) {
 				priceI.setImageResource(R.drawable.paixu_up);
 				priceI.setTag("0");
 				goodAdater.addparam("price", "asc");
+				goodAdater.addparam("ordercount", "");
 			}
 			goodAdater.refreshDialog();
 			break;

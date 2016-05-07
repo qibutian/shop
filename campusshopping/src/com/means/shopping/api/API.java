@@ -101,4 +101,29 @@ public class API {
 	public static String registwallet = Baseurl
 			+ "/home/user/registwalletaction";
 
+	// 佣金提现
+	public static String yongjintixian = Baseurl + "/home/user/goldapply";
+
+	// 确认收货
+	public static String ordersure = Baseurl + "/home/order/ordersure";
+
+	// 暗号
+	public static String sharesure = Baseurl + "/home/user/sharecodesure";
+
+	// 签到积分列表
+	public static String jifenlist = Baseurl + "/home/user/daycredit";
+
+	// 签到积分
+	public static String jifen = Baseurl + "/home/user/daycreditaction";
+
+	// 积分兑换红包
+	public static String jifenduihuan = Baseurl + "/home/user/creditexwallet";
+
+	// 红包列表
+	public static String jifenduihuanlist = Baseurl + "/home/user/exwalletlist";
+
+	// 积分兑换类型
+	public static String jifenduihuantype = Baseurl
+			+ "/home/user/exwalletcatlist";
+
 }

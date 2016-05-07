@@ -81,6 +81,7 @@ public class CartBottomView extends LinearLayout {
 
 	public CartBottomView(Context context) {
 		super(context);
+		this.mContext = context;
 	}
 
 	public CartBottomView(Context context, AttributeSet attrs) {
@@ -154,9 +155,7 @@ public class CartBottomView extends LinearLayout {
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
-
 					zhifubaoC.setChecked(!isChecked);
-
 				}
 			});
 		}
@@ -224,7 +223,7 @@ public class CartBottomView extends LinearLayout {
 	}
 
 	// 充值
-	private void recharge(String orderid, double price) {
+	public void recharge(String orderid, double price) {
 		DhNet net = new DhNet(API.chongzhi);
 		net.addParam("amount", price);
 		net.addParam("orderid", orderid);
@@ -244,7 +243,7 @@ public class CartBottomView extends LinearLayout {
 	}
 
 	// 余额支付
-	private void payByYue(String orderid, String price) {
+	public void payByYue(String orderid, String price) {
 		DhNet net = new DhNet(API.payyue);
 		net.addParam("orderid", orderid);
 		net.addParam("payprice", price);
@@ -269,7 +268,7 @@ public class CartBottomView extends LinearLayout {
 	}
 
 	// 支付宝支付
-	private void payZhifuBao(String orderid, String price) {
+	public void payZhifuBao(String orderid, String price) {
 		DhNet net = new DhNet(API.pay_zhifubao);
 		net.addParam("orderid", orderid);
 		net.addParam("amount", price);

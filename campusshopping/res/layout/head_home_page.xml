@@ -56,7 +56,7 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_qiandao"
+                android:src="@drawable/icon_fenlei"
                 my:heightToWidth="1.0" />
 
             <TextView

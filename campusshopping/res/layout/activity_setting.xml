@@ -127,7 +127,7 @@
                 android:src="@drawable/icon_right" />
         </LinearLayout>
     </LinearLayout>
-
+ <View style="@style/line_horizontal" />
     <LinearLayout
         android:id="@+id/about"
         android:layout_width="match_parent"
