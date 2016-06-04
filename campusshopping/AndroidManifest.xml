@@ -124,41 +124,57 @@
             android:label="@string/title_activity_forget_password" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.UserProtocolActivity"
+            android:name=".activity.my.UserProtocolActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.main.SignActivity"
+            android:name=".activity.main.SignActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.main.MsgListActivity"
+            android:name=".activity.main.MsgListActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.CanUserRedPacket"
+            android:name=".activity.my.CanUserRedPacket"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.SearchSchoolActivity"
+            android:name=".activity.my.SearchSchoolActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.main.TiXianActivity"
+            android:name=".activity.main.TiXianActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.MyBlanceActivity"
+            android:name=".activity.my.MyBlanceActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
-            android:name="com.means.shopping.activity.my.RedeemActivity"
+            android:name=".activity.my.RedeemActivity"
             android:label="@string/title_activity_user_protocol" >
         </activity>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.study.JobStatusActivity"
+            android:label="@string/title_activity_job_status" >
+        </activity>
+        <activity
+            android:name=".activity.study.JobParticularsActivity"
+            android:label="@string/title_activity_job_particulars" >
+        </activity>
+        <activity
+            android:name=".activity.study.StudyScoreActivity"
+            android:label="@string/title_activity_study_score" >
+        </activity>
+        <activity
+            android:name=".activity.study.QuestionbankActivity"
+            android:label="@string/title_activity_questionbank" >
+        </activity>
     </application>
 
 </manifest>

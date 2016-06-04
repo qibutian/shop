@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_leftandright" >
+
+        <TextView
+            android:id="@+id/jobname"
+            style="@style/text_43_black_medium"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/circle_gradual_green"
+            android:drawablePadding="5dp"
+            android:text="小学教师" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_right" />
+    </RelativeLayout>
+    
+    <View style="@style/line_horizontal"/>
+
+</LinearLayout>

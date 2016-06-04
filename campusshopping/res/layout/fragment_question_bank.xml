@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_leftandright" >
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/text_43_black_big"
+        android:layout_marginTop="10dp"
+        android:text="1/5 你的梦想是什么？（）"
+         />
+
+    <RadioGroup
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radio_1"
+            style="@style/text_43_black_medium"
+            android:layout_marginTop="@dimen/padding_leftandright"
+            android:button="@drawable/study_check_s"
+            android:checked="false"
+            android:paddingLeft="10dp"
+            android:text="A.全面性" />
+        
+        <RadioButton
+            android:id="@+id/radio_2"
+            style="@style/text_43_black_medium"
+            android:layout_marginTop="@dimen/padding_leftandright"
+            android:button="@drawable/study_check_s"
+            android:checked="false"
+            android:paddingLeft="10dp"
+            android:text="B.全面性" />
+        
+        <RadioButton
+            android:id="@+id/radio_3"
+            style="@style/text_43_black_medium"
+            android:layout_marginTop="@dimen/padding_leftandright"
+            android:button="@drawable/study_check_s"
+            android:checked="false"
+            android:paddingLeft="10dp"
+            android:text="C.全面性" />
+        
+        <RadioButton
+            android:id="@+id/radio_4"
+            style="@style/text_43_black_medium"
+            android:layout_marginTop="@dimen/padding_leftandright"
+            android:button="@drawable/study_check_s"
+            android:checked="false"
+            android:paddingLeft="10dp"
+            android:text="D.全面性" />
+    </RadioGroup>
+    
+    <View style="@style/line_horizontal"
+        android:layout_margin="@dimen/padding_leftandright"
+        />
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+    <TextView 
+        style="@style/text_99_grey_medium"
+        android:text="参考答案"
+        android:padding="@dimen/padding_leftandright"
+        android:background="#e3effb"
+        android:layout_marginRight="@dimen/padding_leftandright"
+        />
+    <TextView 
+        android:id="@+id/reference"
+        style="@style/text_99_grey_big"
+        android:textColor="@color/text_06_green"
+        android:text="A"
+        />
+    </LinearLayout>
+
+</LinearLayout>

@@ -11,6 +11,7 @@
     <color name="text_cc_grey">#cccccc</color>
     <color name="text_06_green">#06c1ae</color>
     <color name="text_ffd_yellow">#ffd28c</color>
+    <color name="text_ffff68_yellow">#ffff68 </color>
     <color name="text_ff4_red">#ff4f64</color>
     <color name="black60">#99000000</color>
     
@@ -23,6 +24,8 @@
 
     <!-- titlebarColor -->
     <color name="titlebar_color">#06c1ae</color>
+    <!-- titlebarColor -->
+    <color name="blue_titlebar_color">#4093da</color>
     <!-- 我的页面headview背景Color -->
     <color name="my_bg_color">#05c2b3</color>
     <color name="my_headbg_color">#81e2e5</color>
