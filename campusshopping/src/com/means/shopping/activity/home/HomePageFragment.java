@@ -287,7 +287,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 								@Override
 								public void onResult(int result) {
 									ShareUtil.wechatShare(result,
-											getActivity(), "小蚂蚁校园购物" + result,
+											getActivity(), "小蚂蚁校园购物",
 											"方便实用的校园购物助手,你想要的我们都有", "");
 								}
 							});

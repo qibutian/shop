@@ -85,6 +85,9 @@ public class HomePageAdapter extends NetJSONAdapter {
 				.findViewById(R.id.cartView);
 		cartView.setGood(good);
 		cartView.setCartNumTextView();
+		if (type == 3) {
+			cartView.setType(type);
+		}
 		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 			@Override

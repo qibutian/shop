@@ -22,6 +22,8 @@ import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
+import com.means.shopping.views.dialog.DelectDialog;
+import com.means.shopping.views.dialog.DelectDialog.OnDelectResultListener;
 
 import de.greenrobot.event.EventBus;
 
@@ -38,7 +40,7 @@ public class CartView extends LinearLayout {
 
 	Good mGood;
 
-	// 0代表超市,夜市,1代表首页页面
+	// 0代表超市,夜市,1代表首页页面,3代表购物车
 	int cartViewType = 1;
 
 	public boolean isadd = false;
@@ -53,6 +55,10 @@ public class CartView extends LinearLayout {
 		initView();
 	}
 
+	public void setType(int type) {
+		this.cartViewType = type;
+	}
+
 	private void initView() {
 		LayoutInflater.from(mContext).inflate(R.layout.include_cart_view, this);
 		cartNumT = (TextView) findViewById(R.id.cart_num);
@@ -63,10 +69,24 @@ public class CartView extends LinearLayout {
 			public void onClick(View v) {
 
 				if (mGood != null) {
-					int count = mGood.getCount() - 1;
+					final int count = mGood.getCount() - 1;
 					isadd = false;
-					changeGoodCount(mContext, mGood.getGoodId(), count,
-							mGood.getGoodType());
+
+					if (count == 0 && cartViewType == 3) {
+						DelectDialog dialog = new DelectDialog(mContext);
+						dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+							@Override
+							public void onResult() {
+								changeGoodCount(mContext, mGood.getGoodId(),
+										count, mGood.getGoodType());
+							}
+						});
+					} else {
+						changeGoodCount(mContext, mGood.getGoodId(), count,
+								mGood.getGoodType());
+					}
+
 				}
 
 			}

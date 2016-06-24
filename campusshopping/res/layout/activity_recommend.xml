@@ -70,6 +70,7 @@
                     android:text="3.余额在超市消费无使用限制,可累积使用" />
 
                 <Button
+                    android:id="@+id/share"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="15dp"

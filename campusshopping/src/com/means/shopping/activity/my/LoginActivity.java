@@ -84,11 +84,11 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 	}
 
 	private void login() {
-		// final String tel = telEt.getText().toString();
-		// final String password = passwordEt.getText().toString();
+		final String tel = telEt.getText().toString();
+		final String password = passwordEt.getText().toString();
 
-		final String tel = "13770791947";
-		final String password = "123456a";
+		// final String tel = "13770791947";
+		// final String password = "123456a";
 		if (TextUtils.isEmpty(tel)) {
 			showToast("请输入手机号");
 			return;
