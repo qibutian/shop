@@ -1,0 +1,149 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/include_blue_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/gradual_blue_bg"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_leftandright"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp" >
+
+                <TextView
+                    android:id="@+id/text_1"
+                    style="@style/text_white_medium"
+                    android:text="答对" />
+
+                <TextView
+                    android:id="@+id/count"
+                    style="@style/text_white_medium"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/text_1"
+                    android:layout_marginLeft="@dimen/padding_leftandright"
+                    android:layout_marginRight="@dimen/padding_leftandright"
+                    android:text="1"
+                    android:gravity="bottom"
+                    android:textColor="@color/text_ffff68_yellow"
+                    android:textSize="35sp" />
+
+                <TextView
+                    style="@style/text_white_medium"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/count"
+                    android:text="题" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="220dp"
+                    android:layout_height="25dp" >
+
+                    <TextView
+                        style="@style/text_white_medium"
+                        android:layout_centerVertical="true"
+                        android:text="已答" />
+
+                    <RelativeLayout 
+                        android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                        >
+                    <ProgressBar
+                        android:id="@+id/question"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progress="60"
+                        android:progressDrawable="@drawable/progress_update" />
+                    
+                    <TextView
+                        style="@style/text_white_medium"
+                        android:layout_centerInParent="true"
+                        android:text="3/5" />
+                    
+                    </RelativeLayout>
+                </RelativeLayout>
+                
+                 <RelativeLayout
+                    android:layout_width="220dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="@dimen/padding_leftandright" >
+
+                    <TextView
+                        style="@style/text_white_medium"
+                        android:layout_centerVertical="true"
+                        android:text="正确率" />
+
+                    <RelativeLayout 
+                        android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                        >
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progress="33"
+                        android:progressDrawable="@drawable/progress_update" />
+                    
+                    <TextView
+                        style="@style/text_white_medium"
+                        android:layout_centerInParent="true"
+                        android:text="33.33%" />
+                    
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <TextView 
+        android:id="@+id/continuestudy"
+        style="@style/text_white_biger"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/padding_leftandright"
+        android:layout_marginLeft="@dimen/padding_leftandright"
+        android:layout_marginRight="@dimen/padding_leftandright"
+        android:layout_marginTop="40dp"
+        android:text="继续学习"
+        android:background="@drawable/fillet_5_blue_bg"
+        />
+    
+    <TextView 
+        android:id="@+id/again"
+        style="@style/text_white_biger"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/padding_leftandright"
+        android:layout_marginLeft="@dimen/padding_leftandright"
+        android:layout_marginRight="@dimen/padding_leftandright"
+        android:layout_marginTop="30dp"
+        android:text="错题重做"
+        android:background="@drawable/fillet_5_yellow_bg"
+        />
+
+</LinearLayout>

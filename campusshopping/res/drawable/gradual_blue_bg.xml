@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <gradient
+        android:angle="270"
+        android:centerX="0.5"
+        android:centerY="0.5"
+        android:endColor="#9cc7ed"
+        android:startColor="@color/blue_titlebar_color"
+        android:type="linear" />
+
+    <size
+        android:height="10dp"
+        android:width="10dp" />
+
+</shape>

@@ -22,21 +22,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.main.MsgListActivity;
 import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
+import com.means.shopping.activity.study.StudyScoreActivity;
 import com.means.shopping.api.API;
-import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.CreditEB;
 import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.User;
-import com.means.shopping.utils.FileUtil;
 import com.means.shopping.utils.ShopPerference;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import de.greenrobot.event.EventBus;
 
@@ -78,6 +75,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	// 按钮按钮
 	View anhaoV;
+	
+	// 培训考试
+	View examinationV;
 
 	String credit;
 
@@ -132,6 +132,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 		anhaoV = mainV.findViewById(R.id.anhao_layout);
 		anhaoV.setOnClickListener(this);
+		
+		examinationV = mainV.findViewById(R.id.examination_layout);
+		examinationV.setOnClickListener(this);
 		getUserInfo();
 	}
 
@@ -245,6 +248,11 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// .show();
 		// }
 		// break;
+			//培训考试
+		case R.id.examination_layout:
+			it = new Intent(getActivity(), StudyScoreActivity.class);
+			getActivity().startActivity(it);
+			break;
 		default:
 			break;
 		}

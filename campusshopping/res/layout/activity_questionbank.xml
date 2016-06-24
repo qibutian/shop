@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/include_blue_title_bar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footbar"
+        android:layout_below="@+id/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/footbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue_titlebar_color"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:paddingBottom="@dimen/padding_leftandright"
+        android:paddingTop="@dimen/padding_leftandright" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_tool" />
+
+            <TextView
+                style="@style/text_white_medium"
+                android:layout_marginTop="3dp"
+                android:text="求助" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_tool" />
+
+            <TextView
+                style="@style/text_white_medium"
+                android:layout_marginTop="3dp"
+                android:text="纠错" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_tool" />
+
+            <TextView
+                style="@style/text_white_medium"
+                android:layout_marginTop="3dp"
+                android:text="收藏" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_tool" />
+
+            <TextView
+                style="@style/text_white_medium"
+                android:layout_marginTop="3dp"
+                android:text="成绩" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_tool" />
+
+            <TextView
+                style="@style/text_white_medium"
+                android:layout_marginTop="3dp"
+                android:text="更多" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
