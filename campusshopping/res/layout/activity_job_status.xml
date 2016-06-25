@@ -9,5 +9,9 @@
     <include layout="@layout/include_blue_title_bar"/>
 
 
-    <include layout="@layout/include_refresh_listview"/>
+    <ExpandableListView   
+    android:id ="@+id/expandableListView"   
+    android:layout_width ="fill_parent"   
+    android:layout_height ="wrap_content"   
+       />   
 </LinearLayout>

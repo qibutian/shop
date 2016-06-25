@@ -29,6 +29,8 @@ import com.means.shopping.activity.main.RecommendActivity;
 import com.means.shopping.activity.market.CartActivity;
 import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.activity.study.JobParticularsActivity;
+import com.means.shopping.activity.study.JobStatusActivity;
+import com.means.shopping.adapter.JobStatusAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CreditEB;
 import com.means.shopping.bean.ReChargeEB;
@@ -250,7 +252,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// break;
 			//培训考试
 		case R.id.examination_layout:
-			it = new Intent(getActivity(), JobParticularsActivity.class);
+			it = new Intent(getActivity(), JobStatusActivity.class);
 			getActivity().startActivity(it);
 			break;
 		default:
