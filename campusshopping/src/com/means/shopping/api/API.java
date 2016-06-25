@@ -122,6 +122,21 @@ public class API {
 	// 红包列表
 	public static String jifenduihuanlist = Baseurl + "/home/user/exwalletlist";
 
+	//培训分类	
+	public static String paperlist = Baseurl + "/home/index/paperlist";
+	
+	//试卷信息
+	public static String paperinfo = Baseurl + "/home/index/paperinfo";
+	
+	//试卷题目
+	public static String quuestionlist = Baseurl + "/home/index/quuestionlist";
+	
+	//试卷错题
+	public static String quuestionerrorlist = Baseurl + "/home/index/quuestionerrorlist";
+		
+	//答题接口
+	public static String questionanser = Baseurl + "/home/index/questionanser";
+	
 	// 积分兑换类型
 	public static String jifenduihuantype = Baseurl
 			+ "/home/user/exwalletcatlist";

@@ -1,6 +1,9 @@
 package com.means.shopping.activity.study;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -68,10 +71,10 @@ public class JobParticularsActivity extends ShopBaseActivity {
 	}
 
 	private void getData() {
-		adapter = new NetJSONAdapter(API.listall, self,
+		adapter = new NetJSONAdapter(API.paperlist, self,
 				R.layout.item_job_particulars);
 		adapter.fromWhat("list");
-		adapter.addField("jobname", R.id.jobname);
+		adapter.addField("title", R.id.jobname);
 
 		listV.setAdapter(adapter);
 		contentListV = listV.getListView();
@@ -83,6 +86,9 @@ public class JobParticularsActivity extends ShopBaseActivity {
 					int position, long arg3) {
 
 				Intent it = new Intent(self,StudyScoreActivity.class);
+				JSONObject jo = (JSONObject) adapter.getItem(position);
+				it.putExtra("title", JSONUtil.getString(jo, "title"));
+				it.putExtra("catid", JSONUtil.getString(jo,"catid"));
 				startActivity(it);
 				
 			}
@@ -93,10 +99,11 @@ public class JobParticularsActivity extends ShopBaseActivity {
 	//搜素
 	private void find() {
 		String content = search_content.getText().toString();
-		if (TextUtils.isEmpty(content)) {
-			showToast("请输入查找内容");
-			return;
-		}
+//		if (TextUtils.isEmpty(content)) {
+//			showToast("请输入查找内容");
+//			return;
+//		}
+		adapter.addparam("keywords", content);
 		adapter.refresh();
 		
 	}

@@ -37,7 +37,7 @@
                     android:layout_below="@+id/text_1"
                     android:layout_marginLeft="@dimen/padding_leftandright"
                     android:layout_marginRight="@dimen/padding_leftandright"
-                    android:text="1"
+                    android:text="0"
                     android:gravity="bottom"
                     android:textColor="@color/text_ffff68_yellow"
                     android:textSize="35sp" />
@@ -75,13 +75,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:max="100"
-                        android:progress="60"
+                        android:progress="0"
                         android:progressDrawable="@drawable/progress_update" />
                     
                     <TextView
+                        android:id="@+id/question_txt"
                         style="@style/text_white_medium"
                         android:layout_centerInParent="true"
-                        android:text="3/5" />
+                        android:text="0/0" />
                     
                     </RelativeLayout>
                 </RelativeLayout>
@@ -102,17 +103,19 @@
                     android:layout_alignParentRight="true"
                         >
                     <ProgressBar
+                        android:id="@+id/accuracy"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:max="100"
-                        android:progress="33"
+                        android:progress="0"
                         android:progressDrawable="@drawable/progress_update" />
                     
                     <TextView
+                        android:id="@+id/accuracy_txt"
                         style="@style/text_white_medium"
                         android:layout_centerInParent="true"
-                        android:text="33.33%" />
+                        android:text="0%" />
                     
                     </RelativeLayout>
                 </RelativeLayout>
@@ -129,7 +132,7 @@
         android:layout_marginLeft="@dimen/padding_leftandright"
         android:layout_marginRight="@dimen/padding_leftandright"
         android:layout_marginTop="40dp"
-        android:text="继续学习"
+        android:text="开始学习"
         android:background="@drawable/fillet_5_blue_bg"
         />
     
@@ -143,6 +146,7 @@
         android:layout_marginRight="@dimen/padding_leftandright"
         android:layout_marginTop="30dp"
         android:text="错题重做"
+        android:visibility="gone"
         android:background="@drawable/fillet_5_yellow_bg"
         />
 

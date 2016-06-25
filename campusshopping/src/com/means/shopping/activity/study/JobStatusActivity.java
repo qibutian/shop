@@ -61,10 +61,10 @@ public class JobStatusActivity extends ShopBaseActivity {
 	}
 
 	private void getData() {
-		adapter = new NetJSONAdapter(API.listall, self,
+		adapter = new NetJSONAdapter(API.paperlist, self,
 				R.layout.item_job_status);
 		adapter.fromWhat("list");
-		adapter.addField("jobname", R.id.jobname);
+		adapter.addField("title", R.id.jobname);
 
 		listV.setAdapter(adapter);
 		contentListV = listV.getListView();
