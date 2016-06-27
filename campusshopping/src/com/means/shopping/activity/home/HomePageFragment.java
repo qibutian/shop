@@ -23,6 +23,7 @@ import com.means.shopping.activity.cat.CatActivity;
 import com.means.shopping.activity.cat.CatDetailActivity;
 import com.means.shopping.activity.main.SignActivity;
 import com.means.shopping.activity.market.MarketActivity;
+import com.means.shopping.activity.market.NightAtivity;
 import com.means.shopping.activity.market.RechargeActivity;
 import com.means.shopping.activity.my.CampusSelectActivity;
 import com.means.shopping.activity.my.MyCommissionActivity;
@@ -247,7 +248,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.night_life:
-			it = new Intent(getActivity(), MarketActivity.class);
+			it = new Intent(getActivity(), NightAtivity.class);
 			startActivity(it);
 			break;
 
@@ -306,6 +307,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 搜索
 		case R.id.search:
 			it = new Intent(getActivity(), CatDetailActivity.class);
+			it.putExtra("type", "商品");
 			startActivity(it);
 			break;
 

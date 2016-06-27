@@ -30,6 +30,12 @@ public class API {
 	// 超市商品列表
 	public static String marketGoodList = Baseurl + "/home/market/contentlist";
 
+	// 夜市商品列表
+	public static String nightGoodList = Baseurl + "/home/ymarket/contentlist";
+
+	// 夜市分类
+	public static String nightCat = Baseurl + "/home/ymarket/catlist";
+
 	// 学校列表
 	public static String schooldata = Baseurl + "/home/market/schooldata";
 

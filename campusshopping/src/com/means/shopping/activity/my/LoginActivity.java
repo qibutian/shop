@@ -118,6 +118,9 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 					JSONObject jo = response.jSONFromData();
 					User user = User.getInstance();
 					user.setLogin(true);
+					int ispeixun = JSONUtil.getInt(jo, "ispeixun");
+
+					user.setIspeixun(ispeixun == 1 ? true : false);
 					user.setUserid(JSONUtil.getString(jo, "id"));
 					user.setShareCode(JSONUtil.getString(jo, "code"));
 					per = IocContainer.getShare().get(ShopPerference.class);

@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fillet_10_white_bg"
         android:gravity="center"
@@ -14,7 +14,10 @@
 
         <TextView
             style="@style/text_43_black_medium"
-            android:padding="@dimen/padding_leftandright"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="12dp"
             android:text="确定删除该商品吗?" />
 
         <View style="@style/line_horizontal" />

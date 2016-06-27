@@ -14,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.shopping.R;
 import com.means.shopping.activity.cat.CatDetailActivity;
@@ -28,9 +28,7 @@ import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
 
-import de.greenrobot.event.EventBus;
-
-public class MarketActivity extends ShopBaseActivity {
+public class NightAtivity extends ShopBaseActivity {
 
 	ListView catListV;
 
@@ -58,13 +56,13 @@ public class MarketActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("超市");
+		setTitle("夜市");
 		setRightAction("", R.drawable.search_icon, new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				Intent it = new Intent(self, CatDetailActivity.class);
-				it.putExtra("type", "超市");
+				it.putExtra("type", "夜市");
 				startActivity(it);
 			}
 		});
@@ -114,8 +112,8 @@ public class MarketActivity extends ShopBaseActivity {
 
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
-		goodAdater = new HomePageAdapter(API.marketGoodList, self,
-				R.layout.item_home_list, 1);
+		goodAdater = new HomePageAdapter(API.nightGoodList, self,
+				R.layout.item_home_list, 4);
 		goodAdater.fromWhat("list");
 		goodAdater.setTargetView(cartBootmView.getCartImageView());
 		goodListV.setAdapter(goodAdater);
@@ -138,7 +136,7 @@ public class MarketActivity extends ShopBaseActivity {
 	}
 
 	private void getCatData() {
-		DhNet net = new DhNet(API.marketCat);
+		DhNet net = new DhNet(API.nightCat);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

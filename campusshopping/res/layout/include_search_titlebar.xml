@@ -42,7 +42,9 @@
             android:paddingLeft="10dp" >
 
             <TextView
+                android:id="@+id/type_name"
                 style="@style/text_43_black_medium"
+                android:drawableRight="@drawable/paixu_grey"
                 android:text="商品" />
 
             <View

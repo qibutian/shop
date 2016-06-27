@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.HomePageAdapter;
@@ -24,6 +25,7 @@ import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
 import com.means.shopping.views.dialog.CommodityDetailDialog.OnResultListener;
+import com.means.shopping.views.dialog.SelectTypeDialog;
 
 public class CatDetailActivity extends ShopBaseActivity implements
 		OnClickListener {
@@ -40,6 +42,8 @@ public class CatDetailActivity extends ShopBaseActivity implements
 	View priceV, countV;
 
 	EditText contentE;
+
+	TextView typeName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +67,8 @@ public class CatDetailActivity extends ShopBaseActivity implements
 
 		goodListV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		goodListContentV = goodListV.getListView();
-		goodAdater = new HomePageAdapter(API.shop_contentlist, self,
-				R.layout.item_home_list, 2);
-		goodAdater.addparam("catid", id);
-		goodAdater.addparam("price", "asc");
-		// goodAdater.addparam("ordercount", "asc");
-		goodAdater.fromWhat("list");
-		goodAdater.setTargetView(cartBootmView.getCartImageView());
+		String type = getIntent().getStringExtra("type");
+		setAdapter(type);
 		goodListV.setAdapter(goodAdater);
 		goodListContentV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -113,6 +112,47 @@ public class CatDetailActivity extends ShopBaseActivity implements
 				goodAdater.refreshDialog();
 			}
 		});
+		typeName = (TextView) findViewById(R.id.type_name);
+		typeName.setText(type);
+		typeName.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				SelectTypeDialog dialog = new SelectTypeDialog(self);
+				dialog.setOnResultListener(new SelectTypeDialog.OnResultListener() {
+
+					@Override
+					public void onResult(String type) {
+						contentE.setText("");
+						typeName.setText(type);
+						setAdapter(type);
+					}
+				});
+				dialog.show();
+			}
+		});
+	}
+
+	private void setAdapter(String type) {
+		if (type.equals("商品")) {
+			goodAdater = new HomePageAdapter(API.shop_contentlist, self,
+					R.layout.item_home_list, 2);
+			goodAdater.addparam("catid", id);
+			// goodAdater.addparam("ordercount", "asc");
+		} else if (type.equals("超市")) {
+			goodAdater = new HomePageAdapter(API.marketGoodList, self,
+					R.layout.item_home_list, 1);
+
+		} else {
+			goodAdater = new HomePageAdapter(API.nightGoodList, self,
+					R.layout.item_home_list, 4);
+		}
+		goodAdater.addparam("price", "asc");
+		// goodAdater.addparam("ordercount", "asc");
+		goodAdater.fromWhat("list");
+		goodAdater.setTargetView(cartBootmView.getCartImageView());
+		goodListV.setAdapter(goodAdater);
+		goodAdater.refreshDialog();
 	}
 
 	@Override

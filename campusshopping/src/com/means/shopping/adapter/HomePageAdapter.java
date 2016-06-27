@@ -43,6 +43,10 @@ public class HomePageAdapter extends NetJSONAdapter {
 		this.type = type;
 	}
 
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public void setTargetView(View targetV) {
 		this.targetV = targetV;
 	}
@@ -76,6 +80,10 @@ public class HomePageAdapter extends NetJSONAdapter {
 		} else if (type == 2) {
 			good.setCount(JSONUtil.getInt(jo, "cartcount"));
 			good.setGoodType(2);
+			// 夜市
+		} else if (type == 4) {
+			good.setCount(JSONUtil.getInt(jo, "cartcount"));
+			good.setGoodType(JSONUtil.getInt(jo, "carttype"));
 		} else {
 			good.setCount(JSONUtil.getInt(jo, "cartcount"));
 			good.setGoodType(JSONUtil.getInt(jo, "carttype"));

@@ -53,20 +53,19 @@
                     android:textColor="@color/text_06_green"
                     android:visibility="gone" />
             </LinearLayout>
-            
-           <TextView 
-        android:id="@+id/submit"
-        style="@style/text_white_biger"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:padding="@dimen/padding_leftandright"
-        android:layout_marginLeft="@dimen/padding_leftandright"
-        android:layout_marginRight="@dimen/padding_leftandright"
-        android:layout_marginTop="40dp"
-        android:text="提交试卷"
-        android:visibility="gone"
-        android:background="@drawable/fillet_5_blue_bg"
-        />
+
+            <TextView
+                android:id="@+id/submit"
+                style="@style/text_white_biger"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/padding_leftandright"
+                android:layout_marginRight="@dimen/padding_leftandright"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btn_green_s"
+                android:gravity="center"
+                android:padding="@dimen/padding_leftandright"
+                android:text="提交试卷"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

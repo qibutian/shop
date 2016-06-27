@@ -50,13 +50,7 @@ public class StudyScoreActivity extends ShopBaseActivity implements
 	public void initView() {
 		contentid = getIntent().getStringExtra("catid");
 		title = getIntent().getStringExtra("title");
-		setLeftAction(-1, "学习成绩", new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+		setTitle("学习成绩");
 
 		continuestudyT = (TextView) findViewById(R.id.continuestudy);
 		againT = (TextView) findViewById(R.id.again);
@@ -97,11 +91,13 @@ public class StudyScoreActivity extends ShopBaseActivity implements
 						continuestudyT.setText("开始学习");
 					} else {
 						againT.setVisibility(View.VISIBLE);
-						countT.setText(answer);
+						countT.setText(JSONUtil.getString(jo, "successcount"));
 						question_txt.setText(answercount + "/" + questioncount);
-						questionPb.setProgress(answercount / questioncount);
+						questionPb.setMax(questioncount);
+						accuracyPb.setMax(questioncount);
+						questionPb.setProgress(answercount);
 						accuracy_txt.setText(errorcount + "/" + questioncount);
-						accuracyPb.setProgress(errorcount / questioncount);
+						accuracyPb.setProgress(errorcount);
 						continuestudyT.setText("继续学习");
 					}
 				}

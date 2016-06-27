@@ -17,20 +17,20 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.activity.study.JobParticularsActivity;
 
-public class JobStatusAdapter extends BaseExpandableListAdapter{
-	
+public class JobStatusAdapter extends BaseExpandableListAdapter {
+
 	Context mContext;
 
 	LayoutInflater mLayoutInflater;
-	
+
 	JSONArray jsa;
-	
+
 	public JobStatusAdapter(Context context) {
 		this.mContext = context;
 		mLayoutInflater = LayoutInflater.from(mContext);
 	}
-	
-	public void setData(JSONArray jsa){
+
+	public void setData(JSONArray jsa) {
 		this.jsa = jsa;
 		notifyDataSetChanged();
 	}
@@ -39,12 +39,12 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 	public JSONObject getChild(int groupPosition, int childPosition) {
 		JSONObject jo = getGroup(groupPosition);
 		JSONArray jsa = JSONUtil.getJSONArray(jo, "_child");
-		if (jsa==null) {
+		if (jsa == null) {
 			return null;
 		}
 		return JSONUtil.getJSONObjectAt(jsa, childPosition);
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -59,23 +59,26 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 		ChildHolder holder = null;
 		if (convertView == null) {
 			holder = new ChildHolder();
-			convertView = mLayoutInflater.inflate(R.layout.item_job_particulars, null);
+			convertView = mLayoutInflater.inflate(
+					R.layout.item_job_particulars, null);
 			holder.jobname = (TextView) convertView.findViewById(R.id.jobname);
-			holder.layout = (RelativeLayout) convertView.findViewById(R.id.layout);
+			holder.layout = (RelativeLayout) convertView
+					.findViewById(R.id.layout);
 			convertView.setTag(holder);
-		}else {
+		} else {
 			holder = (ChildHolder) convertView.getTag();
 		}
-		JSONObject jo = getChild(groupPosition, childPosition);
+		final JSONObject jo = getChild(groupPosition, childPosition);
 		holder.jobname.setText(JSONUtil.getString(jo, "name"));
-		
+
 		holder.layout.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent it = new Intent(mContext,JobParticularsActivity.class);
-				
+				Intent it = new Intent(mContext, JobParticularsActivity.class);
+				it.putExtra("catid", JSONUtil.getString(jo, "id"));
+				it.putExtra("title", JSONUtil.getString(jo, "name"));
 				mContext.startActivity(it);
 			}
 		});
@@ -86,7 +89,7 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 	public int getChildrenCount(int groupPosition) {
 		JSONObject jo = getGroup(groupPosition);
 		JSONArray jsa = JSONUtil.getJSONArray(jo, "_child");
-		if (jsa==null) {
+		if (jsa == null) {
 			return 0;
 		}
 		// TODO Auto-generated method stub
@@ -95,7 +98,7 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 
 	@Override
 	public JSONObject getGroup(int groupPosition) {
-		if (jsa==null) {
+		if (jsa == null) {
 			return null;
 		}
 		return JSONUtil.getJSONObjectAt(jsa, groupPosition);
@@ -103,7 +106,7 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 
 	@Override
 	public int getGroupCount() {
-		if (jsa==null) {
+		if (jsa == null) {
 			return 0;
 		}
 		return jsa.length();
@@ -121,11 +124,12 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 		GroupHolder holder = null;
 		if (convertView == null) {
 			holder = new GroupHolder();
-			convertView = mLayoutInflater.inflate(R.layout.item_job_status, null);
+			convertView = mLayoutInflater.inflate(R.layout.item_job_status,
+					null);
 			holder.jobname = (TextView) convertView.findViewById(R.id.jobname);
-			
+
 			convertView.setTag(holder);
-		}else {
+		} else {
 			holder = (GroupHolder) convertView.getTag();
 		}
 		JSONObject jo = getGroup(groupPosition);
@@ -144,13 +148,13 @@ public class JobStatusAdapter extends BaseExpandableListAdapter{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	class ChildHolder{
+
+	class ChildHolder {
 		TextView jobname;
 		RelativeLayout layout;
 	}
 
-	class GroupHolder{
+	class GroupHolder {
 		TextView jobname;
 	}
 }

@@ -51,13 +51,7 @@ public class QuestionbankActivity extends ShopBaseActivity {
 		type = getIntent().getStringExtra("type");
 		
 		answer = new ArrayList<Map<String,String>>();//存储试题答案
-		setLeftAction(-1, title, new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+		setTitle(title);
 
 		viewPager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -105,7 +99,6 @@ public class QuestionbankActivity extends ShopBaseActivity {
 							frags.add(new QuestionbankFragment(i+1,jsa.length(),JSONUtil.getJSONObjectAt(jsa, i),type));
 						}
 					}
-					
 					
 					SimpleFragmentPageAdapter adapter = new SimpleFragmentPageAdapter(
 							getSupportFragmentManager(), frags);

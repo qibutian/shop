@@ -82,6 +82,7 @@ public class CartView extends LinearLayout {
 										count, mGood.getGoodType());
 							}
 						});
+						dialog.show();
 					} else {
 						changeGoodCount(mContext, mGood.getGoodId(), count,
 								mGood.getGoodType());

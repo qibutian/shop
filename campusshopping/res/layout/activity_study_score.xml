@@ -6,11 +6,12 @@
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <include layout="@layout/include_blue_title_bar" />
+    <include layout="@layout/include_title_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="-1dp"
         android:background="@drawable/gradual_blue_bg"
         android:orientation="horizontal" >
 
@@ -37,8 +38,8 @@
                     android:layout_below="@+id/text_1"
                     android:layout_marginLeft="@dimen/padding_leftandright"
                     android:layout_marginRight="@dimen/padding_leftandright"
-                    android:text="0"
                     android:gravity="bottom"
+                    android:text="0"
                     android:textColor="@color/text_ffff68_yellow"
                     android:textSize="35sp" />
 
@@ -64,30 +65,29 @@
                         android:layout_centerVertical="true"
                         android:text="已答" />
 
-                    <RelativeLayout 
+                    <RelativeLayout
                         android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                        >
-                    <ProgressBar
-                        android:id="@+id/question"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/progress_update" />
-                    
-                    <TextView
-                        android:id="@+id/question_txt"
-                        style="@style/text_white_medium"
-                        android:layout_centerInParent="true"
-                        android:text="0/0" />
-                    
+                        android:layout_alignParentRight="true" >
+
+                        <ProgressBar
+                            android:id="@+id/question"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_update" />
+
+                        <TextView
+                            android:id="@+id/question_txt"
+                            style="@style/text_white_medium"
+                            android:layout_centerInParent="true"
+                            android:text="0/0" />
                     </RelativeLayout>
                 </RelativeLayout>
-                
-                 <RelativeLayout
+
+                <RelativeLayout
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="@dimen/padding_leftandright" >
@@ -97,57 +97,54 @@
                         android:layout_centerVertical="true"
                         android:text="正确率" />
 
-                    <RelativeLayout 
+                    <RelativeLayout
                         android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                        >
-                    <ProgressBar
-                        android:id="@+id/accuracy"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/progress_update" />
-                    
-                    <TextView
-                        android:id="@+id/accuracy_txt"
-                        style="@style/text_white_medium"
-                        android:layout_centerInParent="true"
-                        android:text="0%" />
-                    
+                        android:layout_alignParentRight="true" >
+
+                        <ProgressBar
+                            android:id="@+id/accuracy"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_update" />
+
+                        <TextView
+                            android:id="@+id/accuracy_txt"
+                            style="@style/text_white_medium"
+                            android:layout_centerInParent="true"
+                            android:text="0%" />
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/continuestudy"
         style="@style/text_white_biger"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:padding="@dimen/padding_leftandright"
         android:layout_marginLeft="@dimen/padding_leftandright"
         android:layout_marginRight="@dimen/padding_leftandright"
         android:layout_marginTop="40dp"
-        android:text="开始学习"
-        android:background="@drawable/fillet_5_blue_bg"
-        />
-    
-    <TextView 
+        android:background="@drawable/btn_green_s"
+        android:gravity="center"
+        android:padding="@dimen/padding_leftandright"
+        android:text="开始学习" />
+
+    <TextView
         android:id="@+id/again"
         style="@style/text_white_biger"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:padding="@dimen/padding_leftandright"
         android:layout_marginLeft="@dimen/padding_leftandright"
         android:layout_marginRight="@dimen/padding_leftandright"
         android:layout_marginTop="30dp"
-        android:text="错题重做"
-        android:visibility="gone"
         android:background="@drawable/fillet_5_yellow_bg"
-        />
+        android:gravity="center"
+        android:padding="@dimen/padding_leftandright"
+        android:text="错题重做"
+        android:visibility="gone" />
 
 </LinearLayout>

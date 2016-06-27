@@ -4,10 +4,10 @@
 
     <gradient
         android:angle="270"
-        android:centerX="0.5"
+        android:centerX="0.8"
         android:centerY="0.5"
-        android:endColor="#9cc7ed"
-        android:startColor="@color/blue_titlebar_color"
+        android:endColor="@color/white"
+        android:startColor="@color/titlebar_color"
         android:type="linear" />
 
     <size

@@ -13,6 +13,8 @@ public class User {
 	// 余额
 	double blance;
 
+	boolean ispeixun = false;
+
 	public static User getInstance() {
 
 		if (insance == null) {
@@ -53,7 +55,13 @@ public class User {
 	public void setShareCode(String shareCode) {
 		this.shareCode = shareCode;
 	}
-	
-	
+
+	public boolean isIspeixun() {
+		return ispeixun;
+	}
+
+	public void setIspeixun(boolean ispeixun) {
+		this.ispeixun = ispeixun;
+	}
 
 }

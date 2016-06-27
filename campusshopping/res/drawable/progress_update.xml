@@ -5,7 +5,7 @@
         <shape>
             <corners android:radius="5px" />
 
-            <solid android:color="#388dda" />
+            <solid android:color="@color/text_06_green" />
         </shape>
     </item>
     <!-- 第二条进度条颜色 -->
@@ -16,10 +16,10 @@
 
                 <gradient
                     android:angle="90.0"
-                    android:centerColor="#ac6079"
+                    android:centerColor="#06B151"
                     android:centerY="0.45"
-                    android:endColor="#6c213a"
-                    android:startColor="#e71a5e" />
+                    android:endColor="#06B151"
+                    android:startColor="#06B151" />
             </shape>
         </clip>
     </item>
@@ -29,7 +29,7 @@
             <shape>
                 <corners android:radius="5px" />
 
-                <solid android:color="#00ad00" />
+                <solid android:color="@color/text_ffd_yellow" />
             </shape>
         </clip>
     </item>

@@ -79,6 +79,9 @@ public class SplashActivity extends ShopBaseActivity {
 					User user = User.getInstance();
 					user.setShareCode(JSONUtil.getString(jo, "code"));
 					user.setLogin(true);
+					int ispeixun = JSONUtil.getInt(jo, "ispeixun");
+
+					user.setIspeixun(ispeixun == 1 ? true : false);
 					user.setUserid(JSONUtil.getString(jo, "id"));
 				}
 				notFirst();

@@ -78,6 +78,7 @@ public class CatActivity extends ShopBaseActivity {
 				JSONObject jo = secondCatAdapter.getItem(position);
 				Intent it = new Intent(self, CatDetailActivity.class);
 				it.putExtra("id", JSONUtil.getString(jo, "id"));
+				it.putExtra("type", "商品");
 				startActivity(it);
 			}
 		});

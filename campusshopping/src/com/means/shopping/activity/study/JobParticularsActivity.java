@@ -3,7 +3,10 @@ package com.means.shopping.activity.study;
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,7 +35,7 @@ public class JobParticularsActivity extends ShopBaseActivity {
 	RefreshListViewAndMore listV;
 	NetJSONAdapter adapter;
 	ListView contentListV;
-	
+
 	EditText search_content;
 	Button search_btn;
 
@@ -45,26 +48,20 @@ public class JobParticularsActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		String title = getIntent().getStringExtra("title");
-		setLeftAction(-1, title, new OnClickListener() {
+		setTitle(title);
+
+		search_content = (EditText) findViewById(R.id.search_content);
+		search_btn = (Button) findViewById(R.id.search_btn);
+
+		search_btn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				finish();
-			}
-		});
-		
-		search_content = (EditText) findViewById(R.id.search_content);
-		search_btn = (Button) findViewById(R.id.search_btn);
-		
-		search_btn.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				//查找
+				// 查找
 				find();
 			}
 		});
-		
+
 		// TODO Auto-generated method stub
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		getData();
@@ -74,6 +71,7 @@ public class JobParticularsActivity extends ShopBaseActivity {
 		adapter = new NetJSONAdapter(API.paperlist, self,
 				R.layout.item_job_particulars);
 		adapter.fromWhat("list");
+		adapter.addparam("catid", getIntent().getStringExtra("catid"));
 		adapter.addField("title", R.id.jobname);
 
 		listV.setAdapter(adapter);
@@ -84,27 +82,34 @@ public class JobParticularsActivity extends ShopBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-
-				Intent it = new Intent(self,StudyScoreActivity.class);
-				JSONObject jo = (JSONObject) adapter.getItem(position);
-				it.putExtra("title", JSONUtil.getString(jo, "title"));
-				it.putExtra("catid", JSONUtil.getString(jo,"catid"));
-				startActivity(it);
-				
+				JSONObject jo = adapter.getTItem(position);
+				int is_answer = JSONUtil.getInt(jo, "is_answer");
+				Intent it;
+				if (is_answer == 1) { // 未答过该题库
+					it = new Intent(self, QuestionbankActivity.class);
+					it.putExtra("title", JSONUtil.getString(jo, "title"));
+					it.putExtra("contentid", JSONUtil.getString(jo, "catid"));
+					it.putExtra("type", "1");
+					startActivity(it);
+				} else {
+					it = new Intent(self, StudyScoreActivity.class);
+					it.putExtra("title", JSONUtil.getString(jo, "title"));
+					it.putExtra("catid", JSONUtil.getString(jo, "catid"));
+					startActivity(it);
+				}
 			}
 		});
 	}
-	
 
-	//搜素
+	// 搜素
 	private void find() {
 		String content = search_content.getText().toString();
-//		if (TextUtils.isEmpty(content)) {
-//			showToast("请输入查找内容");
-//			return;
-//		}
+		// if (TextUtils.isEmpty(content)) {
+		// showToast("请输入查找内容");
+		// return;
+		// }
 		adapter.addparam("keywords", content);
 		adapter.refresh();
-		
+
 	}
 }
