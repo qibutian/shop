@@ -121,6 +121,7 @@ public class StudyScoreActivity extends ShopBaseActivity implements
 		// 错题重做
 		case R.id.again:
 			it = new Intent(self, QuestionbankActivity.class);
+			it.putExtra("title", title);
 			it.putExtra("contentid", contentid);
 			it.putExtra("type", "2");
 			startActivity(it);

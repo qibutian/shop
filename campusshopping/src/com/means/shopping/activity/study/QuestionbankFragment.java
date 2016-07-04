@@ -216,14 +216,14 @@ public class QuestionbankFragment extends Fragment {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
-				// TODO Auto-generated method stub
-				JSONObject jo = response.jSONFrom("success");
-				if (JSONUtil.getBoolean(jo, "success")) {
+
+				if (response.isSuccess()) {
 					Toast.makeText(getActivity(), "已成功提交", Toast.LENGTH_SHORT)
 							.show();
 					getActivity().finish();
 					EventBus.getDefault().post(new QuestionEB());// 通知学习页面刷新
 				}
+				// TODO Auto-generated method stub
 			}
 		});
 	}
