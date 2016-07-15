@@ -150,5 +150,8 @@ public class API {
 	// 积分兑换类型
 	public static String jifenduihuantype = Baseurl
 			+ "/home/user/exwalletcatlist";
+	
+//	public  static  String  upodate = Baseurl+"http://en.lazybunny.c.wanruankeji.com/home/index/updateconfig";
+	
 
 }

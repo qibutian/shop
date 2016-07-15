@@ -414,7 +414,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_gouwuche" />
+                    android:src="@drawable/icon_kaoshi" />
 
                 <TextView
                     style="@style/text_43_black_small"
