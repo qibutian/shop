@@ -94,6 +94,23 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+
+		ShopPerference per = IocContainer.getShare().get(ShopPerference.class);
+		per.load();
+
+		if (!TextUtils.isEmpty(per.schoolName)) {
+			titleT.setText(per.schoolName);
+		} else {
+			Intent it = new Intent(getActivity(), CampusSelectActivity.class);
+			it.putExtra("type", "type");
+			startActivity(it);
+		}
+
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_home_page, null);
@@ -111,7 +128,6 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -156,12 +172,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		titleT = (TextView) mainV.findViewById(R.id.title);
 		titleT.setOnClickListener(this);
 
-		ShopPerference per = IocContainer.getShare().get(ShopPerference.class);
-		per.load();
-
-		if (!TextUtils.isEmpty(per.schoolName)) {
-			titleT.setText(per.schoolName);
-		}
+		// ShopPerference per =
+		// IocContainer.getShare().get(ShopPerference.class);
+		// per.load();
+		//
+		// if (!TextUtils.isEmpty(per.schoolName)) {
+		// titleT.setText(per.schoolName);
+		// }
 
 		marketV = headV.findViewById(R.id.market);
 		redpacketV = headV.findViewById(R.id.redpacket);
@@ -345,6 +362,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	}
 
 	public void onEventMainThread(SchoolEB school) {
+		System.out.println("11111111");
 		titleT.setText(school.getName());
 		adapter.addparam("schoolid", school.getId());
 		adapter.refresh();

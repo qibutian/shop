@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,16 +31,16 @@
                 style="@style/text_43_black_small"
                 android:layout_marginTop="12dp"
                 android:text="分享朋友圈" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_share_weixin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginLeft="15dp"
-            android:orientation="vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,10 +50,26 @@
                 style="@style/text_43_black_small"
                 android:layout_marginTop="12dp"
                 android:text="分享微信好友" />
-
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layout_share_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/qqshare" />
+
+            <TextView
+                style="@style/text_43_black_small"
+                android:layout_marginTop="12dp"
+                android:text="QQ好友" />
+        </LinearLayout>
     </LinearLayout>
 
     <View style="@style/line_horizontal" />

@@ -199,7 +199,7 @@ public class ShopBaseFragmentActivity extends FragmentActivity{
 	@Override
 	public void finish() {
 		super.finish();
-		popOutAnim();
+//		popOutAnim();
 	}
 
 	public void finishWithoutAnim() {

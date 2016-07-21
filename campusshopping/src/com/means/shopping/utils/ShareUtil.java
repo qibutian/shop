@@ -62,7 +62,7 @@ public class ShareUtil {
 		boolean sIsWXAppInstalledAndSupported = api.isWXAppInstalled()
 				&& api.isWXAppSupportAPI();
 		if (!sIsWXAppInstalledAndSupported) {
-
+			
 		}
 
 		return sIsWXAppInstalledAndSupported;

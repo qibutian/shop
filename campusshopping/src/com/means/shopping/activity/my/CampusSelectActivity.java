@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,6 +78,11 @@ public class CampusSelectActivity extends ShopBaseActivity {
 		//
 		// }
 		// });
+
+		if (!TextUtils.isEmpty(getIntent().getStringExtra("type"))) {
+			setLeftIconGone();
+		}
+
 		keywordE = (EditText) findViewById(R.id.keyword);
 		findViewById(R.id.search).setOnClickListener(new OnClickListener() {
 
@@ -172,6 +178,18 @@ public class CampusSelectActivity extends ShopBaseActivity {
 			finish();
 		}
 
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!TextUtils.isEmpty(getIntent().getStringExtra("type"))) {
+				return false;
+			} else {
+				return super.onKeyDown(keyCode, event);
+			}
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }

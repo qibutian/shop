@@ -103,15 +103,15 @@ public class ShopApplication extends Application implements
 		ImageLoader.getInstance().init(imageconfig);
 
 		UserLocation.getInstance().init(this);
-		
-		
+
 		GlobalParams globalParams = IocContainer.getShare().get(
 				GlobalParams.class);
 
-		ShopPerference per = IocContainer.getShare().get(
-				ShopPerference.class);
+		ShopPerference per = IocContainer.getShare().get(ShopPerference.class);
 		per.load();
+		System.out.println("schoolid:" + per.schoolId);
 		if (!TextUtils.isEmpty(per.schoolId)) {
+			System.out.println("schoolid:" + per.schoolId);
 			globalParams.setGlobalParam("schoolid", per.schoolId);
 		}
 	}

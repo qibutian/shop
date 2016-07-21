@@ -1,11 +1,15 @@
 package com.means.shopping.activity.main;
 
+import net.duohuo.dhroid.activity.ActivityTack;
+import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -34,11 +38,15 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	private LinearLayout tabV;
 	ShopPerference per;
 
+	static boolean isExit = false;
+
+	Handler mHandler;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		ActivityTack.getInstanse().addActivity(this);
 		EventBus.getDefault().register(this);
 		per = IocContainer.getShare().get(ShopPerference.class);
 		per.load();
@@ -58,6 +66,7 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	}
 
 	private void initView() {
+		mHandler = new Handler();
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
@@ -181,9 +190,40 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	}
 
 	@Override
+	public void finish() {
+		ActivityTack.getInstanse().removeActivity(this);
+		super.finish();
+	}
+
+	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
+	}
+
+	static public class ExitRunnable implements Runnable {
+		@Override
+		public void run() {
+			isExit = false;
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!isExit) {
+				isExit = true;
+				IocContainer.getShare().get(IDialog.class)
+						.showToastShort(getApplicationContext(), "再按一次退出程序");
+				mHandler.postDelayed(new ExitRunnable(), 2000);
+			} else {
+				// Intent it = new Intent(self, MsgService.class);
+				// stopService(it);
+				ActivityTack.getInstanse().exit(MainActivity.this);
+			}
+			return false;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }
