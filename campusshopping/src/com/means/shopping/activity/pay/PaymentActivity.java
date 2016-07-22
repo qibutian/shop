@@ -212,9 +212,19 @@ public class PaymentActivity extends ShopBaseActivity implements
 				nameT.setText(arg2.getStringExtra("lxname"));
 				addressT.setText(arg2.getStringExtra("lxaddress"));
 			} else if (arg0 == REDPACKET_CODE) {
+				String data = arg2.getStringExtra("jo");
+				JSONObject redjo;
+				try {
+					redjo = new JSONObject(data);
+					ViewUtil.bindView(findViewById(R.id.redpacket_money),
+							JSONUtil.getString(redjo, "amount"));
+					bottom_view.setRedPackData(redjo);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 		}
 	}
-
 }

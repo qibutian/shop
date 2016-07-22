@@ -14,14 +14,16 @@ import com.means.shopping.base.ShopBaseActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
  * 注册协议
+ * 
  * @author Administrator
- *
+ * 
  */
 public class UserProtocolActivity extends ShopBaseActivity {
 
@@ -36,21 +38,22 @@ public class UserProtocolActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("注册协议");
-		titleT = (TextView) findViewById(R.id.title);
+		titleT = (TextView) findViewById(R.id.content_title);
 		contentT = (TextView) findViewById(R.id.content);
-		
+
 		DhNet net = new DhNet(API.aboutregist);
 		net.doGet(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
-				
+
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
 					titleT.setText(JSONUtil.getString(jo, "title"));
-					contentT.setText(JSONUtil.getString(jo, "content"));
+					contentT.setText(Html.fromHtml(JSONUtil.getString(jo,
+							"content")));
 				}
-				
+
 			}
 		});
 	}

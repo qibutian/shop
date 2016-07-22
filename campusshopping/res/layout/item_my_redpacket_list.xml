@@ -5,11 +5,11 @@
     android:background="@color/nothing"
     android:orientation="vertical" >
 
-    <include layout="@layout/include_item_lotteries" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/app_bg_color" />
+
+    <include layout="@layout/include_item_lotteries" />
 
 </LinearLayout>

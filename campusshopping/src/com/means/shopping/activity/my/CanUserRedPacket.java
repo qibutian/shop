@@ -31,6 +31,13 @@ public class CanUserRedPacket extends ShopBaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canuse_redpacket);
+
+	}
+
+	@Override
+	public void initView() {
+		setTitle("选择红包");
+
 		String data = getIntent().getStringExtra("data");
 		try {
 			jsa = new JSONArray(data);
@@ -38,10 +45,7 @@ public class CanUserRedPacket extends ShopBaseActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
 
-	@Override
-	public void initView() {
 		listV = (ListView) findViewById(R.id.listview_normal);
 		adapter = new PSAdapter(self, R.layout.item_my_redpacket_list);
 		adapter.addAll(jsa);
@@ -81,7 +85,7 @@ public class CanUserRedPacket extends ShopBaseActivity {
 				Intent it = getIntent();
 				it.putExtra("jo", jo.toString());
 				setResult(Activity.RESULT_OK, it);
-
+				finish();
 			}
 		});
 	}

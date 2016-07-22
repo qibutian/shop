@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.means.shopping.R;
 import com.means.shopping.adapter.OrderFragmentPageAdapter;
+import com.means.shopping.bean.LoginEB;
 import com.means.shopping.bean.PayEB;
 import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.SchoolEB;
@@ -177,6 +178,10 @@ public class OrderFragment extends Fragment {
 	}
 
 	public void onEventMainThread(ReChargeEB reChargeEB) {
+		refresh();
+	}
+
+	public void onEventMainThread(LoginEB login) {
 		refresh();
 	}
 

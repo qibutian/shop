@@ -97,6 +97,10 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 					LogoutEB out = new LogoutEB();
 					EventBus.getDefault().post(out);
 					User.getInstance().setLogin(false);
+
+					per.pswd = "";
+					per.commit();
+
 					finish();
 				}
 			}

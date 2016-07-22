@@ -24,6 +24,7 @@ import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.User;
 import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
 import com.means.shopping.views.dialog.CommodityDetailDialog;
@@ -134,7 +135,9 @@ public class MarketActivity extends ShopBaseActivity {
 
 			}
 		});
+
 		getCatData();
+
 	}
 
 	private void getCatData() {

@@ -141,7 +141,7 @@
 
         <TextView
             style="@style/text_43_black_small"
-            android:text="《天天快递协议》"
+            android:text="《小蚂蚁协议》"
             android:textColor="@color/text_ff9_yellow" />
     </LinearLayout>
 

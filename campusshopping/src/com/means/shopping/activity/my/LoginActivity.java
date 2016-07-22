@@ -20,8 +20,11 @@ import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.base.ShopBaseFragmentActivity;
+import com.means.shopping.bean.LoginEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 登录页面
@@ -128,6 +131,7 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 					per.setPhone(tel);
 					per.setPswd(password);
 					per.commit();
+					EventBus.getDefault().post(new LoginEB());
 					finish();
 				}
 			}

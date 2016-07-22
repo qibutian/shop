@@ -98,14 +98,21 @@ public class RecentFragment extends Fragment {
 						.findViewById(R.id.zhifu);
 				if (paystatus == 4) {
 					zhifuT.setText("确认收货");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 3) {
 					zhifuT.setText("立即支付");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 2) {
 					zhifuT.setText("支付成功");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 1) {
 					zhifuT.setText("立即支付");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 5) {
 					zhifuT.setText("已完成");
+					zhifuT.setVisibility(View.VISIBLE);
+				} else {
+					zhifuT.setVisibility(View.GONE);
 				}
 
 				zhifuT.setOnClickListener(new OnClickListener() {

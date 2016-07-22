@@ -9,6 +9,7 @@ import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 import net.duohuo.dhroid.view.BadgeView;
 
 import org.json.JSONArray;
@@ -43,6 +44,7 @@ import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.User;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 
 import de.greenrobot.event.EventBus;
@@ -78,6 +80,8 @@ public class CartBottomView extends LinearLayout {
 	CheckBox zhifubaoC, yueC;
 
 	double yue;
+
+	JSONObject redJo;
 
 	public CartBottomView(Context context) {
 		super(context);
@@ -126,11 +130,28 @@ public class CartBottomView extends LinearLayout {
 			}
 		});
 
-		getData();
+		if (User.getInstance().isLogin()) {
+			getData();
+		}
+
 	}
 
 	public void setYuE(double money) {
 		this.yue = money;
+
+	}
+
+	public void setRedPackData(JSONObject jo) {
+
+		this.redJo = jo;
+		// float price = Float.parseFloat(priceT.getText().toString());
+		float redPrice = JSONUtil.getFloat(redJo, "amount");
+		ViewUtil.bindView(findViewById(R.id.cart_des), "红包优惠" + redPrice + "元");
+		// if (price > redPrice) {
+		// priceT.setText((price - redPrice) + "");
+		// } else {
+		// priceT.setText(0 + "");
+		// }
 
 	}
 
@@ -192,7 +213,12 @@ public class CartBottomView extends LinearLayout {
 		}
 
 		DhNet net = new DhNet(API.addorder);
-		net.addParam("walletid", "");
+		if (redJo != null) {
+			net.addParam("walletid", JSONUtil.getString(redJo, "id"));
+		} else {
+			net.addParam("walletid", "");
+		}
+
 		net.addParam("is_balance", yueC.isChecked() ? 1 : 0);
 		net.doPost(new NetTask(mContext) {
 

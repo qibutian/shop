@@ -33,6 +33,7 @@ import com.means.shopping.activity.study.JobStatusActivity;
 import com.means.shopping.adapter.JobStatusAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CreditEB;
+import com.means.shopping.bean.LoginEB;
 import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.utils.ShopPerference;
@@ -77,7 +78,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 	// 按钮按钮
 	View anhaoV;
-	
+
 	// 培训考试
 	View examinationV;
 
@@ -134,7 +135,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 		anhaoV = mainV.findViewById(R.id.anhao_layout);
 		anhaoV.setOnClickListener(this);
-		
+
 		examinationV = mainV.findViewById(R.id.examination_layout);
 		examinationV.setOnClickListener(this);
 		getUserInfo();
@@ -250,7 +251,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 		// .show();
 		// }
 		// break;
-			//培训考试
+		// 培训考试
 		case R.id.examination_layout:
 			it = new Intent(getActivity(), JobStatusActivity.class);
 			getActivity().startActivity(it);
@@ -263,8 +264,12 @@ public class MyFragment extends Fragment implements OnClickListener {
 	public void onEventMainThread(ReChargeEB reChargeEB) {
 		getUserInfo();
 	}
-	
+
 	public void onEventMainThread(CreditEB creditEB) {
+		getUserInfo();
+	}
+
+	public void onEventMainThread(LoginEB login) {
 		getUserInfo();
 	}
 

@@ -4,7 +4,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -172,13 +177,12 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		titleT = (TextView) mainV.findViewById(R.id.title);
 		titleT.setOnClickListener(this);
 
-		// ShopPerference per =
-		// IocContainer.getShare().get(ShopPerference.class);
-		// per.load();
-		//
-		// if (!TextUtils.isEmpty(per.schoolName)) {
-		// titleT.setText(per.schoolName);
-		// }
+		ShopPerference per = IocContainer.getShare().get(ShopPerference.class);
+		per.load();
+
+		if (!TextUtils.isEmpty(per.schoolName)) {
+			getPic();
+		}
 
 		marketV = headV.findViewById(R.id.market);
 		redpacketV = headV.findViewById(R.id.redpacket);
@@ -354,6 +358,23 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		}
 	}
 
+	private void getPic() {
+		DhNet net = new DhNet(API.SchoolPic);
+		net.doGet(new NetTask(getActivity()) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					ViewUtil.bindNetImage(
+							(ImageView) headV.findViewById(R.id.pic),
+							JSONUtil.getString(jo, "pic"), "default");
+				}
+
+			}
+		});
+	}
+
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
@@ -366,5 +387,6 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		titleT.setText(school.getName());
 		adapter.addparam("schoolid", school.getId());
 		adapter.refresh();
+		getPic();
 	}
 }
