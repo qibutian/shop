@@ -85,16 +85,16 @@ public class JobParticularsActivity extends ShopBaseActivity {
 				JSONObject jo = adapter.getTItem(position);
 				int is_answer = JSONUtil.getInt(jo, "is_answer");
 				Intent it;
-				if (is_answer == 1) { // 未答过该题库
+				if (is_answer != 1) { // 未答过该题库
 					it = new Intent(self, QuestionbankActivity.class);
 					it.putExtra("title", JSONUtil.getString(jo, "title"));
-					it.putExtra("contentid", JSONUtil.getString(jo, "catid"));
+					it.putExtra("contentid", JSONUtil.getString(jo, "id"));
 					it.putExtra("type", "1");
 					startActivity(it);
 				} else {
 					it = new Intent(self, StudyScoreActivity.class);
 					it.putExtra("title", JSONUtil.getString(jo, "title"));
-					it.putExtra("catid", JSONUtil.getString(jo, "catid"));
+					it.putExtra("catid", JSONUtil.getString(jo, "id"));
 					startActivity(it);
 				}
 			}

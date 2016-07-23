@@ -95,8 +95,8 @@ public class QuestionbankActivity extends ShopBaseActivity {
 					JSONArray jsa = response.jSONArrayFrom("list");
 					List<Fragment> frags = new ArrayList<Fragment>();
 					if (jsa!=null) {
-						for (int i = 0; i < jsa.length(); i++) {
-							frags.add(new QuestionbankFragment(i+1,jsa.length(),JSONUtil.getJSONObjectAt(jsa, i),type));
+						for (int i = 0; i < jsa.length(); i++) {  
+							frags.add(new QuestionbankFragment(i+1,jsa.length(),JSONUtil.getJSONObjectAt(jsa, i),type,contentid));
 						}
 					}
 					

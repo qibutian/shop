@@ -99,6 +99,8 @@ public class PaymentActivity extends ShopBaseActivity implements
 	}
 
 	private void setFoodsImgs(JSONArray jsa) {
+		ViewUtil.bindView(findViewById(R.id.count_des), "共" + jsa.length()
+				+ "份");
 		int with = DhUtil.dip2px(self,
 				(DhUtil.px2dip(self, mWindoWidth) - 60) / 7);
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(with, with);
@@ -170,13 +172,11 @@ public class PaymentActivity extends ShopBaseActivity implements
 					blance = JSONUtil.getDouble(jo, "balance");
 					bottom_view.setYuE(blance);
 					if (blance > JSONUtil.getDouble(jo, "price")) {
-						ViewUtil.bindView(
-								findViewById(R.id.blance_des),
-								"当前余额" + blance + ",使用"
-										+ JSONUtil.getDouble(jo, "price"));
+						ViewUtil.bindView(findViewById(R.id.blance_des), "当前余额"
+								+ blance);
 					} else {
 						ViewUtil.bindView(findViewById(R.id.blance_des), "当前余额"
-								+ blance + ",使用" + blance);
+								+ blance);
 					}
 
 					setFoodsImgs(jsa);

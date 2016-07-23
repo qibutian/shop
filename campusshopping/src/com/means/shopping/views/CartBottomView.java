@@ -221,7 +221,7 @@ public class CartBottomView extends LinearLayout {
 		}
 		EditText noteE = (EditText) getRootView().findViewById(R.id.note);
 
-		net.addParam("note", noteE.getText().toString());
+		net.addParam("buyernote", noteE.getText().toString());
 		net.addParam("is_balance", yueC.isChecked() ? 1 : 0);
 		net.doPost(new NetTask(mContext) {
 

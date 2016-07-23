@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -55,18 +56,20 @@ public class QuestionbankFragment extends Fragment {
 	JSONObject jo; // 内容
 	String type; // 状态（2错题重答or1继续答题）
 	String id; // 试题id
+
+	String paperid;
 	Map<String, String> map = new HashMap<String, String>();
 
 	public QuestionbankFragment() {
 	}
 
 	public QuestionbankFragment(int current, int count, JSONObject jo,
-			String type) {
+			String type, String paperid) {
 		this.current = current;
 		this.count = count;
 		this.jo = jo;
 		this.type = type;
-
+		this.paperid = paperid;
 		id = JSONUtil.getString(jo, "id");
 		map.put(id, "");
 		QuestionbankActivity.answer.add(map);
@@ -220,8 +223,13 @@ public class QuestionbankFragment extends Fragment {
 				if (response.isSuccess()) {
 					Toast.makeText(getActivity(), "已成功提交", Toast.LENGTH_SHORT)
 							.show();
-					getActivity().finish();
 					EventBus.getDefault().post(new QuestionEB());// 通知学习页面刷新
+					Intent it = new Intent(getActivity(),
+							StudyScoreActivity.class);
+					it.putExtra("contentid", paperid);
+					startActivity(it);
+					getActivity().finish();
+
 				}
 				// TODO Auto-generated method stub
 			}

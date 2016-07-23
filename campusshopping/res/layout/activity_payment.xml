@@ -92,13 +92,12 @@
                     android:paddingTop="5dp" >
 
                     <TextView
-                        style="@style/text_cc_grey_smaller"
-                        android:text="共6份" />
+                        android:id="@+id/count_des"
+                        style="@style/text_cc_grey_smaller" />
 
                     <TextView
                         style="@style/text_06_green_smaller"
-                        android:layout_alignParentRight="true"
-                        android:text="查看详情" />
+                        android:layout_alignParentRight="true" />
                 </RelativeLayout>
 
                 <View style="@style/line_horizontal_bold" />

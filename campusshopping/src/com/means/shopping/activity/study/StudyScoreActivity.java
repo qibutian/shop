@@ -77,29 +77,30 @@ public class StudyScoreActivity extends ShopBaseActivity implements
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					String answer = JSONUtil.getString(jo, "answer");
+					// String answer = JSONUtil.getString(jo, "answer");
 					int questioncount = JSONUtil.getInt(jo, "questioncount");// 题目总数量
 					int answercount = JSONUtil.getInt(jo, "answercount");// 已答数量
 					int errorcount = JSONUtil.getInt(jo, "errorcount");// 打错数量
-					if ("1".equals(answer)) { // 未答过该题库
-						againT.setVisibility(View.GONE);
-						countT.setText("0");
-						question_txt.setText(0 + "/" + questioncount);
-						questionPb.setProgress(0);
-						accuracy_txt.setText(0 + "/" + questioncount);
-						accuracyPb.setProgress(0);
-						continuestudyT.setText("开始学习");
-					} else {
-						againT.setVisibility(View.VISIBLE);
-						countT.setText(JSONUtil.getString(jo, "successcount"));
-						question_txt.setText(answercount + "/" + questioncount);
-						questionPb.setMax(questioncount);
-						accuracyPb.setMax(questioncount);
-						questionPb.setProgress(answercount);
-						accuracy_txt.setText(errorcount + "/" + questioncount);
-						accuracyPb.setProgress(errorcount);
-						continuestudyT.setText("继续学习");
-					}
+					// if (!"1".equals(answer)) { // 未答过该题库
+					// againT.setVisibility(View.GONE);
+					// countT.setText("0");
+					// question_txt.setText(0 + "/" + questioncount);
+					// questionPb.setProgress(0);
+					// accuracy_txt.setText(0 + "/" + questioncount);
+					// accuracyPb.setProgress(0);
+					// continuestudyT.setText("开始学习");
+					// } else {
+					againT.setVisibility(View.VISIBLE);
+					countT.setText(JSONUtil.getString(jo, "successcount"));
+					question_txt.setText(answercount + "/" + questioncount);
+					questionPb.setMax(questioncount);
+					accuracyPb.setMax(questioncount);
+					questionPb.setProgress(answercount);
+					accuracy_txt.setText((questioncount - errorcount) + "/"
+							+ questioncount);
+					accuracyPb.setProgress(questioncount - errorcount);
+					continuestudyT.setText("继续学习");
+					// }
 				}
 			}
 		});
