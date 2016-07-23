@@ -247,6 +247,19 @@
                             android:button="@null"
                             android:checked="true" />
                     </LinearLayout>
+
+                    <View style="@style/line_horizontal" />
+
+                    <EditText
+                        android:id="@+id/note"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/fillet_10_input_bg"
+                        android:gravity="top"
+                        android:hint="备注"
+                        android:minHeight="120dp"
+                        android:padding="7dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
