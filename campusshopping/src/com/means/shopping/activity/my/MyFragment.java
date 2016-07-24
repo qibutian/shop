@@ -137,6 +137,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 		anhaoV.setOnClickListener(this);
 
 		examinationV = mainV.findViewById(R.id.examination_layout);
+		examinationV.setVisibility(User.getInstance().isIspeixun()?View.VISIBLE:View.GONE);
 		examinationV.setOnClickListener(this);
 		getUserInfo();
 	}

@@ -56,13 +56,13 @@ public class NightAtivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("夜市");
+		setTitle("培训收费");
 		setRightAction("", R.drawable.search_icon, new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				Intent it = new Intent(self, CatDetailActivity.class);   
-				it.putExtra("type", "夜市");
+				it.putExtra("type", "培训收费");
 				startActivity(it);
 			}
 		});

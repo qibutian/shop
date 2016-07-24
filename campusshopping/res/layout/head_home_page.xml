@@ -16,8 +16,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
         android:layout_marginTop="8dp" >
 
         <LinearLayout
@@ -43,7 +43,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/classify"
@@ -68,7 +68,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/chongzhi"
@@ -93,7 +93,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/share"
@@ -119,8 +119,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
         android:layout_marginTop="12dp" >
 
         <LinearLayout
@@ -146,7 +146,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/night_life"
@@ -165,13 +165,15 @@
             <TextView
                 style="@style/text_43_black_smaller"
                 android:layout_marginTop="1dp"
-                android:text="夜生活" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="培训收费" />
         </LinearLayout>
 
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/redpacket"
@@ -196,7 +198,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.8" />
 
         <LinearLayout
             android:id="@+id/commission"

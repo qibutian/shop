@@ -40,17 +40,6 @@ public class SelectTypeDialog extends BaseAlertDialog {
 				dismiss();
 			}
 		});
-		shangpinT = (TextView) findViewById(R.id.shop);
-		shangpinT.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				if (onResultListener != null) {
-					onResultListener.onResult("商品");
-				}
-				dismiss();
-			}
-		});
 
 		shangpinT = (TextView) findViewById(R.id.shop);
 		shangpinT.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +71,7 @@ public class SelectTypeDialog extends BaseAlertDialog {
 			@Override
 			public void onClick(View arg0) {
 				if (onResultListener != null) {
-					onResultListener.onResult("夜市");
+					onResultListener.onResult("培训收费");
 				}
 				dismiss();
 			}

@@ -128,7 +128,7 @@ public class LoginActivity extends ShopBaseActivity implements OnClickListener {
 					user.setShareCode(JSONUtil.getString(jo, "code"));
 					per = IocContainer.getShare().get(ShopPerference.class);
 					per.load();
-					per.setPhone(tel);
+					per.setPhone(tel); 
 					per.setPswd(password);
 					per.commit();
 					EventBus.getDefault().post(new LoginEB());
