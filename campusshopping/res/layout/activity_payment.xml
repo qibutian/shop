@@ -166,6 +166,7 @@
                                 android:text="使用余额" />
 
                             <TextView
+                                android:id="@+id/recharge"
                                 style="@style/text_ff4_red_smaller"
                                 android:layout_marginLeft="5dp"
                                 android:background="@drawable/tv_yellow_bg"

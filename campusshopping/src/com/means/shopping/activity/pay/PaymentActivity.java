@@ -1,5 +1,7 @@
 package com.means.shopping.activity.pay;
 
+import java.math.BigDecimal;
+
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
@@ -24,11 +26,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.shopping.R;
+import com.means.shopping.activity.market.RechargeActivity;
 import com.means.shopping.activity.my.CanUserRedPacket;
 import com.means.shopping.activity.my.ConsigneeAddressActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.views.CartBottomView;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 付款页
@@ -65,6 +71,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 
 	@Override
 	public void initView() {
+		EventBus.getDefault().register(this);
 		getWindowsWidth();
 		setTitle("订单");
 		bottom_view = (CartBottomView) findViewById(R.id.bottom_view);
@@ -89,6 +96,15 @@ public class PaymentActivity extends ShopBaseActivity implements
 					}
 				});
 
+		findViewById(R.id.recharge).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent it = new Intent(self, RechargeActivity.class);
+				startActivity(it);
+			}
+		});
+
 		getAddress();
 		getData();
 	}
@@ -96,6 +112,13 @@ public class PaymentActivity extends ShopBaseActivity implements
 	private void getWindowsWidth() {
 		WindowManager wm = this.getWindowManager();
 		mWindoWidth = wm.getDefaultDisplay().getWidth();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 	private void setFoodsImgs(JSONArray jsa) {
@@ -185,6 +208,14 @@ public class PaymentActivity extends ShopBaseActivity implements
 			}
 		});
 
+	}
+
+	public void onEventMainThread(ReChargeEB reChargeEB) {
+		BigDecimal b1 = new BigDecimal(Double.toString(blance));
+		BigDecimal b2 = new BigDecimal(Double.toString(reChargeEB.getMoney()));
+		blance = b1.add(b2).doubleValue();
+		bottom_view.setYuE(blance);
+		ViewUtil.bindView(findViewById(R.id.blance_des), "当前余额" + blance);
 	}
 
 	@Override

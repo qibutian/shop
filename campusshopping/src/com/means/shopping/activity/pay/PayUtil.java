@@ -226,7 +226,9 @@ public class PayUtil {
 						mContext.startActivity(it);
 						EventBus.getDefault().post(new PayEB());
 					} else {
-						EventBus.getDefault().post(new ReChargeEB());
+						ReChargeEB recharge = new ReChargeEB();
+						recharge.setMoney(JSONUtil.getDouble(jo, "amount"));
+						EventBus.getDefault().post(recharge);
 					}
 
 				} else {

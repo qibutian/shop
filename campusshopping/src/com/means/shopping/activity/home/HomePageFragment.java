@@ -32,6 +32,7 @@ import com.means.shopping.activity.market.NightAtivity;
 import com.means.shopping.activity.market.RechargeActivity;
 import com.means.shopping.activity.my.CampusSelectActivity;
 import com.means.shopping.activity.my.MyCommissionActivity;
+import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.Good;
@@ -229,9 +230,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 						@Override
 						public void onisLogin() {
-							RedPacketDialog redDialog = new RedPacketDialog(
-									getActivity());
-							redDialog.show();
+							Intent it = new Intent(getActivity(),
+									MyRedPacketActivity.class);
+							startActivity(it);
 						}
 
 						@Override

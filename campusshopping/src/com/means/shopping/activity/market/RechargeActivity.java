@@ -1,5 +1,7 @@
 package com.means.shopping.activity.market;
 
+import java.math.BigDecimal;
+
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.net.DhNet;
@@ -26,12 +28,17 @@ import com.means.shopping.R;
 import com.means.shopping.activity.pay.PayUtil;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.bean.ReChargeEB;
+
+import de.greenrobot.event.EventBus;
 
 public class RechargeActivity extends ShopBaseActivity {
 
 	EditText moneyE;
 
 	LinearLayout groupL;
+
+	double blance;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class RechargeActivity extends ShopBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("充值");
+		EventBus.getDefault().register(this);
 		groupL = (LinearLayout) findViewById(R.id.group);
 		moneyE = (EditText) findViewById(R.id.money);
 		moneyE.addTextChangedListener(new TextWatcher() {
@@ -93,10 +101,17 @@ public class RechargeActivity extends ShopBaseActivity {
 					JSONObject jo = response.jSONFromData();
 					ViewUtil.bindView(findViewById(R.id.blance),
 							JSONUtil.getString(jo, "balance"));
-
+					blance = JSONUtil.getDouble(jo, "balance");
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 	private void chongzhi() {
@@ -135,6 +150,10 @@ public class RechargeActivity extends ShopBaseActivity {
 
 			}
 		});
+	}
+
+	public void onEventMainThread(ReChargeEB reChargeEB) {
+		getUserInfo();
 	}
 
 	private void initGroup() {
