@@ -45,13 +45,13 @@ public class NightAtivity extends ShopBaseActivity {
 	View catHeadV;
 
 	// 每日爆款和猜你喜欢按钮
-	View hotV, likeV;   
+	View hotV, likeV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_market);  
+		setContentView(R.layout.activity_market);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class NightAtivity extends ShopBaseActivity {
 
 			@Override
 			public void onClick(View arg0) {
-				Intent it = new Intent(self, CatDetailActivity.class);   
+				Intent it = new Intent(self, CatDetailActivity.class);
 				it.putExtra("type", "培训收费");
 				startActivity(it);
 			}
@@ -102,7 +102,7 @@ public class NightAtivity extends ShopBaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				setBgColor(position - 1);
-				JSONObject jo = catAdapter.getItem(position);
+				JSONObject jo = catAdapter.getItem(position - 1);
 				String catid = JSONUtil.getString(jo, "id");
 				goodAdater.addparam("catid", catid);
 				goodAdater.addparam("type", "");
@@ -143,7 +143,7 @@ public class NightAtivity extends ShopBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					JSONArray jsa = response.jSONArrayFrom("list");
+					JSONArray jsa = response.jSONArrayFrom("data");
 					catAdapter.setData(jsa);
 				}
 

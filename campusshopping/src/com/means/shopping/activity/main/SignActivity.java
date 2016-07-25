@@ -19,6 +19,9 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.bean.ReChargeEB;
+
+import de.greenrobot.event.EventBus;
 
 public class SignActivity extends ShopBaseActivity {
 
@@ -105,6 +108,7 @@ public class SignActivity extends ShopBaseActivity {
 					signB.setText(isday == 1 ? "已签到" : "签到");
 					ViewUtil.bindView(findViewById(R.id.des_two), "已连续签到"
 							+ is_condays + "天");
+					EventBus.getDefault().post(new ReChargeEB());
 				}
 
 			}

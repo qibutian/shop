@@ -99,6 +99,12 @@ public class StudyScoreActivity extends ShopBaseActivity implements
 					accuracy_txt.setText((questioncount - errorcount) + "/"
 							+ questioncount);
 					accuracyPb.setProgress(questioncount - errorcount);
+					
+					if (errorcount != 0) {
+						againT.setVisibility(View.VISIBLE);
+					} else {
+						againT.setVisibility(View.GONE);
+					}
 					continuestudyT.setText("继续学习");
 					// }
 				}

@@ -105,7 +105,7 @@ public class MarketActivity extends ShopBaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				setBgColor(position - 1);
-				JSONObject jo = catAdapter.getItem(position);
+				JSONObject jo = catAdapter.getItem(position - 1);
 				String catid = JSONUtil.getString(jo, "id");
 				goodAdater.addparam("catid", catid);
 				goodAdater.addparam("type", "");

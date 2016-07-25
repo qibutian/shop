@@ -221,14 +221,6 @@ public class CartView extends LinearLayout {
 					JSONObject jo = response.jSONFromData();
 					mGood.setCount(count);
 
-					if (cartViewType == 1) {
-
-						CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
-						cartBottomNumEB.setCount(JSONUtil.getInt(jo, "count"));
-						cartBottomNumEB.setPrice(JSONUtil
-								.getDouble(jo, "price"));
-						EventBus.getDefault().post(cartBottomNumEB);
-					}
 					if (onCartViewClickListener != null) {
 
 						if (isadd) {
@@ -236,11 +228,26 @@ public class CartView extends LinearLayout {
 									mGood.getCount(),
 									JSONUtil.getInt(jo, "count"),
 									JSONUtil.getDouble(jo, "price"));
+							if (cartViewType == 1) {
+
+								CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+								cartBottomNumEB.setCount(JSONUtil.getInt(jo,
+										"count"));
+								cartBottomNumEB.setPrice(JSONUtil.getDouble(jo,
+										"price"));
+								EventBus.getDefault().post(cartBottomNumEB);
+							}
 						} else {
 							onCartViewClickListener.onMinusClick(
 									mGood.getCount(),
 									JSONUtil.getInt(jo, "count"),
 									JSONUtil.getDouble(jo, "price"));
+							CartBottomNumEB cartBottomNumEB = new CartBottomNumEB();
+							cartBottomNumEB.setCount(JSONUtil.getInt(jo,
+									"count"));
+							cartBottomNumEB.setPrice(JSONUtil.getDouble(jo,
+									"price"));
+							EventBus.getDefault().post(cartBottomNumEB);
 						}
 					}
 				}

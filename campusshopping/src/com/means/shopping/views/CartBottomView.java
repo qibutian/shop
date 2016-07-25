@@ -1,6 +1,7 @@
 package com.means.shopping.views;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLEncoder;
 
 import net.duohuo.dhroid.dialog.IDialog;
@@ -45,8 +46,10 @@ import com.means.shopping.activity.pay.PaymentActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
+import com.means.shopping.views.MessageDialog.OnDelectResultListener;
 
 import de.greenrobot.event.EventBus;
 
@@ -109,7 +112,41 @@ public class CartBottomView extends LinearLayout {
 					it.putExtra("data", jsa.toString());
 					mContext.startActivity(it);
 				} else {
-					addOrder();
+					if (yueC.isChecked()) {
+						double payprice;
+						if (redJo != null) {
+							payprice = Double.parseDouble(priceT.getText()
+									.toString())
+									- JSONUtil.getDouble(redJo, "amount");
+						} else {
+							payprice = Double.parseDouble(priceT.getText()
+									.toString());
+						}
+
+						if (yue < payprice) {
+							BigDecimal b1 = new BigDecimal(Double.toString(yue));
+							BigDecimal b2 = new BigDecimal(Double
+									.toString(payprice));
+							MessageDialog dialog = new MessageDialog(mContext,
+									"余额不足,你需要充值", b2.subtract(b1).doubleValue()
+											+ "元");
+
+							dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+								@Override
+								public void onResult() {
+									addOrder();
+								}
+							});
+							dialog.show();
+						} else {
+							addOrder();
+						}
+
+					} else {
+						addOrder();
+					}
+
 					// Intent it = new Intent(mContext, PaymentActivity.class);
 					// it.putExtra("data", jsa.toString());
 					// mContext.startActivity(it);
@@ -230,8 +267,8 @@ public class CartBottomView extends LinearLayout {
 
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSON();
-					JSONObject data = response.jSONFromData();
-					String orderid = JSONUtil.getString(jo, "id");
+					final JSONObject data = response.jSONFromData();
+					final String orderid = JSONUtil.getString(jo, "id");
 					String price = JSONUtil.getString(data, "orderprice");
 
 					if (yueC.isChecked()) {
@@ -241,6 +278,7 @@ public class CartBottomView extends LinearLayout {
 							recharge(orderid,
 									JSONUtil.getDouble(data, "orderprice")
 											- yue);
+
 						}
 					} else {
 						payZhifuBao(orderid, price);
@@ -256,7 +294,7 @@ public class CartBottomView extends LinearLayout {
 		DhNet net = new DhNet(API.chongzhi);
 		net.addParam("amount", price);
 		net.addParam("orderid", orderid);
-		net.doPostInDialog("余额不足,充值中...", new NetTask(mContext) {
+		net.doPostInDialog("充值中...", new NetTask(mContext) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
@@ -289,6 +327,7 @@ public class CartBottomView extends LinearLayout {
 					it.putExtra("type", "pay");
 					it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					mContext.startActivity(it);
+					EventBus.getDefault().post(new ReChargeEB());
 
 				}
 
