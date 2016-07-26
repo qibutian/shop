@@ -2,9 +2,12 @@ package com.means.shopping.utils;
 
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.View;
 
 import com.means.shopping.R;
 import com.means.shopping.api.API;
@@ -15,6 +18,9 @@ import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.tencent.tauth.Tencent;
+
+import com.tencent.connect.share.QQShare;
 
 public class ShareUtil {
 
@@ -62,9 +68,47 @@ public class ShareUtil {
 		boolean sIsWXAppInstalledAndSupported = api.isWXAppInstalled()
 				&& api.isWXAppSupportAPI();
 		if (!sIsWXAppInstalledAndSupported) {
-			
+
 		}
 
 		return sIsWXAppInstalledAndSupported;
+	}
+
+	public static void QQShare(Context context, String title, String content) {
+		User user = User.getInstance();
+		Tencent mTencent = Tencent.createInstance(Constant.QQ_APPID, context);
+		final Bundle params = new Bundle();
+		params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,
+				QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+		params.putString(QQShare.SHARE_TO_QQ_TITLE, title);
+		params.putString(QQShare.SHARE_TO_QQ_SUMMARY, content);
+		params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, API.Baseurl
+				+ "/home/index/download?userid=" + user.getUserid() + "&code="
+				+ user.getShareCode());
+		params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL,
+				"http://imgcache.qq.com/qzone/space_item/pre/0/66768.gif");
+		params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "小蚂蚁1105559060");
+		mTencent.shareToQQ((Activity) context, params, new BaseUiListener(
+				context));
+	}
+
+	public static void QQZOneShare(Context context, String title, String content) {
+		User user = User.getInstance();
+		Tencent mTencent = Tencent.createInstance(Constant.QQ_APPID, context);
+		final Bundle params = new Bundle();
+		// params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE,
+		// QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+		params.putString(QQShare.SHARE_TO_QQ_TITLE, title);
+		params.putString(QQShare.SHARE_TO_QQ_SUMMARY, content);
+		params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, API.Baseurl
+				+ "/home/index/download?userid=" + user.getUserid() + "&code="
+				+ user.getShareCode());
+		params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL,
+				"http://imgcache.qq.com/qzone/space_item/pre/0/66768.gif");
+		params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "小蚂蚁1105559060");
+		params.putInt(QQShare.SHARE_TO_QQ_EXT_INT,
+				QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
+		mTencent.shareToQQ((Activity) context, params, new BaseUiListener(
+				context));
 	}
 }

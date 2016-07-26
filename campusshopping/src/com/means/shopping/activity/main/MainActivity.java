@@ -26,7 +26,9 @@ import com.means.shopping.bean.LogoutEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
+import com.means.shopping.utils.BaseUiListener;
 import com.means.shopping.utils.ShopPerference;
+import com.tencent.tauth.Tencent;
 
 import de.greenrobot.event.EventBus;
 
@@ -182,6 +184,14 @@ public class MainActivity extends ShopBaseFragmentActivity {
 			currentFragment = fragment;
 		} catch (Exception e) {
 		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		BaseUiListener myListener = new BaseUiListener(self);
+		showToast("主页");
+		Tencent.onActivityResultData(requestCode, resultCode, data, myListener);
 	}
 
 	public void onEventMainThread(LogoutEB out) {

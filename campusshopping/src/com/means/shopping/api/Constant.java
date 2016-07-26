@@ -14,5 +14,6 @@ public class Constant {
 	public static final String WX_APP_KEY = "wx332dac088bc963e6";
 	public static final String WX_APP_SECRET = "fe0cef8b924538c567ce91f4a3a4c2b5";
 
+	public static final String QQ_APPID = "1105559060";
 
 }
