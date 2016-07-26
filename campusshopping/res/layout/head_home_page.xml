@@ -159,14 +159,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_yeshenghuo"
+                android:src="@drawable/icon_pxsf"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_43_black_smaller"
                 android:layout_marginTop="1dp"
-                android:singleLine="true"
                 android:ellipsize="end"
+                android:singleLine="true"
                 android:text="培训收费" />
         </LinearLayout>
 

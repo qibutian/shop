@@ -70,6 +70,25 @@
                 android:layout_marginTop="12dp"
                 android:text="QQ好友" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_share_qqzone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/qqzone" />
+
+            <TextView
+                style="@style/text_43_black_small"
+                android:layout_marginTop="12dp"
+                android:text="QQ空间" />
+        </LinearLayout>
     </LinearLayout>
 
     <View style="@style/line_horizontal" />
