@@ -31,8 +31,16 @@ public class RecommendActivity extends ShopBaseActivity {
 
 					@Override
 					public void onResult(int result) {
-						ShareUtil.wechatShare(result, self, "小蚂蚁校园购物",
-								"方便实用的校园购物助手,你想要的我们都有", "");
+						if (result == 2) {
+							ShareUtil.QQShare(self, "小蚂蚁校园购物",
+									"方便实用的校园购物助手,你想要的我们都有");
+						} else if (result == 3) {
+							ShareUtil.QQZOneShare(self, "小蚂蚁校园购物",
+									"方便实用的校园购物助手,你想要的我们都有");
+						} else {
+							ShareUtil.wechatShare(result, self, "小蚂蚁校园购物",
+									"方便实用的校园购物助手,你想要的我们都有", "");
+						}
 					}
 				});
 				pop.show();
