@@ -225,6 +225,16 @@ public class PayUtil {
 						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						mContext.startActivity(it);
 						EventBus.getDefault().post(new PayEB());
+					} else if (type == 3) {
+						Intent it = new Intent(mContext, MainActivity.class);
+						it.putExtra("type", "pay");
+						it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						mContext.startActivity(it);
+						EventBus.getDefault().post(new PayEB());
+
+						ReChargeEB recharge = new ReChargeEB();
+						recharge.setMoney(JSONUtil.getDouble(jo, "amount"));
+						EventBus.getDefault().post(recharge);
 					} else {
 						ReChargeEB recharge = new ReChargeEB();
 						recharge.setMoney(JSONUtil.getDouble(jo, "amount"));

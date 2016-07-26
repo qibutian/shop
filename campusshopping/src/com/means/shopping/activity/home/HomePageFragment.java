@@ -36,6 +36,7 @@ import com.means.shopping.activity.my.redpacket.MyRedPacketActivity;
 import com.means.shopping.adapter.HomePageAdapter;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.Good;
+import com.means.shopping.bean.RefreshEB;
 import com.means.shopping.bean.SchoolEB;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
@@ -400,5 +401,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		adapter.addparam("schoolid", school.getId());
 		adapter.refresh();
 		getPic();
+	}
+
+	public void onEventMainThread(RefreshEB re) {
+		adapter.refresh();
 	}
 }

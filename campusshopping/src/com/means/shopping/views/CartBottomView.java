@@ -124,12 +124,11 @@ public class CartBottomView extends LinearLayout {
 						}
 
 						if (yue < payprice) {
-							BigDecimal b1 = new BigDecimal(Double.toString(yue));
-							BigDecimal b2 = new BigDecimal(Double
-									.toString(payprice));
-							MessageDialog dialog = new MessageDialog(mContext,
-									"余额不足,你需要充值", b2.subtract(b1).doubleValue()
-											+ "元");
+							MessageDialog dialog = new MessageDialog(
+									mContext,
+									"余额不足,你需要充值",
+									((int) (payprice * 100) - (int) (yue * 100))
+											/ 100f + "元");
 
 							dialog.setOnDelectResultListener(new OnDelectResultListener() {
 
@@ -301,7 +300,7 @@ public class CartBottomView extends LinearLayout {
 
 				if (response.isSuccess()) {
 					PayUtil payUtil = new PayUtil(response.jSONFromData(),
-							mContext, 0);
+							mContext, 3);
 					payUtil.pay("小蚂蚁校园购物充值");
 				}
 

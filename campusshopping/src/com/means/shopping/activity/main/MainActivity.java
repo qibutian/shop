@@ -23,6 +23,7 @@ import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
 import com.means.shopping.base.ShopBaseFragmentActivity;
 import com.means.shopping.bean.LogoutEB;
+import com.means.shopping.bean.RefreshEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.manage.UserInfoManage;
 import com.means.shopping.manage.UserInfoManage.LoginCallBack;
@@ -63,7 +64,9 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		super.onNewIntent(intent);
 		String type = intent.getStringExtra("type");
 		if ("pay".equals(type)) {
+			EventBus.getDefault().post(new RefreshEB());
 			setTab(1);
+
 		}
 	}
 
