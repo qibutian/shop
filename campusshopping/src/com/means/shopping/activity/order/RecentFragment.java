@@ -1,5 +1,6 @@
 package com.means.shopping.activity.order;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import net.duohuo.dhroid.adapter.FieldMap;
@@ -121,8 +122,13 @@ public class RecentFragment extends Fragment {
 					public void onClick(View arg0) {
 
 						if (zhifuT.getText().toString().equals("立即支付")) {
+							int payprice = (int) (JSONUtil.getDouble(data,
+									"payprice") * 100);
+							int payedprice = (int) (JSONUtil.getDouble(data,
+									"payedprice") * 100);
+
 							pay(JSONUtil.getString(data, "id"),
-									JSONUtil.getDouble(data, "payprice"));
+									(payprice - payedprice) / 100d);
 						} else if (zhifuT.getText().toString().equals("确认收货")) {
 							ordersure(data);
 						}
@@ -149,6 +155,7 @@ public class RecentFragment extends Fragment {
 	}
 
 	private void pay(final String orderid, final double orderprice) {
+
 		DhNet net = new DhNet(API.userInfo);
 		net.doGetInDialog(new NetTask(getActivity()) {
 
@@ -161,7 +168,7 @@ public class RecentFragment extends Fragment {
 					double balance = JSONUtil.getDouble(jo, "balance");
 					if (balance != 0) {
 						if (balance >= orderprice) {
-							cattV.payByYue(orderid, orderprice + "");
+							cattV.payByYue(orderid, orderprice + "");  
 						} else {
 							cattV.recharge(orderid, orderprice - balance);
 						}
