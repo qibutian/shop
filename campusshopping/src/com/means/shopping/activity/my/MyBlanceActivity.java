@@ -41,10 +41,10 @@ public class MyBlanceActivity extends ShopBaseActivity {
 				if (response.isSuccess()) {
 					final JSONObject jo = response.jSONFromData();
 					ViewUtil.bindView(findViewById(R.id.money_one),
-							JSONUtil.getString(jo, "gold"));
+							JSONUtil.getString(jo, "blance"));
 
 					ViewUtil.bindView(findViewById(R.id.money),
-							JSONUtil.getString(jo, "gold"));
+							JSONUtil.getString(jo, "blance"));
 
 					findViewById(R.id.submit).setOnClickListener(
 							new OnClickListener() {

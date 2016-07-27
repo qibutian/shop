@@ -90,14 +90,21 @@ public class WaitReceivingFragment extends Fragment {
 						.findViewById(R.id.zhifu);
 				if (paystatus == 4) {
 					zhifuT.setText("确认收货");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 3) {
 					zhifuT.setText("立即支付");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 2) {
-					zhifuT.setText("支付成功");
+					zhifuT.setText("待收货");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 1) {
 					zhifuT.setText("立即支付");
+					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 5) {
 					zhifuT.setText("已完成");
+					zhifuT.setVisibility(View.VISIBLE);
+				} else {
+					zhifuT.setVisibility(View.GONE);
 				}
 
 				zhifuT.setOnClickListener(new OnClickListener() {
@@ -106,8 +113,13 @@ public class WaitReceivingFragment extends Fragment {
 					public void onClick(View arg0) {
 
 						if (zhifuT.getText().toString().equals("立即支付")) {
+							int payprice = (int) (JSONUtil.getDouble(data,
+									"payprice") * 100);
+							int payedprice = (int) (JSONUtil.getDouble(data,
+									"payedprice") * 100);
+
 							pay(JSONUtil.getString(data, "id"),
-									JSONUtil.getDouble(data, "payprice"));
+									(payprice - payedprice) / 100d);
 						} else if (zhifuT.getText().toString().equals("确认收货")) {
 							ordersure(data);
 						}

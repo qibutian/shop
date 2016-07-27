@@ -115,9 +115,9 @@ public class CartBottomView extends LinearLayout {
 					if (yueC.isChecked()) {
 						double payprice;
 						if (redJo != null) {
-							payprice = Double.parseDouble(priceT.getText()
-									.toString())
-									- JSONUtil.getDouble(redJo, "amount");
+							payprice = ((int) (Double.parseDouble(priceT
+									.getText().toString()) * 100) - (int) (JSONUtil
+									.getDouble(redJo, "amount") * 100)) / 100d;
 						} else {
 							payprice = Double.parseDouble(priceT.getText()
 									.toString());
@@ -274,9 +274,10 @@ public class CartBottomView extends LinearLayout {
 						if (yue >= JSONUtil.getDouble(data, "orderprice")) {
 							payByYue(orderid, price);
 						} else {
+							int orderprice = (int) (JSONUtil.getDouble(data,
+									"orderprice") * 100);
 							recharge(orderid,
-									JSONUtil.getDouble(data, "orderprice")
-											- yue);
+									(orderprice - (int) (yue * 100)) / 100d);
 
 						}
 					} else {

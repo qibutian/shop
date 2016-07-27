@@ -1,9 +1,18 @@
 package com.means.shopping.activity.main;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.activity.ActivityTack;
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -21,6 +30,7 @@ import com.means.shopping.R;
 import com.means.shopping.activity.home.HomePageFragment;
 import com.means.shopping.activity.my.MyFragment;
 import com.means.shopping.activity.order.OrderFragment;
+import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseFragmentActivity;
 import com.means.shopping.bean.LogoutEB;
 import com.means.shopping.bean.RefreshEB;
@@ -200,6 +210,63 @@ public class MainActivity extends ShopBaseFragmentActivity {
 	public void onEventMainThread(LogoutEB out) {
 
 		setTab(0);
+	}
+
+	public void updateApp() {
+		final String mCurrentVersion = getAppVersion();
+		DhNet net = new DhNet(API.update);
+		net.doGet(new NetTask(MainActivity.this) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					String version = JSONUtil.getString(jo, "android_version");
+					if (0 < version.compareTo(mCurrentVersion)) {
+						showUpdateDialog(jo);
+					}
+				}
+			}
+		});
+	}
+
+	private String getAppVersion() {
+		String versionName = null;
+		try {
+			String pkName = this.getPackageName();
+			versionName = this.getPackageManager().getPackageInfo(pkName, 0).versionName;
+
+		} catch (Exception e) {
+			return null;
+		}
+		return versionName;
+	}
+
+	private void showUpdateDialog(final JSONObject jo) {
+		Builder builder = new Builder(this);
+		builder.setTitle("新版本" + JSONUtil.getString(jo, "android_version"));
+		builder.setMessage(JSONUtil.getString(jo, "android_notes"));
+		builder.setPositiveButton("更新", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				Intent it = new Intent(Intent.ACTION_VIEW);
+				Uri uri = Uri.parse(JSONUtil.getString(jo, "android_url"));
+				it.setData(uri);
+				startActivity(it);
+			}
+
+		});
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				if (JSONUtil.getInt(jo, "android_radio") == 1) {
+					finish();
+				}
+			}
+		});
+		builder.create().show();
 	}
 
 	@Override

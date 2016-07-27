@@ -104,7 +104,7 @@ public class RecentFragment extends Fragment {
 					zhifuT.setText("立即支付");
 					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 2) {
-					zhifuT.setText("支付成功");
+					zhifuT.setText("待收货");
 					zhifuT.setVisibility(View.VISIBLE);
 				} else if (paystatus == 1) {
 					zhifuT.setText("立即支付");
