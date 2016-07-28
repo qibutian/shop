@@ -48,6 +48,7 @@ import com.means.shopping.bean.CartBottomNumEB;
 import com.means.shopping.bean.Good;
 import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.User;
+import com.means.shopping.utils.Arith;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 import com.means.shopping.views.MessageDialog.OnDelectResultListener;
 
@@ -115,20 +116,24 @@ public class CartBottomView extends LinearLayout {
 					if (yueC.isChecked()) {
 						double payprice;
 						if (redJo != null) {
-							payprice = ((int) (Double.parseDouble(priceT
-									.getText().toString()) * 100) - (int) (JSONUtil
-									.getDouble(redJo, "amount") * 100)) / 100d;
+
+							payprice = Arith.sub(Double.parseDouble(priceT
+									.getText().toString()), JSONUtil.getDouble(
+									redJo, "amount"));
+
+							// payprice = ((int) (Double.parseDouble(priceT
+							// .getText().toString()) * 100) - (int) (JSONUtil
+							// .getDouble(redJo, "amount") * 100)) / 100d;
 						} else {
 							payprice = Double.parseDouble(priceT.getText()
 									.toString());
 						}
 
 						if (yue < payprice) {
-							MessageDialog dialog = new MessageDialog(
-									mContext,
+							MessageDialog dialog = new MessageDialog(mContext,
 									"余额不足,你需要充值",
-									((int) (payprice * 100) - (int) (yue * 100))
-											/ 100f + "元");
+
+									Arith.sub(payprice, yue) + "元");
 
 							dialog.setOnDelectResultListener(new OnDelectResultListener() {
 
@@ -274,10 +279,13 @@ public class CartBottomView extends LinearLayout {
 						if (yue >= JSONUtil.getDouble(data, "orderprice")) {
 							payByYue(orderid, price);
 						} else {
-							int orderprice = (int) (JSONUtil.getDouble(data,
-									"orderprice") * 100);
-							recharge(orderid,
-									(orderprice - (int) (yue * 100)) / 100d);
+//							int orderprice = (int) (JSONUtil.getDouble(data,
+//									"orderprice") * 100);
+							
+							recharge(orderid,Arith.sub(JSONUtil.getDouble(data,
+									"orderprice"), yue));
+//							recharge(orderid,
+//									(orderprice - (int) (yue * 100)) / 100d);
 
 						}
 					} else {

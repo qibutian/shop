@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.bean.User;
+import com.means.shopping.utils.Arith;
 import com.means.shopping.utils.ShopUtils;
 import com.means.shopping.views.CartBottomView;
 import com.means.shopping.views.RefreshListViewAndMore;
@@ -116,13 +117,10 @@ public class WaitPaymentFragment extends Fragment {
 					public void onClick(View arg0) {
 
 						if (zhifuT.getText().toString().equals("立即支付")) {
-							int payprice = (int) (JSONUtil.getDouble(data,
-									"payprice") * 100);
-							int payedprice = (int) (JSONUtil.getDouble(data,
-									"payedprice") * 100);
-
 							pay(JSONUtil.getString(data, "id"),
-									(payprice - payedprice) / 100d);
+									Arith.sub(JSONUtil.getDouble(data,
+									"payprice"), JSONUtil.getDouble(data,
+									"payedprice")));
 						} else if (zhifuT.getText().toString().equals("确认收货")) {
 							ordersure(data);
 						}

@@ -32,6 +32,7 @@ import com.means.shopping.activity.my.ConsigneeAddressActivity;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
 import com.means.shopping.bean.ReChargeEB;
+import com.means.shopping.utils.Arith;
 import com.means.shopping.views.CartBottomView;
 
 import de.greenrobot.event.EventBus;
@@ -211,9 +212,7 @@ public class PaymentActivity extends ShopBaseActivity implements
 	}
 
 	public void onEventMainThread(ReChargeEB reChargeEB) {
-		BigDecimal b1 = new BigDecimal(Double.toString(blance));
-		BigDecimal b2 = new BigDecimal(Double.toString(reChargeEB.getMoney()));
-		blance = b1.add(b2).doubleValue();
+		blance = Arith.add(blance, reChargeEB.getMoney());
 		bottom_view.setYuE(blance);
 		ViewUtil.bindView(findViewById(R.id.blance_des), "当前余额" + blance);
 	}

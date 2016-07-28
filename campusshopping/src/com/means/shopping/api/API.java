@@ -4,9 +4,9 @@ public class API {
 
 	public static String test = "http://www.foodies.im/wap.php?g=Wap&c=Travel&a=cityList";
 
-	public static String Baseurl = "http://115.28.184.43";
+	// public static String Baseurl = "http://115.28.184.43";
 
-	// public static String Baseurl = "http://www.xiaomayixy.com";
+	public static String Baseurl = "http://www.xiaomayixy.com";
 
 	// 关于我们
 	public static String about = Baseurl + "/home/index/aboutdetail";
