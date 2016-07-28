@@ -16,6 +16,7 @@ import com.means.shopping.base.ShopBaseActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,21 +35,22 @@ public class AboutActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		titleT = (TextView) findViewById(R.id.title);
+		titleT = (TextView) findViewById(R.id.top_title);
 		contentT = (TextView) findViewById(R.id.content);
-		
+		setTitle("关于我们");
 		DhNet net = new DhNet(API.about);
 		net.doGet(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
-				
+
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
 					titleT.setText(JSONUtil.getString(jo, "title"));
-					contentT.setText(JSONUtil.getString(jo, "content"));
+					contentT.setText(Html.fromHtml(JSONUtil.getString(jo,
+							"content")));
 				}
-				
+
 			}
 		});
 	}

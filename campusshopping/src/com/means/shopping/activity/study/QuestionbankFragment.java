@@ -226,7 +226,7 @@ public class QuestionbankFragment extends Fragment {
 					EventBus.getDefault().post(new QuestionEB());// 通知学习页面刷新
 					Intent it = new Intent(getActivity(),
 							StudyScoreActivity.class);
-					it.putExtra("contentid", paperid);
+					it.putExtra("catid", paperid);
 					startActivity(it);
 					getActivity().finish();
 

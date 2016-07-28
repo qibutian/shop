@@ -38,7 +38,7 @@ public class JobStatusActivity extends ShopBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("职业资格");
+		setTitle("培训考试");
 		expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
 		adapter = new JobStatusAdapter(self);
 		expandableListView.setAdapter(adapter);

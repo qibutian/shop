@@ -1,5 +1,6 @@
 package com.means.shopping.activity.my;
 
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.means.shopping.R;
 import com.means.shopping.api.API;
 import com.means.shopping.base.ShopBaseActivity;
+import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.utils.ShopUtils;
 
 /**
@@ -66,7 +68,7 @@ public class ChangePasswordActivity extends ShopBaseActivity implements
 
 	public void submit() {
 		String tel = telEt.getText().toString();
-		String password = passwordEt.getText().toString();
+		final String password = passwordEt.getText().toString();
 		String code = codeEt.getText().toString();
 		if (TextUtils.isEmpty(tel)) {
 			showToast("请输入手机号");
@@ -103,6 +105,11 @@ public class ChangePasswordActivity extends ShopBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
+					ShopPerference per = IocContainer.getShare().get(
+							ShopPerference.class);
+					per.load();
+					per.pswd = password;
+					per.commit();
 					showToast("修改成功");
 					finish();
 				}

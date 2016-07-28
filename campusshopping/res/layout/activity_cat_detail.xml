@@ -65,10 +65,10 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <include
+            <com.means.shopping.views.RefreshListViewAndMore
+                android:id="@+id/my_listview"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                layout="@layout/include_refresh_listview"
                 android:paddingBottom="60dp" />
         </LinearLayout>
 
