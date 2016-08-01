@@ -42,10 +42,10 @@ public class NightAtivity extends ShopBaseActivity {
 
 	CartBottomView cartBootmView;
 
-	View catHeadV;
+	// View catHeadV;
 
 	// 每日爆款和猜你喜欢按钮
-	View hotV, likeV;
+	// View hotV, likeV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,32 +66,33 @@ public class NightAtivity extends ShopBaseActivity {
 				startActivity(it);
 			}
 		});
-		catHeadV = LayoutInflater.from(self).inflate(R.layout.head_market_cat,
-				null);
-		hotV = catHeadV.findViewById(R.id.hot);
-		hotV.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				goodAdater.addparam("catid", "");
-				goodAdater.addparam("type", 1);
-				goodAdater.refreshDialog();
-				setBgColor(-2);
-			}
-		});
-		likeV = catHeadV.findViewById(R.id.like);
-		likeV.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				setBgColor(-1);
-				goodAdater.addparam("catid", "");
-				goodAdater.addparam("type", 2);
-				goodAdater.refreshDialog();
-			}
-		});
+		// catHeadV =
+		// LayoutInflater.from(self).inflate(R.layout.head_market_cat,
+		// null);
+		// hotV = catHeadV.findViewById(R.id.hot);
+		// hotV.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// goodAdater.addparam("catid", "");
+		// goodAdater.addparam("type", 1);
+		// goodAdater.refreshDialog();
+		// setBgColor(-2);
+		// }
+		// });
+		// likeV = catHeadV.findViewById(R.id.like);
+		// likeV.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// setBgColor(-1);
+		// goodAdater.addparam("catid", "");
+		// goodAdater.addparam("type", 2);
+		// goodAdater.refreshDialog();
+		// }
+		// });
 		catListV = (ListView) findViewById(R.id.listview_normal);
-		catListV.addHeaderView(catHeadV);
+		// catListV.addHeaderView(catHeadV);
 		cartBootmView = (CartBottomView) findViewById(R.id.cartBootmView);
 		// cartBootmView.setCartNum();
 		catAdapter = new CatAdapter(self);
@@ -101,8 +102,8 @@ public class NightAtivity extends ShopBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				setBgColor(position - 1);
-				JSONObject jo = catAdapter.getItem(position - 1);
+				setBgColor(position - catListV.getHeaderViewsCount());
+				JSONObject jo = catAdapter.getItem(position - catListV.getHeaderViewsCount());
 				String catid = JSONUtil.getString(jo, "id");
 				goodAdater.addparam("catid", catid);
 				goodAdater.addparam("type", "");
@@ -152,24 +153,24 @@ public class NightAtivity extends ShopBaseActivity {
 	}
 
 	private void setBgColor(int position) {
-
-		if (position == -2) {
-			likeV.setBackgroundColor(getResources().getColor(
-					R.color.campus_grey));
-			hotV.setBackgroundColor(getResources().getColor(R.color.white));
-			catAdapter.select(position);
-		} else if (position == -1) {
-			likeV.setBackgroundColor(getResources().getColor(R.color.white));
-			hotV.setBackgroundColor(getResources()
-					.getColor(R.color.campus_grey));
-			catAdapter.select(position);
-		} else {
-			likeV.setBackgroundColor(getResources().getColor(
-					R.color.campus_grey));
-			hotV.setBackgroundColor(getResources()
-					.getColor(R.color.campus_grey));
-			catAdapter.select(position);
-		}
+		catAdapter.select(position);
+		// if (position == -2) {
+		// likeV.setBackgroundColor(getResources().getColor(
+		// R.color.campus_grey));
+		// hotV.setBackgroundColor(getResources().getColor(R.color.white));
+		// catAdapter.select(position);
+		// } else if (position == -1) {
+		// likeV.setBackgroundColor(getResources().getColor(R.color.white));
+		// hotV.setBackgroundColor(getResources()
+		// .getColor(R.color.campus_grey));
+		//
+		// } else {
+		// likeV.setBackgroundColor(getResources().getColor(
+		// R.color.campus_grey));
+		// hotV.setBackgroundColor(getResources()
+		// .getColor(R.color.campus_grey));
+		// catAdapter.select(position);
+		// }
 	}
 
 }

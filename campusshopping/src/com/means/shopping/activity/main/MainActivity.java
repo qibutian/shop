@@ -66,6 +66,7 @@ public class MainActivity extends ShopBaseFragmentActivity {
 		initView();
 		initTab();
 		setTab(0);
+		updateApp();
 	}
 
 	@Override
