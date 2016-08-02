@@ -27,7 +27,9 @@ import com.means.shopping.api.API;
 import com.means.shopping.utils.Arith;
 import com.means.shopping.utils.ShopUtils;
 import com.means.shopping.views.CartBottomView;
+import com.means.shopping.views.MessageDialog;
 import com.means.shopping.views.RefreshListViewAndMore;
+import com.means.shopping.views.MessageDialog.OnDelectResultListener;
 
 /**
  * 订单 -> 待收货
@@ -141,6 +143,7 @@ public class WaitReceivingFragment extends Fragment {
 	}
 
 	private void pay(final String orderid, final double orderprice) {
+
 		DhNet net = new DhNet(API.userInfo);
 		net.doGetInDialog(new NetTask(getActivity()) {
 
@@ -149,16 +152,59 @@ public class WaitReceivingFragment extends Fragment {
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
 
-					CartBottomView cattV = new CartBottomView(getActivity());
-					double balance = JSONUtil.getDouble(jo, "balance");
+					final CartBottomView cattV = new CartBottomView(
+							getActivity());
+					final double balance = JSONUtil.getDouble(jo, "balance");
 					if (balance != 0) {
 						if (balance >= orderprice) {
-							cattV.payByYue(orderid, orderprice + "");
+							MessageDialog dialog = new MessageDialog(
+									getActivity(), "你将使用余额支付",
+
+									orderprice + "元");
+
+							dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+								@Override
+								public void onResult() {
+									cattV.payByYue(orderid, orderprice + "");
+								}
+							});
+							dialog.show();
+
 						} else {
-							cattV.recharge(orderid, orderprice - balance);
+
+							MessageDialog dialog = new MessageDialog(
+									getActivity(), "您的余额不足,将通过支付宝充值",
+
+									Arith.sub(orderprice, balance) + "元");
+
+							dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+								@Override
+								public void onResult() {
+									cattV.recharge(orderid,
+											Arith.sub(orderprice, balance));
+								}
+							});
+							dialog.show();
+
 						}
 					} else {
-						cattV.payZhifuBao(orderid, orderprice + "");
+
+						MessageDialog dialog = new MessageDialog(getActivity(),
+								"你将使用支付宝支付",
+
+								orderprice + "元");
+
+						dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+							@Override
+							public void onResult() {
+								cattV.payZhifuBao(orderid, orderprice + "");
+							}
+						});
+						dialog.show();
+
 					}
 
 				}

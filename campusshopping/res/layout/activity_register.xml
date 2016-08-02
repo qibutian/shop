@@ -112,9 +112,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:background="@color/nothing"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz"
             android:hint="请输入密码"
             android:textColor="@color/text_43_black"
-            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz"
             android:textSize="@dimen/text_small" />
     </LinearLayout>
 
@@ -127,7 +127,8 @@
         android:paddingBottom="13dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="13dp" >
+        android:paddingTop="13dp"
+        android:visibility="gone" >
 
         <ImageView
             android:layout_width="wrap_content"
@@ -151,6 +152,7 @@
         android:layout_height="45dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/btn_fillet_5_green_bg"
         android:text="确定注册"
         android:textColor="@color/white"

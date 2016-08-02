@@ -22,6 +22,7 @@ import com.means.shopping.adapter.OrderFragmentPageAdapter;
 import com.means.shopping.bean.LoginEB;
 import com.means.shopping.bean.PayEB;
 import com.means.shopping.bean.ReChargeEB;
+import com.means.shopping.bean.RefreshEB;
 import com.means.shopping.bean.SchoolEB;
 
 import de.greenrobot.event.EventBus;
@@ -174,6 +175,10 @@ public class OrderFragment extends Fragment {
 	}
 
 	public void onEventMainThread(PayEB payEB) {
+		refresh();
+	}
+
+	public void onEventMainThread(RefreshEB RefreshEB) {
 		refresh();
 	}
 

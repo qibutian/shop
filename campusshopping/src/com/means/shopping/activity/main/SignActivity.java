@@ -81,6 +81,7 @@ public class SignActivity extends ShopBaseActivity {
 					adapter.addAll(jsa);
 
 					JSONObject jo = response.jSON();
+					is_condays = JSONUtil.getInt(jo, "is_condays");
 					isday = JSONUtil.getInt(jo, "is_days");
 					des_oneT.setText(isday == 1 ? "今日已签到" : "今日未签到");
 					signB.setText(isday == 1 ? "已签到" : "签到");
