@@ -109,6 +109,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/buyphone_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -129,7 +130,7 @@
                         android:id="@+id/buyphone"
                         style="@style/text_43_black_small"
                         android:layout_marginLeft="2dp"
-                        android:text="15205152201"  
+                        android:text="15205152201"
                         android:textColor="@color/text_ff9_yellow" />
                 </LinearLayout>
             </LinearLayout>

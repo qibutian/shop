@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -138,6 +139,21 @@ public class RecentFragment extends Fragment {
 
 					}
 				});
+
+				itemV.findViewById(R.id.buyphone_layout).setOnClickListener(
+						new OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+
+								Intent intent = new Intent(Intent.ACTION_DIAL,
+										Uri.parse("tel:"
+												+ JSONUtil.getString(data,
+														"buyphone")));
+								intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								startActivity(intent);
+							}
+						});
 
 				return ShopUtils.dateToStrLong(new Date(Long.parseLong(o
 						.toString()) * 1000));

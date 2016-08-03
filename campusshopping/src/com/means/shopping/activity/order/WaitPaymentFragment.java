@@ -12,6 +12,8 @@ import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -119,16 +121,29 @@ public class WaitPaymentFragment extends Fragment {
 					public void onClick(View arg0) {
 
 						if (zhifuT.getText().toString().equals("立即支付")) {
-							pay(JSONUtil.getString(data, "id"),
-									Arith.sub(JSONUtil.getDouble(data,
-									"payprice"), JSONUtil.getDouble(data,
-									"payedprice")));
+							pay(JSONUtil.getString(data, "id"), Arith.sub(
+									JSONUtil.getDouble(data, "payprice"),
+									JSONUtil.getDouble(data, "payedprice")));
 						} else if (zhifuT.getText().toString().equals("确认收货")) {
 							ordersure(data);
 						}
 
 					}
 				});
+
+				itemV.findViewById(R.id.buyphone_layout).setOnClickListener(
+						new OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								Intent intent = new Intent(Intent.ACTION_DIAL,
+										Uri.parse("tel:"
+												+ JSONUtil.getString(data,
+														"buyphone")));
+								intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								startActivity(intent);
+							}
+						});
 
 				return ShopUtils.dateToStrLong(new Date(Long.parseLong(o
 						.toString()) * 1000));

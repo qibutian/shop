@@ -72,7 +72,7 @@ public class SettingActivity extends ShopBaseFragmentActivity implements
 			break;
 		// 关于我们
 		case R.id.about:
-			it = new Intent(self, AboutActivity.class);
+			it = new Intent(self, AboutOneActivity.class);
 			startActivity(it);
 			break;
 		// 推出登陆
