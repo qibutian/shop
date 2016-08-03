@@ -49,6 +49,7 @@ import com.means.shopping.bean.Good;
 import com.means.shopping.bean.ReChargeEB;
 import com.means.shopping.bean.User;
 import com.means.shopping.utils.Arith;
+import com.means.shopping.utils.ShopPerference;
 import com.means.shopping.views.CartView.OnCartViewClickListener;
 import com.means.shopping.views.MessageDialog.OnDelectResultListener;
 
@@ -264,6 +265,10 @@ public class CartBottomView extends LinearLayout {
 
 		net.addParam("buyernote", noteE.getText().toString());
 		net.addParam("is_balance", yueC.isChecked() ? 1 : 0);
+		ShopPerference per = IocContainer.getShare().get(
+				ShopPerference.class);
+		per.load();
+		net.addParam("schoolid", per.schoolId);
 		net.doPost(new NetTask(mContext) {
 
 			@Override
