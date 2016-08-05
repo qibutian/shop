@@ -129,7 +129,7 @@ public class ChangePasswordActivity extends ShopBaseActivity implements
 			showToast("手机号格式不正确");
 			return;
 		}
-		DhNet smsNet = new DhNet(API.mobilecode);
+		DhNet smsNet = new DhNet(API.mobilecode);  
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("type", "5"); // 1为改密
 		smsNet.doGet(new NetTask(self) {

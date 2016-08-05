@@ -57,6 +57,7 @@ public class ShopApplication extends Application implements
 		Const.DATABASE_VERSION = 23;
 		Const.response_result_status = "1";
 		Const.netadapter_no_more = "";
+		Const.netadapter_page_no = "p";
 		// Const.postType = 2;
 		IocContainer.getShare().initApplication(this);
 		IocContainer.getShare().bind(ShopValueFix.class).to(ValueFix.class)
