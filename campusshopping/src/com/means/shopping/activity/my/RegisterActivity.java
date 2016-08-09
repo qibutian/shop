@@ -105,7 +105,7 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 			return;
 		}
 
-		DhNet smsNet = new DhNet(API.registaction);
+		DhNet smsNet = new DhNet("http://192.168.0.103:8000/home/user/registaction");
 		smsNet.addParam("pswd", password);
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("mobilecode", code);
@@ -152,7 +152,7 @@ public class RegisterActivity extends ShopBaseFragmentActivity implements
 			showToast("手机号格式不正确");
 			return;
 		}
-		DhNet smsNet = new DhNet(API.mobilecode);
+		DhNet smsNet = new DhNet("http://192.168.0.103:8000/home/user/mobilecode");
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("type", "1"); // 1为注册
 		smsNet.doGet(new NetTask(self) {
